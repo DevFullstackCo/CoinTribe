@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_02_193509) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_02_210027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -60,8 +60,33 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_193509) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "crypto_id"
+    t.bigint "user_id"
+    t.boolean "is_bullished"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_votes_on_crypto_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  create_table "votes_histories", force: :cascade do |t|
+    t.bigint "crypto_id"
+    t.bigint "user_id"
+    t.boolean "is_bullished"
+    t.date "voted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_votes_histories_on_crypto_id"
+    t.index ["user_id"], name: "index_votes_histories_on_user_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "cryptos"
   add_foreign_key "posts", "users"
+  add_foreign_key "votes", "cryptos"
+  add_foreign_key "votes", "users"
+  add_foreign_key "votes_histories", "cryptos"
+  add_foreign_key "votes_histories", "users"
 end
