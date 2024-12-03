@@ -26,6 +26,7 @@
     <%= crypto.symbol %>
     <%= crypto.name %>
     <%= number_to_currency(crypto.price, unit: "$") %>
+    <%= number_to_human(crypto.volume_24h, units: { thousand: "k", million: "M", billion: "B" }) %>
     </p>
   <% end %>
   </div>
