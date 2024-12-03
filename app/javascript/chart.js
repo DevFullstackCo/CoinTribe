@@ -108,6 +108,11 @@ document.addEventListener('turbo:load', async function () {
         await updateChart('6h');
     });
 
+    document.getElementById('btn-12h').addEventListener('click', async function () {
+        setActiveButton('btn-12h');
+        await updateChart('12h');
+    });
+
     document.getElementById('btn-1d').addEventListener('click', async function () {
         setActiveButton('btn-1d');
         await updateChart('1d');
