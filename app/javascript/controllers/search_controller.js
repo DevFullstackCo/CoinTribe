@@ -22,7 +22,6 @@ export default class extends Controller {
   }
 
 
-
   search() {
     const query = this.inputTarget.value.trim();
   

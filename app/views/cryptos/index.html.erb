@@ -4,21 +4,27 @@
 </div>
 
 <div>
-<h2>News Token Listing</h2>
-</div>
-
-<div>
-<h2>Search Your Crypto</h2>
-
-<div data-controller="search">
-  <%= text_field_tag :search, nil, id: "search-input", placeholder: "Search crypto ...", 
-    data: { action: "input->search#search", target: "search.input" } %>
-  <div id="search-results" data-search-target="results">
+  <h2>News Token Listing</h2>
+  <div>
+  <% @new_cryptos.each do |crypto| %>
+    <p>
+    <%= crypto.symbol %>
+    <%= crypto.name %>
+    <%= number_to_currency(crypto.price, unit: "$") %>
+    </p>
+  <% end %>
   </div>
 </div>
 
 
 
-
-
+<div>
+  <h2>Search Your Crypto</h2>
+  <div data-controller="search">
+    <%= text_field_tag :search, nil, id: "search-input", placeholder: "Search crypto ...", 
+      data: { action: "input->search#search", target: "search.input" } %>
+    <div id="search-results" data-search-target="results">
+    
+    </div>
+  </div>
 </div>

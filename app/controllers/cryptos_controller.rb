@@ -1,5 +1,7 @@
 class CryptosController < ApplicationController
   def index
+    @new_cryptos = Crypto.order(created_at: :desc).limit(5)
+
     if params[:search].present?
       @cryptos = Crypto.search_by_name_or_symbol(params[:search])
     else
@@ -7,9 +9,9 @@ class CryptosController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # Vue classique
+      format.html 
       format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :volume_24h) }
     end
   end
-  
+
 end
