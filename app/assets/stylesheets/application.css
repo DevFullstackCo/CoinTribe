@@ -8,3 +8,14 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .container-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+ }
+
+ .chart-section, .post-section {
+  width: 50%;
+ }
+ 
