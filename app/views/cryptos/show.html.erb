@@ -1,16 +1,39 @@
+<%= javascript_include_tag 'chart' %>
+<%= javascript_include_tag "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js", defer: true %>
+
 <div class="container-body">
   <div class="chart-section">
+    <p class="symbol" id="crypto-symbol"><%= @crypto[:symbol] %></p>
+    <div role="button" id="btn-1m">
+      <p>1m</p>
+    </div>
+    <div role="button" id="btn-15m">
+      <p>15m</p>
+    </div>
+    <div role="button" id="btn-1h">
+      <p>1h</p>
+    </div>
+    <div role="button" id="btn-4h">
+      <p>4h</p>
+    </div>
 
+
+  <div role="button" id="btn-1d-main">
+  <p id="time-label">1d</p>
+  <div id="time-options">
+    <div role="button" id="btn-6h">
+      <p>6h</p>
+    </div>
+    <div role="button" id="btn-1d">
+      <p>1d</p>
+    </div>
   </div>
-
-
-
-
-
-  <div class="post-section">
-
-
-  </div>
+</div>
 
   
+    <div id="chart"></div>
+  </div>
+
+  <div class="post-section">
+  </div>
 </div>
