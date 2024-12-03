@@ -22,6 +22,5 @@
 
 every 1.minute do
   rake "crypto:fetch"
-  command "echo 'Cron task ran at $(date)' >> /Users/florian/Desktop/Projet\ Final/CryptoApp/log/cron_log.txt"
 end
 
