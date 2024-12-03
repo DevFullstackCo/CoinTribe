@@ -9,16 +9,16 @@
 
 <div>
 <h2>Search Your Crypto</h2>
-<%= form_with(url: cryptos_path, method: "get", local: false, id: "search_form") do |form| %>
-    <%= form.text_field :search, id: "search_input", placeholder: "Rechercher dans les cryptos..." %>
-    <%= form.submit "Rechercher", style: "display: none;" %>
-  <% end %>
-  
-  <div id="search-results">
-    <% @crypto_search.each do |crypto| %>
-      <div><%= crypto.name %></div>
-    <% end %>
+
+<div data-controller="search">
+  <%= text_field_tag :search, nil, id: "search-input", placeholder: "Search crypto ...", 
+    data: { action: "input->search#search", target: "search.input" } %>
+  <div id="search-results" data-search-target="results">
   </div>
+</div>
+
+
+
 
 
 </div>
