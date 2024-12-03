@@ -9,6 +9,37 @@
 
   <div class="post-section">
 
+    <div class="posts-container">
+      <% @posts.each do |post| %>
+      <%= post.user.username %>
+      <%= post.content %>
+      <% if post.user == current_user %>
+        <%= button_to "Supprimer", post_path(post), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-post" %>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div class="add-post-container">
+      <% if @post.errors.any? %>
+  <div class="error-messages">
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+  <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
+  <%= form.submit "Créer", class: "btn-primary-add" %>
+<% end %>
+
+
+
+
+    </div>
+
 
   </div>
 
