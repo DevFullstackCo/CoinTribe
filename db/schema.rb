@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_02_210027) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_03_081651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,8 +28,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_210027) do
     t.string "name"
     t.float "price"
     t.string "symbol"
-    t.integer "volume_24h"
-    t.integer "market_cap"
+    t.bigint "volume_24h"
+    t.bigint "market_cap"
     t.float "variation_24h"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
