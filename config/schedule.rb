@@ -22,4 +22,7 @@
 
 every 1.minute do
   rake "crypto:fetch"
+  # Ajoutez un log pour vérifier l'exécution
+  command "echo 'Cron task ran at $(date)' >> /Users/florian/Desktop/Projet\ Final/CryptoApp/log/cron_log.txt"
 end
+
