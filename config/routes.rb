@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :cryptos, only: [:index, :show] do
+    resources :posts, only: [:create]
+  end
+
+  resources :posts, only: [:destroy] do
+    resources :comments, only: [:create]
+  end
+
+  resources :comments, only: [:destroy]
+  
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
