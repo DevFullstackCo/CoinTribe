@@ -11,7 +11,5 @@ class CryptosController < ApplicationController
       format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :volume_24h) }
     end
   end
-
-
-
+  
 end

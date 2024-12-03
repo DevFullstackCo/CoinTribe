@@ -2,23 +2,25 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search"
 export default class extends Controller {
-  static targets = ["input", "results"]; // Lier l'input et la div des résultats
+  static targets = ["input", "results"];
   connect() {
     fetch(`/cryptos`, {
       headers: { accept: "application/json" },
     })
       .then((response) => response.json())
       .then((data) => {
-        this.resultsTarget.innerHTML = ""; // Efface les anciens résultats
+        this.resultsTarget.innerHTML = "";
         data.forEach(([id, name, symbol, price, volume_24h]) => {
+          const div = document.createElement("div");
           const link = document.createElement("a");
           link.href = `/cryptos/${id}`;
-          link.textContent = `(${symbol}) ${name} (${price}) (${volume_24h})`;
-          this.resultsTarget.appendChild(link);
+          link.textContent = `${symbol} ${name} (${price}) (${volume_24h})`;
+          div.appendChild(link);
+          this.resultsTarget.appendChild(div);
         });
       });
   }
-  
+
 
 
   search() {
@@ -29,14 +31,15 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.resultsTarget.innerHTML = ""; // Efface les anciens résultats
+        this.resultsTarget.innerHTML = "";
         data.forEach(([id, name, symbol, price, volume_24h]) => {
+          const div = document.createElement("div");
           const link = document.createElement("a");
           link.href = `/cryptos/${id}`;
-          link.textContent = `(${symbol}) ${name} (${price}) (${volume_24h})`;
-          this.resultsTarget.appendChild(link);
+          link.textContent = `${symbol} ${name} (${price}) (${volume_24h})`;
+          div.appendChild(link);
+          this.resultsTarget.appendChild(div);
         });
       });
   }
-  
 }
