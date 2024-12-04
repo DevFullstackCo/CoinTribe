@@ -18,11 +18,7 @@ class CryptosController < ApplicationController
     @crypto = Crypto.find(params[:id])
     @posts = @crypto.posts.order(created_at: :desc)
     @post = Post.new
-    @post.crypto = @crypto
-
-    @comments = @post.comments.order(created_at: :desc)
     @comment = Comment.new
-    @comment.post = @post
   end
 
     

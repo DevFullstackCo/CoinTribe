@@ -46,67 +46,46 @@
 
       <% @posts.each do |post| %>
 
+        <!-- Post -->
         <div class="post-line">
           <%= post.user.username %>
           <%= post.content %>
           <% if post.user == current_user %>
-            <%= button_to "Supprimer", post_path(post), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-post" %>
+            <%= button_to "Delete", post_path(post), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-post" %>
           <% end %>
         </div>
 
+        <!-- Comments of the post -->
         <div class="comments-container">
-          <% @comments.each do |comment| %>
-
-          <div class="comment-line">
-            <%= comment.user.username %>
-            <%= comment.content %>
-            <% if comment.user == current_user %>
-              <%= button_to "Supprimer", comment_path(comment), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-comment" %>
-            <% end %>
+          <% post.comments.each do |comment| %>
+            <div class="comment-line">
+              <%= comment.user.username %>
+              <%= comment.content %>
+              <% if comment.user == current_user %>
+                <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-comment" %>
+              <% end %>
+            </div>    
           </div>
-
           <% end %>
         </div>
-
-      <% end %>
-      
-      <div class="add-comment-container">
-        <% if @comment.errors.any? %>
-
-        <div class="error-messages">
-          <ul>
-            <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-          <% end %>
-        </div>
-
-
-      </div>
+    
+          <!-- Form to add new comment -->
+          <div class="new-comment">
+            <%= form_with model: [post, Comment.new], local: true do |form| %>
+              <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
+              <%= form.submit "Create", class: "btn-primary-add" %>
+            <% end %> 
+          </div>
+        <% end %>
 
     </div>
-  
-
-    <div class="add-post-container">
-      <% if @post.errors.any? %>
       
-      <div class="error-messages">
-        <ul>
-          <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-        <% end %>
-      </div>
-      
-      <div class="new-post">
-        <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-        <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
-        <%= form.submit "Créer", class: "btn-primary-add" %>
-        <% end %>
-      </div>
-
+    <div class="new-post">
+      <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+      <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
+      <%= form.submit "Create", class: "btn-primary-add" %>
+      <% end %>
+    </div>
 
   </div>
 
