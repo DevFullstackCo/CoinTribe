@@ -1,0 +1,23 @@
+<%= render 'shared/navbar' %>
+
+<div class="profile-page-container">
+  <div class="profile-card">
+    <h2>My Profile</h2>
+    <div class="profile-info">
+      <p class="username">@<%= @user.username %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+    </div>
+    <div class="profile-actions">
+      <%= button_to "Edit Profile", edit_profile_path, method: :get, class: "btn-edit-profile" %>
+      <%= button_to "Delete Account", profile_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn-delete-profile" %>
+    </div>
+  </div>
+
+  <div class="favorites-card">
+    <h2>My Favorites</h2>
+  </div>
+
+  <div class="points-card">
+    <h2>Points</h2>
+  </div>
+</div>
