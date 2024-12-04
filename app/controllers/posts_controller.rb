@@ -7,10 +7,10 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      redirect_to crypto_path(@crypto), notice: "Votre post a été ajouté avec succès !"
+      redirect_to crypto_path(@crypto), notice: "Your post has been successfully added!"
     else
       @posts = @crypto.posts.order(created_at: :desc) 
-      flash.now[:alert] = "Erreur lors de la création du post."
+      flash.now[:alert] = "An error occurred while creating your post. Please try again."
       render "cryptos/show"
     end
   end
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @crypto = @post.crypto
     @post.destroy
-    redirect_to crypto_path(@crypto), notice: "Le post a été supprimé avec succès."
+    redirect_to crypto_path(@crypto), notice: "Your post has been successfully deleted"
   end
 
 
