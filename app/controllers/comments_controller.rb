@@ -5,15 +5,15 @@ class CommentsController < ApplicationController
     @post = @crypto.post
     @comment = Comment.new(comment_params)
     @comment.post = @post
-    @commeht.user = current_user
+    @comment.user = current_user
 
     if @comment.save
-      redirect_to crypto_path(@crypto)
+      redirect_to crypto_path(@crypto), notice: "Votre commentaire a été ajouté avec succès !"
     else
-      
+      @comments = @post.comments.order(created_at :desc)
+      flash.now[:alert] = "Erreur lors de la création de votre commentaire."
+      render "crypto/show"
     end
-
-
   end
 
   def destroy
