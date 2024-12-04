@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :cryptos, only: [:index, :show] do
+
+  resources :cryptos, only: [:index, :show, :create] do
     resources :posts, only: [:create]
   end
 
@@ -9,12 +10,16 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:destroy]
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
+
   get "up" => "rails/health#show", as: :rails_health_check
+  get 'cgu', to: 'static_pages#cgu'
+  get "privacy_policy", to: "static_pages#privacy_policy"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -22,6 +27,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "cryptos#index"
-  resources :cryptos
   
 end

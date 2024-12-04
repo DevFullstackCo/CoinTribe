@@ -1,20 +1,60 @@
+<%= javascript_include_tag 'navbarSearch' %>
+<%= javascript_include_tag 'navbarProfil' %>
+<%= javascript_include_tag 'notif' %>
+
 <nav>
+  <div class="logo-container">LOGO VOTING</div>
   <div class="navbar-search">
-    <input type="text" placeholder="Search Crypto...">
+    <div data-controller="search" class="search-section-nav">
+      <div class="search-home-nav">
+        <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
+        <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
+          data: { action: "input->search#search", target: "search.input" } %>
+      </div>
+      <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
+    </div>
+  </div>
+
+  <div class="btn-notif act" role="button">
+    <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+  </div>
+
+  <div class="notif-popup">
+    <p>You don't have notifications!</p>
   </div>
 
   <div class="navbar-actions">
-    <button class="navbar-notifications">
-      <%= image_tag 'bell-regular.svg', class: 'icon-bell' %>
-    </button>
-
     <% if user_signed_in? %>
-      <%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete, data: { turbo: false } %>
-      
+      <button id="profil-btn" class="act">
+        <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+        <p class="pseudouser">@trader2838</p>
+      </button>
     <% else %>
       <%= button_to "Se connecter", new_user_session_path %>
       <%= button_to "S'inscrire", new_user_registration_path, method: :get %>
     <% end %>
-
   </div>
 </nav>
+
+<div id="profil">
+  <div class="headerprofil">
+    <div id="closeBtnProfil" class="btn-menu act" role="button">
+      <%= image_tag "arrowright.png", alt: "arrow-right", class: "icone-arrow" %>
+    </div>
+
+    <div class="user">
+      <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+      <div class="infouser">
+        <p class="pseudouser">@trader2838</p>
+      </div>
+    </div>
+
+    <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act' do %>
+      <%= image_tag "setting.png", alt: "setting", class: "icone-nav" %>
+    <% end %>
+
+    <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act delog' do %>
+      <%= image_tag "power.png", alt: "power", class: "icone-nav" %>
+    <% end %>
+  </div>
+</div>

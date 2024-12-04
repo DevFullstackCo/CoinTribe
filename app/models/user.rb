@@ -16,4 +16,13 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
   
+
+  validates :accepted_cgu, inclusion: { in: [true], message: "Veuillez accepter les CGU pour continuer." }, on: :create
+  validates :accepted_privacy_policy, inclusion: { in: [true], message: "Veuillez accepter la politique de confidentialité pour continuer." }, on: :create
+  before_create :set_accepted_at
+
+  private
+  def set_accepted_at
+    self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
+  end
 end

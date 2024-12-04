@@ -1,4 +1,4 @@
- <%= javascript_include_tag 'chart' %>
+<%= javascript_include_tag 'chart' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js", defer: true %>
 
@@ -34,47 +34,57 @@
       </div>
     </div>
 
-<div id="chart"></div>
-</div>
-
-
-
+    <div id="chart"></div>
+  </div>
 
   <div class="post-section">
+  <%= render "shared/flash" %>
 
     <div class="posts-container">
       <% @posts.each do |post| %>
-      <%= post.user.username %>
-      <%= post.content %>
-      <% if post.user == current_user %>
-        <%= button_to "Supprimer", post_path(post), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-post" %>
+
+        <!-- Post -->
+        <div class="post-line">
+          <p><%= time_ago_in_words(post.created_at) %> ago</p>
+          <%= post.user.username %>
+          <%= post.content %>
+          <% if post.user == current_user %>
+            <%= button_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, class: "btn-delete-post" %>
+          <% end %>
+        </div>
+
+        <!-- Comments of the post -->
+        <div class="comments-container">
+          <% post.comments.each do |comment| %>
+            <div class="comment-line">
+              <%= comment.user.username %>
+              <%= comment.content %>
+              <% if comment.user == current_user %>
+                <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }, class: "btn-delete-comment" %>
+              <% end %>
+            </div>  
+          <% end %> 
+        </div>
+         
+        <!-- Form to add new comment -->
+        <div class="new-comment">
+          <%= form_with model: [post, Comment.new], local: true do |form| %>
+            <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
+            <%= form.submit "Create", class: "btn-primary-add" %>
+          <% end %> 
+        </div>
+      
       <% end %>
+    </div>
+    
+    <!-- Form to add a new post -->
+    <div class="new-post">
+      <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+        <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
+        <%= form.submit "Create", class: "btn-primary-add" %>
       <% end %>
     </div>
 
-    <div class="add-post-container">
-      <% if @post.errors.any? %>
-  <div class="error-messages">
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-  <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
-  <%= form.submit "Créer", class: "btn-primary-add" %>
-<% end %>
-
-
-
-
-    </div>
-
-
   </div>
 
-  
 </div>
