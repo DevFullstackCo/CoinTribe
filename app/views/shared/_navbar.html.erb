@@ -1,16 +1,21 @@
-<div class="navbar-container">
+<nav>
   <div class="navbar-search">
     <input type="text" placeholder="Search Crypto...">
   </div>
+
   <div class="navbar-actions">
     <button class="navbar-notifications">
       <%= image_tag 'bell-regular.svg', class: 'icon-bell' %>
     </button>
-    <% if current_user %>
-      <button class="navbar-user">
-        <%= image_tag(current_user.avatar || 'default-avatar.png', alt: 'user-avatar', class: 'user-avatar') %>
-        <span class="user-pseudo"><%= current_user.pseudo %></span>
-      </button>
+
+    <% if user_signed_in? %>
+      <%= button_to 'Mon Profil', profiles_path(current_user) %>
+      <%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete, data: { turbo: false } %>
+      
+    <% else %>
+      <%= button_to "Se connecter", new_user_session_path %>
+      <%= button_to "S'inscrire", new_user_registration_path, method: :get %>
     <% end %>
+
   </div>
-</div>
+</nav>
