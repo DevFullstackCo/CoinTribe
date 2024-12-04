@@ -81,7 +81,7 @@
     <!-- Form to add a new post -->
     <div class="new-post">
       <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-        <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
+        <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
         <%= form.submit "Create", class: "btn-primary-add" %>
       <% end %>
     </div>
