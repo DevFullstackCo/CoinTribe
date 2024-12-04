@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
-  def show
-    render params[:id]
+  def cgu
+  end
+
+  def privacy_policy
   end
 end

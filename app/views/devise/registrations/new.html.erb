@@ -25,7 +25,7 @@
     <%= f.check_box :accepted_cgu %>
     <%= f.label :accepted_cgu do %>
       J'accepte les 
-      <a href="<%= cgu_path %>" target="_blank">Conditions Générales d'Utilisation (CGU)</a>.
+      <%= link_to 'Conditions Générales d’Utilisation', cgu_path %>
     <% end %>
   </div>
 
@@ -33,7 +33,7 @@
     <%= f.check_box :accepted_privacy_policy %>
     <%= f.label :accepted_privacy_policy do %>
       J'accepte la 
-      <a href="<%= privacy_policy_path %>" target="_blank">Politique de confidentialité</a>.
+      <%= link_to 'Politique de confidentialité', privacy_policy_path %>
     <% end %>
   </div>
 
