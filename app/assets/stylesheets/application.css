@@ -38,6 +38,10 @@ input:focus {
   outline: none;
 }
 
+.act:active {
+  transform: scale(0.97);
+}
+
 .body-flex {
   width: 100%;
   display: flex;

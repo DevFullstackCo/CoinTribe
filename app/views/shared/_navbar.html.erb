@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'navbarSearch' %>
 <%= javascript_include_tag 'navbarProfil' %>
+<%= javascript_include_tag 'notif' %>
 <nav>
   <div class="logo-container">LOGO VOTING</div>
   <div class="navbar-search">
@@ -13,14 +14,20 @@
         </div>
   </div>
 
+ <div class="btn-notif act" role="button">
+  <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+</div>
+
+<div class="notif-popup" style="display: none;">
+  <p>Vous avez une nouvelle notification!</p>
+</div>
+
   <div class="navbar-actions">
-    <button id="profil-btn">
+    <% if user_signed_in? %>
+     <button id="profil-btn">
+      Mon super pseudo
     <%= current_user.username %>
     </button>
-
-    <% if user_signed_in? %>
-      <%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete, data: { turbo: false } %>
-      
     <% else %>
       <%= button_to "Se connecter", new_user_session_path %>
       <%= button_to "S'inscrire", new_user_registration_path, method: :get %>
@@ -38,23 +45,24 @@
 
 <div id="profil">
   <div class="headerprofil">
-    <div id="closeBtnProfil" class="btn-menu" role="button">
+    <div id="closeBtnProfil" class="btn-menu act" role="button">
       <%= image_tag "arrowright.png", alt: "arrow-right", class: "icone-arrow" %>
     </div>
 
     <div class="user">
-      <img class="avataruser" src="img/user.png" />
+      <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
       <div class="infouser">
         <p class="pseudouser">@trader2838</p>
       </div>
     </div>
 
-    <div class="btn-menu" role="button">
-      <%= image_tag "setting.png", alt: "setting", class: "icone-nav" %>
-    </div>
+    <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act' do %>
+    <%= image_tag "setting.png", alt: "setting", class: "icone-nav" %>
+    <% end %>
 
-    <div class="btn-menu" role="button">
-      <%= image_tag "power.png", alt: "power", class: "icone-nav" %>
-    </div>
+    <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act' do %>
+    <%= image_tag "power.png", alt: "power", class: "icone-nav" %>
+    <% end %>
+
   </div>
 </div>
