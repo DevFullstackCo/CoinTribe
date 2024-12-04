@@ -48,6 +48,15 @@ nav {
     z-index: 10;
     display: none;
   }
+
+  #profil-btn {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
   
   #profil {
     position: fixed;
@@ -84,18 +93,20 @@ nav {
 
   .user-icone {
     width: 40px;
+    pointer-events: none;
   }
 
   .pseudouser {
     color: var(--grey-color);
+    pointer-events: none;
   }
   
   .btn-menu{
     height: 40px;
     width: 40px;
     border-radius: 10px;
-    background-color: #0C0C0C;
-    border: 1px solid #1A1A1A;
+    background-color: var(--input-color);
+    border: 1px solid var(--second-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,8 +118,8 @@ nav {
     height: 40px;
     width: 40px;
     border-radius: 10px;
-    background-color: #0C0C0C;
-    border: 1px solid #1A1A1A;
+    background-color: var(--input-color);
+    border: 1px solid var(--second-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,13 +129,17 @@ nav {
 
   .notif-popup {
     position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Le popup est caché par défaut */
+    background-color: var(--input-color);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0px 10px 60px var(--secondary-color);
+    display: none;
     z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin-top: 10px;
+    text-align: center;
   }
   
   .icone-arrow {
