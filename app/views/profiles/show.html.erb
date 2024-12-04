@@ -8,7 +8,7 @@
       <p><strong>Email:</strong> <%= @user.email %></p>
     </div>
     <div class="profile-actions">
-      <%= button_to "Edit Profile", edit_profile_path, method: :get, class: "btn-edit-profile" %>
+      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class: "btn-edit-profile" %>
       <%= button_to "Delete Account", profile_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn-delete-profile" %>
     </div>
   </div>
