@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "cryptos#index"
+  devise_scope :user do
+  root to: 'devise/sessions#new'
+  end
   resources :cryptos
   
 end
