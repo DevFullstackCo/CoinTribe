@@ -9,7 +9,6 @@
     </button>
 
     <% if user_signed_in? %>
-      <%= button_to 'Mon Profil', profiles_path(current_user) %>
       <%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete, data: { turbo: false } %>
       
     <% else %>

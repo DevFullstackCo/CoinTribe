@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 gem "devise"
-
+gem 'mailjet'
 gem 'http'
 gem 'dotenv-rails'
 gem 'whenever'

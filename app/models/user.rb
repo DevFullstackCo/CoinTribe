@@ -9,4 +9,11 @@ class User < ApplicationRecord
   has_many :cryptos, through: :votes
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
+  
 end
