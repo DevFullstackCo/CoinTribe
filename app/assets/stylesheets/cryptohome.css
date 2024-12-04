@@ -1,0 +1,135 @@
+.left-section-home {
+  width: 35%;
+}
+
+.right-section-home {
+  width: 900px;
+}
+
+.crypto-background {
+  width: 100%;
+}
+
+.container-search {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -16%;
+}
+
+.search-section {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-home {
+  border-radius: 10px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+}
+
+.icon-search {
+  width: 3%;
+  margin-left: 3%;
+}
+
+#search-input {
+  background-color: var(--input-color);
+  width: 100%;
+  margin-left: 2%;
+  color: var(--white-color);
+  font-size: 1.6vh;
+}
+
+#search-results {
+  width: 100%;
+  margin-top: 1%;
+}
+
+.result-crypto {
+  border-radius: 10px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  height: 50px;
+  margin-top: 6px;
+  margin-right: auto;
+  margin-left: auto;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.result-crypto:nth-child(1) {
+  margin-top: 10px;
+}
+
+.result-crypto:hover {
+  transform: scale(1.02);
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0px 10px 60px var(--secondary-color);
+}
+
+.result-crypto:last-of-type {
+  margin-bottom: 10px;
+}
+
+.name-symbol {
+  
+}
+
+.price-volume {
+
+}
+
+@media (max-width: 1000px) { 
+  .left-section-home {
+    width: 100%;
+  }
+
+  .right-section-home {
+    width: 100%;
+  }
+
+  .crypto-background {
+    width: 100%;
+ }
+
+  .container-search {
+  width: 100%;
+  margin-top: -20%;
+ }
+
+ .new-box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ .new-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+}

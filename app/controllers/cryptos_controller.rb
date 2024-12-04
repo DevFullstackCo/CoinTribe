@@ -11,7 +11,7 @@ class CryptosController < ApplicationController
 
     respond_to do |format|
       format.html 
-      format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :volume_24h) }
+      format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :variation_24h) }
     end
   end
 
