@@ -6,11 +6,14 @@
     <button class="navbar-notifications">
       <%= image_tag 'bell-regular.svg', class: 'icon-bell' %>
     </button>
+    
     <% if current_user %>
       <button class="navbar-user">
         <%= image_tag(current_user.avatar || 'default-avatar.png', alt: 'user-avatar', class: 'user-avatar') %>
         <span class="user-pseudo"><%= current_user.pseudo %></span>
       </button>
     <% end %>
+
+
   </div>
 </div>
