@@ -96,12 +96,33 @@
 }
 
 .name-symbol {
-  
+  display: flex;
+  flex-direction: column-reverse;
+  color: var(--grey-color);
 }
 
-.price-volume {
-
+.symbol {
+  color: var(--white-color);
 }
+
+
+
+.price {
+  margin-right: 5px;
+}
+
+.positif{
+  color: var(--green-color);
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.negatif{
+  color: var(--red-color);
+  font-size: 12px;
+  margin-right: 10px;
+}
+
 
 @media (max-width: 1000px) { 
   .left-section-home {
@@ -133,3 +154,5 @@
   margin-right: auto;
  }
 }
+
+

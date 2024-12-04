@@ -18,6 +18,9 @@
   --gradient-dark: #080808;
   --second-dark: #1A1A1A;
   --input-color: #0C0C0C;
+  --grey-color: #7E7E7E;
+  --green-color: #3BFF79;
+  --red-color: #FF2B40;
 }
 
 body {
