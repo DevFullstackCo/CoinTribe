@@ -1,0 +1,96 @@
+nav {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+  }
+  
+  .logo-container {
+    height: 40px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navbar-search {
+    width: 30%;
+    position: relative;
+  }
+  
+  .search-section-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-home-nav {
+    border-radius: 10px;
+    border: double 1px transparent;
+    background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%),
+                      linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+  }
+  
+  .nav-result {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    display: none;
+  }
+  
+  #profil {
+    position: fixed;
+    margin-right: 0px;
+    top: 48.5%;
+    right: -373px;
+    transform: translateY(-48.5%);
+    width: 373px;
+    height: 97.5vh;
+    background-color: #000000;
+    border: 1px solid #191919;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: right 1s ease;
+    padding-top: 20px;
+  }
+  
+  #profil.show {
+    right: 0px;
+  }
+  
+  .headerprofil {
+    display: flex;
+  }
+  
+  .btn-menu {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    border: double 1px transparent;
+    background-image: linear-gradient(var(--input-color), var(--input-color)), 
+                      linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .icone-arrow {
+    width: 27px;
+  }
+  
+  .icone-nav {
+    width: 19px;
+  }
+  

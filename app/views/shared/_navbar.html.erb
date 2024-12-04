@@ -1,15 +1,24 @@
+<%= javascript_include_tag 'navbarSearch' %>
+<%= javascript_include_tag 'navbarProfil' %>
 <nav>
+  <div class="logo-container">LOGO VOTING</div>
   <div class="navbar-search">
-    <input type="text" placeholder="Search Crypto...">
+    <div data-controller="search" class="search-section-nav">
+          <div class="search-home-nav">
+            <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search" %>
+            <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
+              data: { action: "input->search#search", target: "search.input" } %>
+          </div>
+          <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
+        </div>
   </div>
 
   <div class="navbar-actions">
-    <button class="navbar-notifications">
-      <%= image_tag 'bell-regular.svg', class: 'icon-bell' %>
+    <button id="profil-btn">
+    <%= current_user.username %>
     </button>
 
     <% if user_signed_in? %>
-      <%= button_to 'Mon Profil', profiles_path(current_user) %>
       <%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete, data: { turbo: false } %>
       
     <% else %>
@@ -19,3 +28,33 @@
 
   </div>
 </nav>
+
+
+
+
+
+
+
+
+<div id="profil">
+  <div class="headerprofil">
+    <div id="closeBtnProfil" class="btn-menu" role="button">
+      <%= image_tag "arrowright.png", alt: "arrow-right", class: "icone-arrow" %>
+    </div>
+
+    <div class="user">
+      <img class="avataruser" src="img/user.png" />
+      <div class="infouser">
+        <p class="pseudouser">@trader2838</p>
+      </div>
+    </div>
+
+    <div class="btn-menu" role="button">
+      <%= image_tag "setting.png", alt: "setting", class: "icone-nav" %>
+    </div>
+
+    <div class="btn-menu" role="button">
+      <%= image_tag "power.png", alt: "power", class: "icone-nav" %>
+    </div>
+  </div>
+</div>
