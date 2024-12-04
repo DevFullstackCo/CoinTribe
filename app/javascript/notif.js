@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const notifPopup = document.querySelector('.notif-popup');
 
   notifBtn.addEventListener('click', function(event) {
-    event.stopPropagation(); // Empêche la propagation de l'événement pour éviter de fermer la popup immédiatement
+    event.stopPropagation();
 
     if (notifPopup.style.display === 'block') {
       notifPopup.style.display = 'none';
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Ferme la popup si l'utilisateur clique à l'extérieur
   document.addEventListener('click', function(event) {
     if (!notifBtn.contains(event.target) && !notifPopup.contains(event.target)) {
       notifPopup.style.display = 'none';

@@ -34,6 +34,10 @@ body {
     font-style: normal;
 }
 
+input {
+  border: none;
+}
+
 input:focus {
   outline: none;
 }
