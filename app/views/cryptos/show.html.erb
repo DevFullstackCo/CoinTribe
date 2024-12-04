@@ -43,7 +43,6 @@
   <div class="post-section">
 
     <div class="posts-container">
-
       <% @posts.each do |post| %>
 
         <!-- Post -->
@@ -51,7 +50,7 @@
           <%= post.user.username %>
           <%= post.content %>
           <% if post.user == current_user %>
-            <%= button_to "Delete", post_path(post), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-post" %>
+            <%= button_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, class: "btn-delete-post" %>
           <% end %>
         </div>
 
@@ -62,28 +61,28 @@
               <%= comment.user.username %>
               <%= comment.content %>
               <% if comment.user == current_user %>
-                <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn-delete-comment" %>
+                <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }, class: "btn-delete-comment" %>
               <% end %>
-            </div>    
-          </div>
-          <% end %>
+            </div>  
+          <% end %> 
         </div>
-    
-          <!-- Form to add new comment -->
-          <div class="new-comment">
-            <%= form_with model: [post, Comment.new], local: true do |form| %>
-              <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
-              <%= form.submit "Create", class: "btn-primary-add" %>
-            <% end %> 
-          </div>
-        <% end %>
-
-    </div>
+         
+        <!-- Form to add new comment -->
+        <div class="new-comment">
+          <%= form_with model: [post, Comment.new], local: true do |form| %>
+            <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
+            <%= form.submit "Create", class: "btn-primary-add" %>
+          <% end %> 
+        </div>
       
+      <% end %>
+    </div>
+    
+    <!-- Form to add a new post -->
     <div class="new-post">
       <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-      <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
-      <%= form.submit "Create", class: "btn-primary-add" %>
+        <%= form.text_field :content, placeholder: "Écrire un nouveau post...", class: "form-control" %>
+        <%= form.submit "Create", class: "btn-primary-add" %>
       <% end %>
     </div>
 
