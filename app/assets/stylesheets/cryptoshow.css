@@ -1,0 +1,8 @@
+.chart-section, .post-section {
+    width: 50%;
+  }
+
+#chart{
+    width: 100%;
+    height: 400px;
+}
