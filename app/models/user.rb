@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  after_create :welcome_send
+  
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
+  
+
   validates :accepted_cgu, inclusion: { in: [true], message: "Veuillez accepter les CGU pour continuer." }, on: :create
   validates :accepted_privacy_policy, inclusion: { in: [true], message: "Veuillez accepter la politique de confidentialité pour continuer." }, on: :create
   before_create :set_accepted_at

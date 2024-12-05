@@ -17,7 +17,7 @@ class CryptosController < ApplicationController
 
   def show
     @crypto = Crypto.find(params[:id])
-    @posts = @crypto.posts.order(created_at: :desc)
+    @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
     @post = Post.new
     @comment = Comment.new
   end
