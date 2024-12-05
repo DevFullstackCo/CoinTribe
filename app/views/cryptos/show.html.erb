@@ -2,6 +2,7 @@
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js", defer: true %>
 
+  <%= render 'shared/navbar'%>
 <div class="container-body">
   <div class="chart-section">
     <p class="symbol" id="crypto-symbol"><%= @crypto.symbol %></p>
@@ -74,36 +75,47 @@
 
         <!-- Comments of the post -->
         <div class="comments-container">
-          <% post.comments.each do |comment| %>
-            <div class="comment-line">
-              <%= comment.user.username %>
-              <%= comment.content %>
-              <% if comment.user == current_user %>
-                <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }, class: "btn-delete-comment" %>
-              <% end %>
-            </div>  
+          <% if post.comments.any? %>
+            <% post.comments.order(created_at: :desc).each do |comment| %>
+              <div class="comment-line">
+                <%= comment.user.username %>
+                <%= comment.content %>
+                <% if comment.user == current_user %>
+                  <%= button_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }, class: "btn-delete-comment" %>
+                <% end %>
+              </div>
+            <% end %>
           <% end %> 
         </div>
          
         <!-- Form to add new comment -->
-        <div class="new-comment">
-          <%= form_with model: [post, Comment.new], local: true do |form| %>
-            <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
-            <%= form.submit "Create", class: "btn-primary-add" %>
-          <% end %> 
-        </div>
+        <% if user_signed_in? %>
+          <div class="new-comment">
+            <%= form_with model: [post, Comment.new], local: true do |form| %>
+              <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
+              <%= form.submit "Create", class: "btn-primary-add" %>
+            <% end %> 
+          </div>
+        <% else %>
+          <p>Please <%= link_to "log in", new_user_session_path %> to add a comment.</p>
+        <% end %>
       
       <% end %>
     </div>
     
     <!-- Form to add a new post -->
-    <div class="new-post">
-      <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-        <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
-        <%= form.submit "Create", class: "btn-primary-add" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="new-post">
+        <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+          <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
+          <%= form.submit "Create", class: "btn-primary-add" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Please <%= link_to "log in", new_user_session_path %> to create a post.</p>
+    <% end %>
 
   </div>
 
 </div>
+

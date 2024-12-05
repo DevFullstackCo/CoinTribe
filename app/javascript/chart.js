@@ -1,6 +1,10 @@
+
+
+
 let chart = null;
 let series = null;
 let socket = null;
+
 
 document.addEventListener('turbo:load', async function () {
     if (chart) {
