@@ -15,16 +15,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def load_comments
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments.order(created_at: :desc).(params[:page]).per(2)
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html { render partial: 'posts/comments', locals: { comments: @comments } }
-    end
-  end
-
   def destroy
     @post = Post.find(params[:id])
     @crypto = @post.crypto

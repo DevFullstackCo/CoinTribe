@@ -17,6 +17,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def index
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.order(created_at: :desc).(params[:page]).per(2)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { render partial: 'comments', locals: { comments: @comments } }
+    end
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @crypto = @comment.post.crypto
