@@ -5,7 +5,17 @@
 <div class="profile-page-container">
   <div class="profile-card">
     <h2>My Profile</h2>
+
     <div class="profile-info">
+
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, alt: "user", class: "user-icone" %>
+    <% else %>
+      <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+    <% end %>
+
+
+
       <p class="username">@<%= @user.username %></p>
       <p><strong>Email:</strong> <%= @user.email %></p>
     </div>
@@ -14,9 +24,26 @@
       <%= form_with url: user_registration_path, method: :delete, class: "delete-account-form" do %>
   <%= submit_tag "Delete Account", data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-delete-profile" %>
 <% end %>
-
     </div>
+
+
+
+
+    <%= form_with(model: @user, url: profile_path(@user), method: :patch, local: true) do |form| %>
+      <div>
+        <%= form.label :avatar, "Choose a profile image" %>
+        <%= form.file_field :avatar, accept: 'image/png,image/jpeg' %>
+      </div>
+    
+      <div>
+        <%= form.submit "Upload Image" %>
+      </div>
+    <% end %>
   </div>
+
+
+
+
 
   <div class="favorites-card">
     <h2>My Favorites</h2>

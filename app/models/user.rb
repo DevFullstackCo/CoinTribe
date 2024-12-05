@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :cryptos, through: :votes
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_one_attached :avatar
+  
   after_create :welcome_send
   
   def welcome_send
