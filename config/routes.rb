@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:destroy] do
-    resources :comments, only: [:create, :index]
+    resources :comments, only: [:create]
   end
 
   resources :comments, only: [:destroy]
