@@ -54,9 +54,9 @@
         </div>
 
         <!-- Comments of the post -->
-        <div class="comments-container" id="comments-for-post-<%= post.id %>">
+        <div class="comments-container">
           <% if post.comments.any? %>
-            <% post.comments.each do |comment| %>
+            <% post.comments.order(created_at: :desc).each do |comment| %>
               <div class="comment-line">
                 <%= comment.user.username %>
                 <%= comment.content %>
