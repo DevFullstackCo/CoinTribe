@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :cryptos, only: [:index, :show, :create] do
     resources :posts, only: [:create]
+    resources :votes, only: [:create]
   end
 
   resources :posts, only: [:destroy] do
