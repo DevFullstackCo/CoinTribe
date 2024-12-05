@@ -1,7 +1,13 @@
-.chart-section, .post-section {
+.post-section {
     width: 50%;
     padding-top: 20px;
 }
+
+.chart-section {
+   width: 700px;
+   padding-top: 20px;
+}
+
 .card-chart {
   border-radius: 20px;
   border: double 1px transparent;
@@ -12,10 +18,12 @@
   cursor: pointer;
 }
 
-#chart{
-    width: 100%;
-    height: 400px;
+#chart {
+  width: 95%;
+  height: 300px; 
+  z-index: 1;
 }
+
 
 .comments-container {
   max-height: 200px;
@@ -100,7 +108,7 @@
   transform: scale(0.95);
 }
 
-#btn-1d-main.active {
+.choice.active {
   background-image: linear-gradient(#0C0C0C, #0C0C0C),
                     linear-gradient(to bottom, var(--secondary-color), #0C0C0C 85%) !important;
   box-shadow: 0px -3px 10px var(--secondary-color) !important;
@@ -125,18 +133,20 @@
 
 #time-options {
   position: absolute;
-  top: 100%;
+  top: -140px;
   left: 0;
   display: none;
   width: 100px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 5px;
   height: 130px;
+  z-index: 1000;
   border-radius: 15px;
-  box-shadow: 0px 10px 10px var(--primary-color);
+  box-shadow: 0px -10px 10px var(--primary-color);
   background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
                     linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
 }
+
 
 #time-options button {
   display: block;
@@ -162,7 +172,55 @@
   border: 1px solid var(--secondary-color);
 }
 
+.info-crypto {
+  margin-top: 10px;
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid var(--border-info);
+  border-bottom: 1px solid var(--border-info);
+  display: flex;
+  align-items: center;
+}
 
+.container-sentiment, .container-volume {
+  width: 35%;
+  border-right: 1px solid var(--border-info);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.container-price {
+  width: 30%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.info-text {
+  color: var(--grey-color);
+  font-size: 15px;
+  font-weight: 300;
+}
 
+.text-info-card {
+  color: var(--white-color);
+  font-size: 14px;
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.text-voting {
+  color: var(--white-color);
+  font-size: 14px;
+  font-weight: 300;
+  margin-left: 30px;
+}
+
+@media (max-width: 1100px) { 
+  .card-chart {
+    width: 100%;
+ }
+}

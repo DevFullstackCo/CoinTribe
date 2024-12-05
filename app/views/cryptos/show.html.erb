@@ -1,19 +1,16 @@
 <%= javascript_include_tag 'chart' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
-<%= javascript_include_tag 'profanity_filter' %>
 
 <%= render 'shared/navbar' %>
 
-<div class="body-flex">
+<div class="body-flex-show">
   <div class="chart-section">
-    <!-- Back to Home Button -->
     <%= button_to root_path, class: 'btn-home-go act' do %>
       <%= image_tag 'arrowleft.png', alt: 'arrow-left', class: 'icone' %>
       Back to Home
     <% end %>
 
-    <!-- Card Chart -->
     <div class="card-chart">
       <div class="header-card">
         <div class="info-card">
@@ -28,12 +25,13 @@
                 <span class="negatif"><%= number_to_human(variation) %>%</span>
               <% end %>
             </span>
-            <span class="symbol"><%= @crypto.symbol %></span>
+            <span class="symbol" id="crypto-symbol"><%= @crypto.symbol %></span>
           </div>
         </div>
-
-        <!-- Time Choices -->
         <div class="btn-card">
+          <div role="button" id="btn-1m" class="choice">
+            <p>1m</p>
+          </div>
           <div role="button" id="btn-15m" class="choice">
             <p>15m</p>
           </div>
@@ -45,7 +43,7 @@
           </div>
           <div role="button" id="btn-1d-main" class="choice">
             <p id="time-label">1d</p>
-              <%= image_tag "arrowbottom.png", alt: "arrow", class: "arrow-bottom" %>
+            <%= image_tag "arrowbottom.png", alt: "arrow", class: "arrow-bottom" %>
             <div id="time-options">
               <button id="btn-6h">
                 <span>6h</span>
@@ -60,16 +58,35 @@
           </div>
         </div>
       </div>
-
-     
       <div id="chart"></div>
-
-      <!-- Vote Section -->
+      <div class="info-crypto">
+      <div class="container-sentiment">
+      <p class="info-text">Price Sentiment (24h): </p>
+      <p></p>
+      </div>
+       <div class="container-volume">
+      <p class="info-text">Volumes (24h):</p>
+      <p class="text-info-card">$<%= @crypto.volume_24h %></p>
+      </div>
+       <div class="container-price">
+      <p class="info-text">Price:</p>
+      <p>
+        <span class="text-info-card"> $<%= @crypto.price.round(2) %></span>
+              <% variation = @crypto.variation_24h.round(2) %>
+              <% if variation >= 0 %>
+                <span class="positif">+<%= number_to_human(variation) %>%</span>
+              <% else %>
+                <span class="negatif"><%= number_to_human(variation) %>%</span>
+              <% end %>
+      </p>
+      </div>
+      </div>
+      
       <div class="vote-section">
         <% if user_signed_in? %>
           <% user_vote = current_user.votes.find_by(crypto: @crypto) %>
           <% if user_vote %>
-            <p>
+            <p class="text-voting">
               Your Sentiment Price for <%= user_vote.created_at.utc.strftime('%H:%M UTC %B %d, %Y') %>: 
               <%= user_vote.is_bullished ? 'Bullish' : 'Bearish' %>
             </p>
@@ -84,13 +101,11 @@
     </div>
   </div>
 
-  <!-- Post Section -->
   <div class="post-section">
     <%= render 'shared/flash' %>
 
     <div class="posts-container">
       <% @posts.each do |post| %>
-        <!-- Post -->
         <div class="post-line">
           <p><%= time_ago_in_words(post.created_at) %> ago</p>
           <%= post.user.username %>
@@ -101,7 +116,6 @@
           <% end %>
         </div>
 
-        <!-- Comments of the Post -->
         <div class="comments-container">
           <% if post.comments.any? %>
             <% post.comments.order(created_at: :desc).each do |comment| %>
@@ -116,7 +130,6 @@
           <% end %>
         </div>
 
-        <!-- Form to Add New Comment -->
         <% if user_signed_in? %>
           <div class="new-comment">
             <%= form_with model: [post, Comment.new], local: true do |form| %>
@@ -130,7 +143,6 @@
       <% end %>
     </div>
 
-    <!-- Form to Add New Post -->
     <% if user_signed_in? %>
       <div class="new-post">
         <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
