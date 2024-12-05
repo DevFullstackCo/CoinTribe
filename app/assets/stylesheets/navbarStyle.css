@@ -184,7 +184,7 @@ nav {
 
 @media (max-width: 1000px) { 
   .navbar-search {
-    width: 100%;
+    width: 200px;
     position: relative;
     margin-left: 10px;
   }
@@ -199,8 +199,21 @@ nav {
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 200px;
     height: 35px;
   }
+
+  .pseudouser-btn {
+    display: none;
+  }
+
+  #profil-btn {
+    width: 50px;
+  }
+
+  .btn-notif {
+    width: 60px;
+  }
+  
 }
 
