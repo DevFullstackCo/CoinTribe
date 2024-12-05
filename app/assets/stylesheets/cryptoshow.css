@@ -1,6 +1,16 @@
 .chart-section, .post-section {
     width: 50%;
-  }
+    padding-top: 20px;
+}
+.card-chart {
+  border-radius: 20px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--primary-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+}
 
 #chart{
     width: 100%;
@@ -17,3 +27,142 @@
 .comment-line {
   margin-bottom: 10px;
 }
+
+.btn-home-go {
+  background-color: var(--input-color);
+  border: 1px solid var(--second-dark);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 45px;
+  width: 160px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-right: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 350;
+  font-style: normal;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.header-card {
+  width: 95%;
+  display: flex;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.info-card {
+  background-color: var(--input-color);
+  border: 1px solid var(--border-card);
+  height: 50px;
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-card {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.btn-card {
+  width: 60%;
+  display: flex;
+}
+
+.choice {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: double 1px transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+}
+
+.choice:active {
+  transform: scale(0.95);
+}
+
+#btn-1d-main.active {
+  background-image: linear-gradient(#0C0C0C, #0C0C0C),
+                    linear-gradient(to bottom, var(--secondary-color), #0C0C0C 85%) !important;
+  box-shadow: 0px -3px 10px var(--secondary-color) !important;
+  color: #fff;
+}
+
+.choice:not(.active) {
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  box-shadow: 0px 10px 10px var(--primary-color);
+  color: var(--white-color);
+}
+
+.arrow-bottom {
+  width: 15px;
+}
+
+#btn-1d-main {
+  width: 50px;
+  position: relative;
+}
+
+#time-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100px;
+  margin-top: 10px;
+  padding: 5px;
+  height: 130px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+}
+
+#time-options button {
+  display: block;
+  width: 100%;
+}
+
+#btn-6h, #btn-12h, #btn-1d {
+  background-color:  var(--second-dark);
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+  border-radius: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#btn-6h:hover, #btn-12h:hover, #btn-1d:hover {
+  box-shadow: 0px -3px 10px var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+
+
+
+

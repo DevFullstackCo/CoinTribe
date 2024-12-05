@@ -1,10 +1,6 @@
-
-
-
 let chart = null;
 let series = null;
 let socket = null;
-
 
 document.addEventListener('turbo:load', async function () {
     if (chart) {
@@ -54,21 +50,34 @@ document.addEventListener('turbo:load', async function () {
         barWidth: 1,
     });
 
+    // Fonction pour récupérer les données historiques
     async function fetchHistoricalData(interval) {
-        const response = await fetch(
-            `https://api.binance.com/api/v3/klines?symbol=${symbol}USDT&interval=${interval}&limit=70`
-        );
-        const data = await response.json();
+        try {
+            const response = await fetch(
+                `https://api.binance.com/api/v3/klines?symbol=${symbol}USDT&interval=${interval}&limit=70`
+            );
 
-        return data.map(candle => ({
-            time: candle[0] / 1000,
-            open: parseFloat(candle[1]),
-            high: parseFloat(candle[2]),
-            low: parseFloat(candle[3]),
-            close: parseFloat(candle[4]),
-        }));
+            if (!response.ok) {
+                console.error('API Error:', response.status, await response.text());
+                return [];
+            }
+
+            const data = await response.json();
+
+            return data.map(candle => ({
+                time: candle[0] / 1000,
+                open: parseFloat(candle[1]),
+                high: parseFloat(candle[2]),
+                low: parseFloat(candle[3]),
+                close: parseFloat(candle[4]),
+            }));
+        } catch (error) {
+            console.error('Fetch error:', error);
+            return [];
+        }
     }
 
+    // Fonction pour mettre à jour le graphique
     async function updateChart(interval) {
         const historicalData = await fetchHistoricalData(interval);
         series.setData(historicalData);
@@ -77,24 +86,32 @@ document.addEventListener('turbo:load', async function () {
 
     await updateChart('15m');
 
+    // Fonction pour gérer les boutons actifs
     function setActiveButton(activeButtonId) {
-        const buttons = document.querySelectorAll('.tradingbtn');
+        const buttons = document.querySelectorAll('.choice');
         buttons.forEach(button => {
             button.classList.remove('active');
         });
-        document.getElementById(activeButtonId).classList.add('active');
+
+        const activeButton = document.getElementById(activeButtonId);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
     }
 
     setActiveButton('btn-15m');
 
+    // Gestion des événements pour les boutons
     document.getElementById('btn-1m').addEventListener('click', async function () {
         setActiveButton('btn-1m');
         await updateChart('1m');
+        setActiveButton('btn-1d-main');
     });
 
     document.getElementById('btn-15m').addEventListener('click', async function () {
         setActiveButton('btn-15m');
         await updateChart('15m');
+        setActiveButton('btn-1d-main');
     });
 
     document.getElementById('btn-1h').addEventListener('click', async function () {
@@ -110,18 +127,22 @@ document.addEventListener('turbo:load', async function () {
     document.getElementById('btn-6h').addEventListener('click', async function () {
         setActiveButton('btn-6h');
         await updateChart('6h');
+        setActiveButton('btn-1d-main');
     });
 
     document.getElementById('btn-12h').addEventListener('click', async function () {
         setActiveButton('btn-12h');
         await updateChart('12h');
+        setActiveButton('btn-1d-main');
     });
 
     document.getElementById('btn-1d').addEventListener('click', async function () {
         setActiveButton('btn-1d');
         await updateChart('1d');
+        setActiveButton('btn-1d-main');
     });
 
+    // WebSocket pour les mises à jour en temps réel
     socket = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}usdt@kline_1m`);
 
     socket.onmessage = function (event) {
