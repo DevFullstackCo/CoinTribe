@@ -69,23 +69,31 @@
         </div>
          
         <!-- Form to add new comment -->
-        <div class="new-comment">
-          <%= form_with model: [post, Comment.new], local: true do |form| %>
-            <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
-            <%= form.submit "Create", class: "btn-primary-add" %>
-          <% end %> 
-        </div>
+        <% if user_signed_in? %>
+          <div class="new-comment">
+            <%= form_with model: [post, Comment.new], local: true do |form| %>
+              <%= form.text_field :content, placeholder: "Your comment...", class: "form-control" %>
+              <%= form.submit "Create", class: "btn-primary-add" %>
+            <% end %> 
+          </div>
+        <% else %>
+          <p>Please <%= link_to "log in", new_user_session_path %> to add a comment.</p>
+        <% end %>
       
       <% end %>
     </div>
     
     <!-- Form to add a new post -->
-    <div class="new-post">
-      <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-        <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
-        <%= form.submit "Create", class: "btn-primary-add" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="new-post">
+        <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+          <%= form.text_field :content, placeholder: "Write a new post...", class: "form-control" %>
+          <%= form.submit "Create", class: "btn-primary-add" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Please <%= link_to "log in", new_user_session_path %> to create a post.</p>
+    <% end %>
 
   </div>
 

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     @crypto = Crypto.find(params[:crypto_id])
