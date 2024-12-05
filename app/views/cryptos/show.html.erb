@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'chart' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js", defer: true %>
-
+<%= javascript_include_tag 'profanity_filter' %>
   <%= render 'shared/navbar'%>
 <div class="container-body">
   <div class="chart-section">
@@ -37,6 +37,23 @@
     </div>
 
     <div id="chart"></div>
+
+    <div class="vote-section">
+      <% if user_signed_in? %>
+        <% user_vote = current_user.votes.find_by(crypto: @crypto) %>
+        <% if user_vote %>
+          <p> Your Sentiment Price for <%= user_vote.created_at.utc.strftime('%H:%M UTC %B %d, %Y') %>: <%= user_vote.is_bullished ? "Bullish" : "Bearish" %></p>
+        <% else %>
+          <%= button_to "Bullish", crypto_votes_path(@crypto, is_bullished: true), method: :post, class: "btn btn-bullish" %>
+          <%= button_to "Bearish", crypto_votes_path(@crypto, is_bullished: false), method: :post, class: "btn btn-bearish" %>
+        <% end %>
+      <% else %>
+        <p>Veuillez <%= link_to "vous connecter", new_user_session_path %> pour voter.</p>
+      <% end %>
+    </div>
+
+
+    </div>
   </div>
 
   <div class="post-section">
