@@ -1,4 +1,5 @@
 class CryptosController < ApplicationController
+  
   def index
     @user = current_user
 
@@ -11,62 +12,77 @@ class CryptosController < ApplicationController
     end
 
     respond_to do |format|
-      format.html 
-      format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :variation_24h) }
+      format.html
+      format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :variation_24h, :logo_url) }
     end
   end
 
   def show
     @crypto = Crypto.find(params[:id])
-    @posts = @crypto.posts.order(created_at: :desc)
+    @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
     @post = Post.new
     @comment = Comment.new
   end
 
-  def create 
+  def create
     require 'http'
 
-    symbols = ['bitcoin', 'ethereum', 'binancecoin', 'chainlink', 'dogecoin', 'pepecoin'] 
-
+    symbols = ['bitcoin', 'ethereum', 'binancecoin', 'chainlink', 'dogecoin']
     def fetch_crypto_data(symbols)
-      base_url = 'https://api.coingecko.com/api/v3/coins/'
-
-      # Requête API CoinGecko pour récupérer les informations de chaque crypto
-      symbols.map do |symbol|
-        response = HTTP.get("#{base_url}#{symbol}")
-        if response.status.success?
-          data = JSON.parse(response.body.to_s)
-          {
-            name: data['name'],
-            symbol: data['symbol'],
-            price: data['market_data']['current_price']['usd'],
-            volume_24h: data['market_data']['total_volume']['usd'],
-            variation_24h: data['market_data']['price_change_percentage_24h']
-          }
+      base_url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+      api_key = ENV['COINMARKETCAP_API_KEY']
+    
+      parameters = {
+        'convert' => 'USD',
+        'limit' => 10,
+      }
+    
+      headers = {
+        'X-CMC_PRO_API_KEY' => api_key,
+        'Accept' => 'application/json',
+      }
+    
+      response = HTTP.headers(headers).get(base_url, params: parameters)
+    
+      if response.status.success?
+        data = JSON.parse(response.body.to_s)
+    
+        if data['status'] && data['status']['error_code'] == 0 && data['data']
+          data['data'].map do |crypto|
+            {
+              name: crypto['name'],
+              symbol: crypto['symbol'],
+              price: crypto['quote']['USD']['price'],
+              volume_24h: crypto['quote']['USD']['volume_24h'],
+              variation_24h: crypto['quote']['USD']['percent_change_24h'],
+            }
+          end
         else
-          puts "Error fetching data for #{symbol}: #{response.status}"
           nil
         end
-      end.compact
+      else
+        nil
+      end
     end
 
     cryptos = fetch_crypto_data(symbols)
 
     cryptos.each do |crypto_data|
-      symbol_crypto = crypto_data[:symbol].upcase  # Assurez-vous que le symbole soit en majuscule, comme dans votre base de données
-      crypto = Crypto.find_or_initialize_by(symbol: symbol_crypto)
+      symbol_crypto = crypto_data[:symbol].downcase
+      logo_url = "/#{symbol_crypto}.png"
 
-      # Mise à jour des données de la crypto
+      crypto = Crypto.find_or_initialize_by(symbol: symbol_crypto.upcase)
+
       new_data = {
         name: crypto_data[:name],
         price: crypto_data[:price].to_f,
-        symbol: symbol_crypto,
+        symbol: symbol_crypto.upcase,
         volume_24h: crypto_data[:volume_24h].to_f.to_i,
-        variation_24h: crypto_data[:variation_24h].to_f
+        variation_24h: crypto_data[:variation_24h].to_f,
+        logo_url: logo_url
       }
 
       if crypto.update(new_data)
-        puts "Crypto data updated for #{crypto.name} at #{Time.now}"
       else
         puts "Failed to update #{crypto.symbol}: #{crypto.errors.full_messages.join(', ')}"
       end

@@ -61,6 +61,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_110319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "volume_token_24h"
+    t.string "logo_url"
   end
 
   create_table "posts", force: :cascade do |t|
