@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
     const btn1dMain = document.getElementById('btn-1d-main');
     const timeOptions = document.getElementById('time-options');
     const timeLabel = document.getElementById('time-label');
