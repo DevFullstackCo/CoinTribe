@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :accepted_privacy_policy, inclusion: { in: [true], message: "Veuillez accepter la politique de confidentialité pour continuer." }, on: :create
   before_create :set_accepted_at
 
+  validates :password, presence: true, length: { minimum: 8 }, format: {
+    with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!]).{8,}\z/,
+    message: "doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@#$%^&+=!)"
+  }
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
