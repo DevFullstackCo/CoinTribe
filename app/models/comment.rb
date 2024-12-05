@@ -4,4 +4,11 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
+  before_save :filter_profanity
+
+  private
+
+  def filter_profanity
+    self.content = $profanity_filter.sanitize(content)
+  end
 end
