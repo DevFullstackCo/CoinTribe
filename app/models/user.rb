@@ -18,6 +18,10 @@ class User < ApplicationRecord
     with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!]).{8,}\z/,
     message: "doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@#$%^&+=!)"
   }
+  validates :email, presence: true, format: {
+    with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\z/,
+    message: "doit être une adresse email valide"
+  }
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
