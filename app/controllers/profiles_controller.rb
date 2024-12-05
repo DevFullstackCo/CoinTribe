@@ -21,5 +21,5 @@ class ProfilesController < ApplicationController
       params.require(:user).permit(:avatar)
     end
 
-  end
+end
   

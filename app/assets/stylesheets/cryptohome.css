@@ -6,6 +6,11 @@
   width: 900px;
 }
 
+.news-container{
+  width: 100%;
+  height: 400px;
+}
+
 .crypto-background {
   width: 100%;
 }
@@ -164,7 +169,12 @@
   margin-right: auto;
  }
 
-
+ .news-container{
+  width: 90%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 }

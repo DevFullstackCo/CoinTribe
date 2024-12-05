@@ -57,11 +57,16 @@ nav {
 #profil-btn {
   display: flex;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0px 10px 60px var(--secondary-color);
   border: none;
   margin-right: 10px;
   margin-left: 10px;
   cursor: pointer;
+  height: 45px;
+  width: 140px;
+  justify-content: center;
+  border-radius: 10px;
 }
 
 #profil {
@@ -98,13 +103,19 @@ nav {
 }
 
 .user-icone {
-  width: 40px;
+  width: 30px;
   pointer-events: none;
   border-radius: 100px;
 }
 
 .pseudouser {
   color: var(--grey-color);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.pseudouser-btn {
+  color: var(--white-color);
   pointer-events: none;
   font-size: 14px;
 }
@@ -174,7 +185,7 @@ nav {
 
 @media (max-width: 1000px) { 
   .navbar-search {
-    width: 300px;
+    width: 200px;
     position: relative;
     margin-left: 10px;
   }
@@ -189,8 +200,21 @@ nav {
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 200px;
     height: 35px;
   }
+
+  .pseudouser-btn {
+    display: none;
+  }
+
+  #profil-btn {
+    width: 50px;
+  }
+
+  .btn-notif {
+    width: 60px;
+  }
+  
 }
 
