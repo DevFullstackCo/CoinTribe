@@ -14,13 +14,14 @@ class CryptosController < ApplicationController
       format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :variation_24h, :logo_url) }
     end
   end
+# app/controllers/cryptos_controller.rb
+def show
+  @crypto = Crypto.find(params[:id])
+  @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
+  @post = Post.new
+  @comment = Comment.new
+end
 
-  def show
-    @crypto = Crypto.find(params[:id])
-    @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
-    @post = Post.new
-    @comment = Comment.new
-  end
 
   def create
     require 'http'
