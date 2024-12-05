@@ -12,7 +12,7 @@ additional_bad_words = [
   'Salope', 'Saloperie', 'Chienne', 'Cagole', 'Travelo', 'Gouine', 'Nègre',
   'Négro', 'Nigger', 'Nigga', 'Chintoque', 'Bougnoul', 'Mongol', 'Trisomique',
   'Triso', 'Pochtron', 'Pochtronne', 'Étron', 'Mange-merde', 'Tas de purin',
-  'Trou du cul'
+  'Trou du cul', 'tabarnak'
 ]
 
 additional_bad_words.each do |word|

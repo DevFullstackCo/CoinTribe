@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
     const textarea = document.querySelector('#post_content, #comment_content');
   
     if (textarea) {
