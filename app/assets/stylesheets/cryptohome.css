@@ -123,6 +123,16 @@
   margin-right: 10px;
 }
 
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.crypto-logo {
+  width: 35px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
 @media (max-width: 1000px) { 
   .left-section-home {
@@ -153,6 +163,10 @@
   margin-left: auto;
   margin-right: auto;
  }
+
+
+
+
 }
 
 
