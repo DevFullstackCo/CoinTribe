@@ -10,17 +10,17 @@ class User < ApplicationRecord
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :accepted_cgu, inclusion: { in: [true], message: "Veuillez accepter les CGU pour continuer." }, on: :create
-  validates :accepted_privacy_policy, inclusion: { in: [true], message: "Veuillez accepter la politique de confidentialité pour continuer." }, on: :create
+  validates :accepted_cgu, inclusion: { in: [true], message: "Please accept the Terms of Service to continue." }, on: :create
+  validates :accepted_privacy_policy, inclusion: { in: [true], message: "Please accept the Privacy Policy to continue." }, on: :create
   before_create :set_accepted_at
 
   validates :password, presence: true, length: { minimum: 8 }, format: {
     with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!]).{8,}\z/,
-    message: "doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@#$%^&+=!)"
+    message: "It must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character (@#$%^&+=!)"
   }
   validates :email, presence: true, format: {
     with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\z/,
-    message: "doit être une adresse email valide"
+    message: "It must be a valid email address."
   }
   private
   def set_accepted_at
