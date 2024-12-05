@@ -26,17 +26,8 @@
   <div class="navbar-actions">
     <% if user_signed_in? %>
       <button id="profil-btn" class="act">
-<<<<<<< HEAD
         <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
         <p class="pseudouser-btn">@trader2838</p>
-=======
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, alt: "user", class: "user-icone" %>
-        <% else %>
-          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
-        <% end %>
-        <p class="pseudouser">@trader2838</p>
->>>>>>> dev
       </button>
     <% else %>
       <%= button_to "Se connecter", new_user_session_path %>
@@ -52,11 +43,8 @@
     </div>
 
     <div class="user">
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, alt: "user", class: "user-icone" %>
-        <% else %>
+       
           <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
-        <% end %>
       
       <div class="infouser">
         <p class="pseudouser">@trader2838</p>
