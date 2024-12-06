@@ -191,7 +191,7 @@
 }
 
 .container-sentiment, .container-volume {
-  width: 38%;
+  width: 40%;
   border-right: 1px solid var(--border-info);
   height: 45px;
   display: flex;
@@ -200,7 +200,7 @@
 }
 
 .container-price {
-  width: 24%;
+  width: 30%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -524,5 +524,21 @@
   width: 95%;
   padding-top: 20px;
 }
+
+.info-crypto {
+  flex-direction: column;
+  height: auto;
+}
+
+.container-sentiment, .container-volume, .container-price {
+  width: 100%;
+  border-right: none;
+}
+
+.container-sentiment, .container-volume {
+  border-bottom: 1px solid var(--border-info);
+}
+
+
 }
 
