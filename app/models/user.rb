@@ -24,7 +24,6 @@ class User < ApplicationRecord
   before_create :set_accepted_at
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
-  validates :username, uniqueness: true
   
   private
   def set_accepted_at
