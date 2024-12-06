@@ -3,6 +3,8 @@ class CryptosController < ApplicationController
   def index
     @user = current_user
 
+    
+
     create
     @new_cryptos = Crypto.order(created_at: :desc).limit(5)
     if params[:search].present?
