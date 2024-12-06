@@ -64,15 +64,14 @@
       <div class="info-crypto">
       <div class="container-sentiment">
       <p class="info-text">Price Sentiment (24h): </p>
-        <div class="votes-percentage">
+       
+     <div class="votes-percentage">
           <% if @crypto.votes.count > 0 %>
-            <p> Bullish <%= @crypto.bullish_percentage %> % </p>
-            <p>Bearish <%= @crypto.bearish_percentage %> % </p>
+            <p class="bull">Bullish <%= @crypto.bullish_percentage %>%</p>
           <% else %>
-            <p>No votes yet</p>
+             <p class="bear">Bearish <%= @crypto.bearish_percentage %>%</p>
           <% end %> 
         </div>
-      </div>
       <p></p>
       </div>
        <div class="container-volume">
@@ -91,6 +90,28 @@
               <% end %>
       </p>
       </div>
+      </div>
+
+      <div class="vote-section">
+        <% if user_signed_in? %>
+          <% user_vote = current_user.votes.find_by(crypto: @crypto) %>
+          <% if user_vote %>
+            <p class="text-voting">
+              Your Sentiment Price for <%= user_vote.created_at.utc.strftime('%H:%M UTC %B %d, %Y') %>: 
+              <%= user_vote.is_bullished ? 'Bullish' : 'Bearish' %>
+            </p>
+          <% else %>
+          <div class="voting-info">
+            <p class="text-voting">Vote for Your Sentiment on the Price</p>
+            <div class="container-btn-voting">
+           <%= render 'shared/btnup' %>
+           <%= render 'shared/btndown' %>
+            </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>Please <%= link_to 'log in', new_user_session_path %> to vote.</p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -200,4 +221,3 @@
       <% end %>
   </div>
 </div>
-
