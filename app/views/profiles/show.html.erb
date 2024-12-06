@@ -16,7 +16,7 @@
         <% else %>
           <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil", id: "image-user" %>
         <% end %>
-        <p>@Trader2838</p>
+        <p><%= @user.username %></p>
       </div>
 
       <div id="popup" class="popup">
@@ -31,12 +31,14 @@
             <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil-popup" %>
           <% end %>
 
-          <%= form_tag profile_avatars_path(@user), multipart: true do %>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "upload" %>
-          <% end %>
-        </div>
-      </div>
+      <%= form_tag profile_avatars_path(@user), multipart: true do %>
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "upload" %>
+      <% end %>
+
+      <p class="username">@<%= @user.username %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+    </div>
 
       <p class="email-profil">
          <%= image_tag "mail.png", alt: "mail", class: "icone-mail" %>
