@@ -19,31 +19,18 @@
         <%= submit_tag "upload" %>
       <% end %>
 
-      <p class="username">@<%= @user.username %></p>
+      <p class="username"><%= @user.username %></p>
       
       <p>
       <strong>Pseudo :</strong>
-      <%= form_with model: @user, url: update_username_profile_path, method: :patch, local: true do |f| %>
-        <div class="field-inline">
-          <%= f.text_field :username, value: @user.username, class: "username-input" %>
-          <%= f.submit "Modifier", class: "btn btn-primary btn-inline" %>
+      <%= form_tag update_username_profile_path(@user), multipart: true do |f| %>
+
+          <%= file_field_tag :username %>
+          <%= submit_tag "upload" %>
+
         </div>
     </p>
-    
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% elsif flash[:notice] %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
     <% end %>
-      
-<div class="actions">
-  <%= f.submit "Mettre à jour", class: "btn btn-success" %>
-</div>
-<% end %>
 
 
 
