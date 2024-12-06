@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'chart' %>
 <%= javascript_include_tag 'post' %>
+<%= javascript_include_tag 'load' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
 
@@ -89,7 +90,7 @@
     <%= render 'shared/flash' %>
 
     <div id="posts_container">
-      <% @posts.each do |post| %>
+      <% @posts.reverse.each do |post| %>
         <div class="post">
           <div class="post-line">
             <div class="header-post">
@@ -124,7 +125,7 @@
           <turbo-frame id="post_<%= post.id %>_comments">
             <div class="comment-line <%= 'hidden' if post.comments.any? %>">
               <% if post.comments.any? %>
-                <% post.comments.order(created_at: :desc).each do |comment| %>
+                <% post.comments.order(created_at: :desc).reverse.each do |comment| %>
                   <div class="header-comment">
                     <div class="user-post">
                       <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
@@ -178,3 +179,4 @@
     </div>
   </div>
 </div>
+
