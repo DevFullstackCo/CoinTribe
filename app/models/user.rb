@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   before_create :generate_random_username
+  validates :username, presence: true, uniqueness: true, format: { with: /\A@trader_\d{6}\z/, message: "must start with @trader_ followed by 5 digits" }
+
 
   has_many :posts, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -20,18 +22,6 @@ class User < ApplicationRecord
   
 
 
-  validates :accepted_cgu, inclusion: { in: [true], message: "Please accept the Terms of Service to continue." }, on: :create
-  validates :accepted_privacy_policy, inclusion: { in: [true], message: "Please accept the Privacy Policy to continue." }, on: :create
-  before_create :set_accepted_at
-
-  validates :password, presence: true, length: { minimum: 8 }, format: {
-    with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!]).{8,}\z/,
-    message: "It must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character (@#$%^&+=!)"
-  }
-  validates :email, presence: true, format: {
-    with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\z/,
-    message: "It must be a valid email address."
-  }
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
@@ -39,8 +29,9 @@ class User < ApplicationRecord
 
   def generate_random_username
 
-  loop do
-    self.username = "@trader_#{rand(1000..999999)}"
-    break unless self.class.exists?(username: username)
+    loop do
+      self.username = "@trader_#{rand(1000..999999)}"
+      break unless self.class.exists?(username: username)
+    end
   end
 end
