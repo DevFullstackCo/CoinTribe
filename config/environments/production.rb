@@ -89,4 +89,17 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address: 'in-v3.mailjet.com',
+  port: 587,
+  domain: 'votre-domaine.com',
+  user_name: ENV['MAILJET_API_KEY'],
+  password: ENV['MAILJET_SECRET_KEY'],
+  authentication: 'plain',
+  enable_starttls_auto: true
+}
+config.action_mailer.default_url_options = { host: 'https://cryptovotingproject-cc7f6a61a180.herokuapp.com', protocol: 'https' }
+
 end
