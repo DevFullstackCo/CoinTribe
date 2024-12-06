@@ -1,9 +1,7 @@
-
-
 let chart = null;
 let series = null;
 let socket = null;
-
+let currentInterval = '1m';
 
 document.addEventListener('turbo:load', async function () {
     if (chart) {
@@ -74,7 +72,7 @@ document.addEventListener('turbo:load', async function () {
         chart.timeScale().fitContent();
     }
 
-    await updateChart('15m');
+    await updateChart(currentInterval);
 
     function setActiveButton(activeButtonId) {
         const buttons = document.querySelectorAll('.choice');
@@ -88,62 +86,82 @@ document.addEventListener('turbo:load', async function () {
 
     document.getElementById('btn-1m').addEventListener('click', async function () {
         setActiveButton('btn-1m');
-        await updateChart('1m');
+        currentInterval = '1m';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-15m').addEventListener('click', async function () {
         setActiveButton('btn-15m');
-        await updateChart('15m');
+        currentInterval = '15m';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-1h').addEventListener('click', async function () {
         setActiveButton('btn-1h');
-        await updateChart('1h');
+        currentInterval = '1h';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-4h').addEventListener('click', async function () {
         setActiveButton('btn-4h');
-        await updateChart('4h');
+        currentInterval = '4h';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-6h').addEventListener('click', async function () {
         setActiveButton('btn-1d-main');
-        await updateChart('6h');
+        currentInterval = '6h';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-12h').addEventListener('click', async function () {
         setActiveButton('btn-1d-main');
-        await updateChart('12h');
+        currentInterval = '12h';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
     document.getElementById('btn-1d').addEventListener('click', async function () {
         setActiveButton('btn-1d-main');
-        await updateChart('1d');
+        currentInterval = '1d';
+        await updateChart(currentInterval);
+        restartSocket();
     });
 
-    socket = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}usdt@kline_1m`);
-
-    socket.onmessage = function (event) {
-        const message = JSON.parse(event.data);
-
-        if (message.k) {
-            const candlestick = message.k;
-
-            const update = {
-                time: candlestick.t / 1000,
-                open: parseFloat(candlestick.o),
-                high: parseFloat(candlestick.h),
-                low: parseFloat(candlestick.l),
-                close: parseFloat(candlestick.c),
-            };
-
-            if (candlestick.x) {
-                series.update(update);
-            } else {
-                series.update(update);
-            }
+    function restartSocket() {
+        if (socket) {
+            socket.close();
         }
-    };
+
+        socket = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}usdt@kline_${currentInterval}`);
+
+        socket.onmessage = function (event) {
+            const message = JSON.parse(event.data);
+
+            if (message.k) {
+                const candlestick = message.k;
+
+                const update = {
+                    time: candlestick.t / 1000,
+                    open: parseFloat(candlestick.o),
+                    high: parseFloat(candlestick.h),
+                    low: parseFloat(candlestick.l),
+                    close: parseFloat(candlestick.c),
+                };
+
+                if (candlestick.x) {
+                    series.update(update);
+                } else {
+                    series.update(update);
+                }
+            }
+        };
+    }
 
     chart.priceScale('right').applyOptions({
         visible: true,

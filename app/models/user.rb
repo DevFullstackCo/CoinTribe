@@ -21,7 +21,6 @@ class User < ApplicationRecord
   end
   
 
-
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
