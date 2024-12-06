@@ -4,16 +4,19 @@
 
 <nav>
   <div class="logo-container">LOGO VOTING</div>
-  <div class="navbar-search">
-    <div data-controller="search" class="search-section-nav">
-      <div class="search-home-nav">
-        <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
-        <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
-          data: { action: "input->search#search", target: "search.input" } %>
-      </div>
-      <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
+<div class="navbar-search">
+  <div data-controller="search" class="search-section-nav">
+    <div class="search-home-nav">
+      <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
+      <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
+        data: { action: "input->search#search", target: "search.input" } %>
     </div>
+    <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
   </div>
+</div>
+
+
+
 
   <div class="btn-notif act" role="button">
     <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
