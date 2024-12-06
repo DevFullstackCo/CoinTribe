@@ -16,7 +16,7 @@ class User < ApplicationRecord
   after_create :welcome_send
   
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_later
   end
   
   validates :accepted_cgu, inclusion: { in: [true], message: "Please accept the Terms of Service to continue." }, on: :create
@@ -26,6 +26,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   
   private
+  
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
   end
