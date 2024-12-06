@@ -62,26 +62,35 @@
       </div>
       <div id="chart"></div>
       <div class="info-crypto">
-        <div class="container-sentiment">
-          <p class="info-text">Price Sentiment (24h): </p>
-          <p></p>
+      <div class="container-sentiment">
+      <p class="info-text">Price Sentiment (24h): </p>
+        <div class="votes-percentage">
+          <% if @crypto.votes.count > 0 %>
+            <p> Bullish <%= @crypto.bullish_percentage %> % </p>
+            <p>Bearish <%= @crypto.bearish_percentage %> % </p>
+          <% else %>
+            <p>No votes yet</p>
+          <% end %> 
         </div>
-        <div class="container-volume">
-          <p class="info-text">Volumes (24h):</p>
-          <p class="text-info-card">$<%= @crypto.volume_24h %></p>
-        </div>
-        <div class="container-price">
-          <p class="info-text">Price:</p>
-          <p>
-            <span class="text-info-card"> $<%= @crypto.price.round(2) %></span>
-            <% variation = @crypto.variation_24h.round(2) %>
-            <% if variation >= 0 %>
-              <span class="positif">+<%= number_to_human(variation) %>%</span>
-            <% else %>
-              <span class="negatif"><%= number_to_human(variation) %>%</span>
-            <% end %>
-          </p>
-        </div>
+      </div>
+      <p></p>
+      </div>
+       <div class="container-volume">
+      <p class="info-text">Volumes (24h):</p>
+      <p class="text-info-card">$<%= @crypto.volume_24h %></p>
+      </div>
+       <div class="container-price">
+      <p class="info-text">Price:</p>
+      <p>
+        <span class="text-info-card"> $<%= @crypto.price.round(2) %></span>
+              <% variation = @crypto.variation_24h.round(2) %>
+              <% if variation >= 0 %>
+                <span class="positif">+<%= number_to_human(variation) %>%</span>
+              <% else %>
+                <span class="negatif"><%= number_to_human(variation) %>%</span>
+              <% end %>
+      </p>
+      </div>
       </div>
     </div>
   </div>
