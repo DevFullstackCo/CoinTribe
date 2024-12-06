@@ -11,10 +11,10 @@
     transition: all 0.25s ease;
     background: radial-gradient(
         65.28% 65.28% at 50% 100%,
-        rgba(239, 68, 68, 0.8) 0%, /* Rouge clair */
-        rgba(239, 68, 68, 0) 100% /* Transparent */
+        rgba(239, 68, 68, 0.8) 0%,
+        rgba(239, 68, 68, 0) 100% 
       ),
-      linear-gradient(0deg, #dc2626, #dc2626); /* Rouge intense */
+      linear-gradient(0deg, #dc2626, #dc2626);
     border-radius: var(--round);
     border: none;
     outline: none;
@@ -44,10 +44,10 @@
     --space: 2px;
     background: radial-gradient(
         65.28% 65.28% at 50% 100%,
-        rgba(239, 68, 68, 0.8) 0%, /* Rouge clair */
-        rgba(239, 68, 68, 0) 100% /* Transparent */
+        rgba(239, 68, 68, 0.8) 0%,
+        rgba(239, 68, 68, 0) 100% 
       ),
-      linear-gradient(0deg, #dc2626, #dc2626); /* Rouge intense */
+      linear-gradient(0deg, #dc2626, #dc2626); 
   }
   
   .buttondown:active {
@@ -65,8 +65,8 @@
     transition: all 0.5s ease-in-out;
     background: radial-gradient(
       100% 75% at 55%,
-      rgba(239, 68, 68, 0.8) 0%, /* Rouge clair */
-      rgba(239, 68, 68, 0) 100% /* Transparent */
+      rgba(239, 68, 68, 0.8) 0%, 
+      rgba(239, 68, 68, 0) 100% 
     );
     box-shadow: 0 0 3px black;
     border-bottom-left-radius: 0.5rem;
