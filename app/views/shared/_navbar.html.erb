@@ -36,7 +36,7 @@
         <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
       <% end %>
       
-        <p class="pseudouser-btn">@trader2838</p>
+        <p class="pseudouser-btn"><%= @user.username %></p>
       </button>
     <% else %>
       <%= button_to "Se connecter", new_user_session_path %>
@@ -62,7 +62,7 @@
       <% end %>
 
       <div class="infouser">
-        <p class="pseudouser">@trader2838</p>
+        <p class="pseudouser"><%= @user.username %></p>
       </div>
     </div>
 
