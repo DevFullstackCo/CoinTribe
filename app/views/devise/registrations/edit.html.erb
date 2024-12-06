@@ -1,43 +1,50 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="body-flex">
+  <div class="container-input">
+    <%= render 'shared/navbar' %> 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <h2>Edit Profile</h2>
+    <p class="text-title">Update your information below.</p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="container-label">
+        <p class="label">Email</p>
+        <div class="field input-container">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email" %>
+        </div>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="confirmation-pending">Waiting for confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="container-label">
+        <p class="label">Password <span>(Leave blank if you don't want to change it)</span></p>
+        <div class="field input-container">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter new password" %>
+        </div>
+      </div>
+
+      <div class="container-label">
+        <p class="label">Password Confirmation</p>
+        <div class="field input-container">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password" %>
+        </div>
+      </div>
+
+      <div class="container-label">
+        <p class="label">Current Password</p>
+        <div class="field input-container">
+          <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Enter current password" %>
+        </div>
+      </div>
+
+      <%= button_tag type: "submit", class: "btn-login" do %>
+        <p class="label-btn">Update</p>
+        <%= image_tag "arrowright.png", alt: "update", class: "arrow-btn-icon" %>
+      <% end %>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<p class="link-to-cancel">Unhappy?
+  <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "link-new" %>
+</p>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
