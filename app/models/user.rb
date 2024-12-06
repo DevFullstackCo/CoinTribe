@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  before_create :generate_random_username
 
   has_many :posts, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -34,5 +35,12 @@ class User < ApplicationRecord
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy
+  end
+
+  def generate_random_username
+
+  loop do
+    self.username = "@trader_#{rand(1000..999999)}"
+    break unless self.class.exists?(username: username)
   end
 end
