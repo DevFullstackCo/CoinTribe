@@ -189,7 +189,7 @@ nav {
   .navbar-search {
     width: 200px;
     position: relative;
-    margin-left: 10px;
+    margin-left: auto;
   }
 
   .search-home-nav {
@@ -214,9 +214,6 @@ nav {
     width: 50px;
   }
 
-  .btn-notif {
-    width: 60px;
-  }
   
 }
 
