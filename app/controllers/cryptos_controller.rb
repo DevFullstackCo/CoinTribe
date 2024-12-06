@@ -20,6 +20,7 @@ class CryptosController < ApplicationController
   end
 # app/controllers/cryptos_controller.rb
 def show
+  @user = current_user
   @crypto = Crypto.find(params[:id])
   @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
   @post = Post.new
