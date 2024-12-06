@@ -3,7 +3,7 @@
     <%= image_tag "backgroundLogin.png", alt: "background", class: "login-img" %>
   </div>
   <div class="right-login">
-    <%= button_to root_path, class: 'btn-home act' do %>
+    <%= button_to root_path, method: :get class: 'btn-home act' do %>
       <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
       Back to Home
     <% end %>
