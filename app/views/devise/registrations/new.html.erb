@@ -11,7 +11,7 @@
       <h2>Sign Up</h2>
       <p class="text-title">Join us and unlock the power of crypto insights.</p>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { novalidate: true }) do |f| %>
         <div class="container-label">
           <p class="label">Email</p>
           <div class="field input-container">
@@ -19,6 +19,8 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
         </div>
+
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="container-label">
           <p class="label">Password</p>
@@ -42,12 +44,12 @@
             <%= f.label :accepted_cgu do %>
               I accept the <%= link_to 'Terms of Service', cgu_path, class: "link" %>
             <% end %>
-            <div>
+          </div>
+          <div class="field checkbox-container">
             <%= f.check_box :accepted_privacy_policy, class: "checkbox" %>
             <%= f.label :accepted_privacy_policy do %>
               I accept the <%= link_to 'Privacy Policy', privacy_policy_path, class: "link" %>
             <% end %>
-            </div>
           </div>
         </div>
 
@@ -63,3 +65,4 @@
     </div>
   </div>
 </div>
+<%= render "devise/shared/links" %>
