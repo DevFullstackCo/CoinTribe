@@ -7,7 +7,7 @@
     <h2>My Profile</h2>
 
     <div class="profile-info">
-
+    
       <% if @user.avatar.attached? %>
         <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
       <% else %>

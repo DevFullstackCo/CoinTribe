@@ -33,8 +33,6 @@
         <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
       <% end %>
       
-
-      
         <p class="pseudouser-btn">@trader2838</p>
       </button>
     <% else %>
@@ -51,14 +49,14 @@
     </div>
 
     <div class="user">
-        
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
-      <% else %>
-        <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
-      <% end %>
-      
 
+      <% if user_signed_in? %>
+        <% if @user.avatar.attached? && @user %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
+        <% else %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+        <% end %>
+      <% end %>
 
       <div class="infouser">
         <p class="pseudouser">@trader2838</p>
