@@ -3,6 +3,12 @@
     padding-top: 20px;
 }
 
+#posts_container {
+  max-height: 750px;    
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .chart-section {
    width: 700px;
    padding-top: 20px;
@@ -380,6 +386,43 @@
   cursor: pointer;
   box-shadow: 0px 0px 30px var(--shadow-color);
 }
+
+.new-post {
+  width: 100%;
+  background-color: var(--input-color);
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  border: 1px solid var(--second-dark);
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px -30px 30px var(--primary-color);
+  z-index: 9999; 
+  position: relative;
+}
+
+
+.new-post form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-new {
+  width: 99%;
+  background-color: var(--input-color);
+  height: 36px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  margin-left: 5px;
+}
+
+
+
 
 
 

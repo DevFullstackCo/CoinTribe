@@ -25,7 +25,7 @@
                 <span class="positif">+<%= number_to_human(variation) %>%</span>
               <% else %>
                 <span class="negatif"><%= number_to_human(variation) %>%</span>
-              <% end %> <!-- Fermeture du bloc `if` -->
+              <% end %>
             </span>
             <span class="symbol" id="crypto-symbol"><%= @crypto.symbol %></span>
           </div>
@@ -166,17 +166,20 @@
         </div>
       <% end %> 
 
-      <% if user_signed_in? %>
+      
+    </div>
+    <% if user_signed_in? %>
         <div class="new-post">
           <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-            <%= form.text_field :content, placeholder: 'Write a new post...', class: 'form-control' %>
-            <%= form.submit 'Create', class: 'btn-primary-add' %>
+            <%= form.text_field :content, placeholder: 'Write a new post...', class: 'input-new' %>
+            <%= button_tag type: 'submit', class: 'btn-send' do %>
+              <%= image_tag 'send.png', alt: 'send', class: 'send-icone' %>
+            <% end %>
           <% end %>
         </div>
       <% else %>
         <p>Please <%= link_to 'log in', new_user_session_path %> to create a post.</p>
       <% end %>
-    </div>
   </div>
 </div>
 
