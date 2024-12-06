@@ -4,7 +4,8 @@
 }
 
 #posts_container {
-  max-height: 750px;    
+  min-height: 750px;
+  max-height: 750px; 
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -321,6 +322,7 @@
   background-color: var(--text-border);
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
 
 .input-new-comment {
@@ -344,6 +346,23 @@
   border-radius: 10px;
   font-size: 14px;
   color: var(--white-color);
+}
+
+.btn-delete-comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-icone {
+  width: 15px;
+}
+
+.btn-delete-comment:hover {
+  transform: scale(1.1);
 }
 
 .btn-send {
