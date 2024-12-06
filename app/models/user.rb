@@ -18,12 +18,6 @@ class User < ApplicationRecord
   end
   
 
-  after_create :welcome_send
-  
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
-  
 
   validates :accepted_cgu, inclusion: { in: [true], message: "Please accept the Terms of Service to continue." }, on: :create
   validates :accepted_privacy_policy, inclusion: { in: [true], message: "Please accept the Privacy Policy to continue." }, on: :create
