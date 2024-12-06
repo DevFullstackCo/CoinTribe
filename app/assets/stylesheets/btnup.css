@@ -11,10 +11,10 @@
     transition: all 0.25s ease;
     background: radial-gradient(
         65.28% 65.28% at 50% 100%,
-        rgba(34, 197, 94, 0.8) 0%, /* Vert clair */
-        rgba(34, 197, 94, 0) 100% /* Transparent */
+        rgba(34, 197, 94, 0.8) 0%,
+        rgba(34, 197, 94, 0) 100% 
       ),
-      linear-gradient(0deg, #059669, #059669); /* Vert intense */
+      linear-gradient(0deg, #059669, #059669); 
     border-radius: var(--round);
     border: none;
     outline: none;
@@ -45,10 +45,10 @@
     --space: 2px;
     background: radial-gradient(
         65.28% 65.28% at 50% 100%,
-        rgba(34, 197, 94, 0.8) 0%, /* Vert clair */
-        rgba(34, 197, 94, 0) 100% /* Transparent */
+        rgba(34, 197, 94, 0.8) 0%,
+        rgba(34, 197, 94, 0) 100% 
       ),
-      linear-gradient(0deg, #059669, #059669); /* Vert intense */
+      linear-gradient(0deg, #059669, #059669); 
   }
   
   .buttonup:active {
@@ -66,8 +66,8 @@
     transition: all 0.5s ease-in-out;
     background: radial-gradient(
       100% 75% at 55%,
-      rgba(34, 197, 94, 0.8) 0%, /* Vert clair */
-      rgba(34, 197, 94, 0) 100% /* Transparent */
+      rgba(34, 197, 94, 0.8) 0%, 
+      rgba(34, 197, 94, 0) 100% 
     );
     box-shadow: 0 0 3px black;
     border-bottom-left-radius: 0.5rem;
