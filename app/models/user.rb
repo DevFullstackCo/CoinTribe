@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+      :recoverable, :rememberable, :validatable
   before_create :generate_random_username
 
 
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
-  
+  before_validation :generate_random_username, on: :create
   after_create :welcome_send
   
   def welcome_send
@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def generate_random_username
-
+    
     loop do
       self.username = "@trader_#{rand(1000..999999)}"
       break unless self.class.exists?(username: username)

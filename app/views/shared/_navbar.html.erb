@@ -62,7 +62,10 @@
       <% end %>
 
       <div class="infouser">
+      <% if user_signed_in? %>
         <p class="pseudouser"><%= @user.username %></p>
+      <% end %>
+
       </div>
     </div>
 
