@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resource :profile do
     resources :avatars, only: [:create]
-    patch :update_username, on: :member
     
   end
 

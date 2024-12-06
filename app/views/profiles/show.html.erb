@@ -21,16 +21,6 @@
 
       <p class="username"><%= @user.username %></p>
       
-      <p>
-      <strong>Pseudo :</strong>
-      <%= form_tag update_username_profile_path(@user), multipart: true do |f| %>
-
-          <%= file_field_tag :username %>
-          <%= submit_tag "upload" %>
-
-        </div>
-    </p>
-    <% end %>
 
 
 

@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   before_create :generate_random_username
-  validates :username, presence: true, uniqueness: true, format: { with: /\A@trader_\d{6}\z/, message: "must start with @trader_ followed by 5 digits" }
 
 
   has_many :posts, dependent: :destroy
@@ -20,7 +19,13 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
   
-
+  validates :accepted_cgu, inclusion: { in: [true], message: "Please accept the Terms of Service to continue." }, on: :create
+  validates :accepted_privacy_policy, inclusion: { in: [true], message: "Please accept the Privacy Policy to continue." }, on: :create
+  before_create :set_accepted_at
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :username, uniqueness: true
+  
   private
   def set_accepted_at
     self.accepted_at = Time.current if accepted_cgu && accepted_privacy_policy

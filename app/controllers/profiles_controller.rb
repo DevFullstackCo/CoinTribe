@@ -4,8 +4,6 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
 
-    @user.username(params[:avatar])
-    redirect_to(profile_path(@user))
   end
 
 
