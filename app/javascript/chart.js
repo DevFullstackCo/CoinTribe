@@ -1,6 +1,5 @@
 
 
-
 let chart = null;
 let series = null;
 let socket = null;
@@ -78,7 +77,7 @@ document.addEventListener('turbo:load', async function () {
     await updateChart('15m');
 
     function setActiveButton(activeButtonId) {
-        const buttons = document.querySelectorAll('.tradingbtn');
+        const buttons = document.querySelectorAll('.choice');
         buttons.forEach(button => {
             button.classList.remove('active');
         });
@@ -108,17 +107,17 @@ document.addEventListener('turbo:load', async function () {
     });
 
     document.getElementById('btn-6h').addEventListener('click', async function () {
-        setActiveButton('btn-6h');
+        setActiveButton('btn-1d-main');
         await updateChart('6h');
     });
 
     document.getElementById('btn-12h').addEventListener('click', async function () {
-        setActiveButton('btn-12h');
+        setActiveButton('btn-1d-main');
         await updateChart('12h');
     });
 
     document.getElementById('btn-1d').addEventListener('click', async function () {
-        setActiveButton('btn-1d');
+        setActiveButton('btn-1d-main');
         await updateChart('1d');
     });
 

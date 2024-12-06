@@ -22,6 +22,8 @@
   --green-color: #3BFF79;
   --red-color: #FF2B40;
   --border-color: #191919;
+  --border-card: rgb(18, 18, 18);
+  --border-info: #121212;
 }
 
 body {
@@ -47,6 +49,14 @@ input:focus {
 }
 
 .body-flex {
+  width: 100%;
+  display: flex;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.body-flex-show {
   width: 100%;
   display: flex;
   max-width: 1400px;
@@ -89,5 +99,13 @@ h3 {
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .body-flex-show {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
