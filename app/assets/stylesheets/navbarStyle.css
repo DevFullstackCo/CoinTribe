@@ -64,7 +64,8 @@ nav {
   margin-left: 10px;
   cursor: pointer;
   height: 45px;
-  width: 140px;
+  padding-left: 12px;
+  padding-right: 12px;
   justify-content: center;
   border-radius: 10px;
 }
@@ -73,7 +74,7 @@ nav {
   position: fixed;
   margin-right: 0px;
   top: 48.5%;
-  right: -373px;
+  right: -380px;
   transform: translateY(-48.5%);
   width: 373px;
   height: 97.5vh;
@@ -182,6 +183,48 @@ nav {
   box-shadow: 0px 10px 60px var(--secondary-color);
 }
 
+.container-btn-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-login-nav, .btn-new-nav {
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.btn-login-nav {
+  background-color: var(--secondary-color);
+}
+
+
+.btn-new-nav{
+  background-color: var(--input-color);
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.link-footer {
+  color: var(--white-color);
+}
+
+
 
 
 
@@ -212,8 +255,6 @@ nav {
 
   #profil-btn {
     width: 50px;
-  }
-
-  
+  }  
 }
 
