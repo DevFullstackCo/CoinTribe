@@ -1,11 +1,13 @@
-    <%= render 'shared/navbar' %> 
+<%= render 'shared/navbar' %>
 <div class="body-flex">
-    <div class="container-forgot">
+  <div class="container-forgot">
 
     <h2>Forgot Password</h2>
     <p class="text-title">Enter your email to reset your password.</p>
 
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
       <div class="container-label">
         <p class="label">Email</p>
         <div class="field input-container">
