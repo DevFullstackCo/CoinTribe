@@ -456,4 +456,49 @@
   .card-chart {
     width: 100%;
  }
+ .post-section {
+  width: 80%;
+  padding-top: 20px;
+}
+.new-post {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--input-color);
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  border: 1px solid var(--second-dark);
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px -30px 30px var(--primary-color);
+  z-index: 9999; 
+}
+
+
+#posts_container {
+  min-height: 200px;
+  max-height: 750px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+}
+
+
+@media (max-width: 900px) { 
+  .chart-section {
+    width: 90%;
+    padding-top: 20px;
+ }
+  .card-chart {
+    width: 100%;
+ }
+
+ .post-section {
+  width: 95%;
+  padding-top: 20px;
+}
 }
