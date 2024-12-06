@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
+gem 'language_filter'
 gem "devise"
 gem 'mailjet'
 gem 'http'

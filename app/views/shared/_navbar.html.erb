@@ -26,8 +26,11 @@
   <div class="navbar-actions">
     <% if user_signed_in? %>
       <button id="profil-btn" class="act">
-        <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
-        <p class="pseudouser">@trader2838</p>
+        
+        
+          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+      
+        <p class="pseudouser-btn">@trader2838</p>
       </button>
     <% else %>
       <%= button_to "Se connecter", new_user_session_path %>
@@ -43,14 +46,17 @@
     </div>
 
     <div class="user">
-      <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+        
+      
+          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+      
       <div class="infouser">
         <p class="pseudouser">@trader2838</p>
       </div>
     </div>
 
-    <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act' do %>
-      <%= image_tag "setting.png", alt: "setting", class: "icone-nav" %>
+    <%= button_to profile_path(current_user), method: :get, data: { turbo: false }, class: 'btn-menu act' do %>
+      <%= image_tag "profil.png", alt: "setting", class: "icone-nav" %>
     <% end %>
 
     <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act delog' do %>
