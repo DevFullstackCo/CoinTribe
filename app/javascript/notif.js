@@ -22,7 +22,6 @@ function initNotifPopup() {
 function handleNotifBtnClick(event) {
   const notifBtn = document.querySelector('.btn-notif');
   const notifPopup = document.querySelector('.notif-popup');
-  event.stopPropagation();
 
   if (notifPopup.style.display === 'block') {
     notifPopup.style.display = 'none';
