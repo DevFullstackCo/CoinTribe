@@ -112,3 +112,9 @@ h3 {
     justify-content: center;
   }
 }
+
+@media (max-width: 768px) { 
+  .title-search {
+    font-size: 40px;
+  }
+}

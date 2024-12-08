@@ -77,8 +77,8 @@ nav {
   transform: translateY(-48.5%);
   width: 373px;
   height: 97.5vh;
-  background-color: #000000;
-  border: 1px solid #191919;
+  background-color: var(--primary-color);
+  border: 1px solid var(--second-dark);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   transition: right 1s ease;
