@@ -1,7 +1,10 @@
-<div class="body-flex">
+<%= render 'shared/navbar' %> 
+<%= button_to root_path, method: :get, class: 'btn-home act' do %>
+      <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
+      Back to Home
+    <% end %>
+<div class="body-flex-login">
   <div class="container-input">
-    <%= render 'shared/navbar' %> 
-
     <h2>Edit Profile</h2>
     <p class="text-title">Update your information below.</p>
 
@@ -9,6 +12,7 @@
       <div class="container-label">
         <p class="label">Email</p>
         <div class="field input-container">
+           <%= image_tag "user.png", alt: "user", class: "icone-input" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email" %>
         </div>
       </div>
@@ -20,6 +24,7 @@
       <div class="container-label">
         <p class="label">Password <span>(Leave blank if you don't want to change it)</span></p>
         <div class="field input-container">
+           <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter new password" %>
         </div>
       </div>
@@ -27,6 +32,7 @@
       <div class="container-label">
         <p class="label">Password Confirmation</p>
         <div class="field input-container">
+           <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password" %>
         </div>
       </div>
@@ -34,6 +40,7 @@
       <div class="container-label">
         <p class="label">Current Password</p>
         <div class="field input-container">
+           <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
           <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Enter current password" %>
         </div>
       </div>

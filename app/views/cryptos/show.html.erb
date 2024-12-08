@@ -3,8 +3,9 @@
 <%= javascript_include_tag 'load' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
-
 <%= render 'shared/navbar' %>
+
+
 
 <div class="body-flex-show">
   <div class="chart-section">
@@ -18,7 +19,7 @@
         <div class="info-card">
           <%= image_tag(@crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
           <div class="name-symbol">
-            <span>
+            <span class="price-card">
               $<%= @crypto.price.round(2) %>
               <% variation = @crypto.variation_24h %>
               <% if variation >= 0 %>
@@ -221,3 +222,5 @@
       <% end %>
   </div>
 </div>
+
+

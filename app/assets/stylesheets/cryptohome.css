@@ -23,7 +23,7 @@
   margin-right: auto;
   flex-direction: column;
   align-items: center;
-  margin-top: -16%;
+  margin-top: -130px;
 }
 
 .search-section {
@@ -55,15 +55,22 @@
 
 #search-input {
   background-color: var(--input-color);
-  width: 100%;
   margin-left: 2%;
   color: var(--white-color);
   font-size: 1.6vh;
 }
 
+.input-home {
+   width: 100%
+}
+
 #search-results {
-  width: 100%;
   margin-top: 1%;
+  box-shadow: 0px 10px 100px var(--shadow-white);
+}
+
+.result {
+  width: 100%;
 }
 
 .result-crypto {
@@ -206,9 +213,9 @@
     width: 100%;
  }
 
-  .container-search {
+ .container-search {
   width: 100%;
-  margin-top: -20%;
+  margin-top: -130px;
  }
 
  .new-box {
@@ -230,7 +237,20 @@
   margin-right: auto;
 }
 
+.icon-search {
+  width: 18px;
+}
+
+.search-section {
+  width: 90%;
+}
 
 }
 
+@media (max-width: 768px) { 
 
+.container-search {
+  width: 100%;
+  margin-top: -95px;
+ }
+}

@@ -22,11 +22,12 @@
   --green-color: #3BFF79;
   --red-color: #FF2B40;
   --border-color: #191919;
-  --border-card: rgb(18, 18, 18);
+  --border-card: rgb(23, 23, 23);
   --border-info: #121212;
   --text-color: #9d9d9d;
   --text-border: rgb(43, 43, 43);
   --shadow-color: #452795;
+  --shadow-card: #150740;
 }
 
 body {
@@ -49,6 +50,14 @@ input:focus {
 
 .act:active {
   transform: scale(0.97);
+}
+
+.body-flex-login {
+  width: 100%;
+  display: flex;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .body-flex {
@@ -110,5 +119,11 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) { 
+  .title-search {
+    font-size: 40px;
   }
 }
