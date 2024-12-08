@@ -18,7 +18,7 @@ class CryptosController < ApplicationController
       format.json { render json: @cryptos.pluck(:id, :name, :symbol, :price, :variation_24h, :logo_url) }
     end
   end
-# app/controllers/cryptos_controller.rb
+
 def show
   @user = current_user
   @crypto = Crypto.find(params[:id])
