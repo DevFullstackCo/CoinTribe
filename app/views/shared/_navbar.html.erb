@@ -1,0 +1,96 @@
+<%= javascript_include_tag 'navbarSearch' %>
+<%= javascript_include_tag 'navbarProfil' %>
+<%= javascript_include_tag 'notif' %>
+
+<nav>
+  <div class="logo-container">LOGO VOTING</div>
+
+  <div class="navbar-search">
+    <div data-controller="search" class="search-section-nav">
+      <div class="search-home-nav">
+        <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
+        <%= text_field_tag :search, nil, id: "search-input", class: "input-nav", placeholder: "Bitcoin...", 
+          data: { action: "input->search#search", target: "search.input" } %>
+      </div>
+      <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
+    </div>
+  </div>
+
+  <div class="btn-notif act" role="button">
+    <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+  </div>
+
+  <div class="notif-popup">
+    <p>You don't have notifications!</p>
+  </div>
+
+  <div class="navbar-actions">
+    <button id="profil-btn" class="act">
+      <% if user_signed_in? %>
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
+        <% else %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+          <% if current_user.username.present? %>
+            <p class="pseudouser-btn"><%= current_user.username %></p>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= image_tag "profil.png", alt: "setting", class: "icone-nav" %>
+      <% end %>
+    </button>
+  </div>
+</nav>
+
+<div id="profil">
+  <div class="headerprofil">
+    <div id="closeBtnProfil" class="btn-menu act" role="button">
+      <%= image_tag "arrowright.png", alt: "arrow-right", class: "icone-arrow" %>
+    </div>
+    <% if user_signed_in? %>
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
+        <% else %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+          <% if current_user.username.present? %>
+            <p class="pseudouser-btn"><%= current_user.username %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    <div class="user">
+      <% if user_signed_in? %>
+        <% if @user.avatar.attached? && @user %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
+        <% end %>
+      <% end %>
+
+      <div class="infouser">
+        <% if user_signed_in? %>
+          <p class="pseudouser"><%= @user.username %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <% if user_signed_in? %>
+      <%= button_to profile_path(current_user), method: :get, data: { turbo: false }, class: 'btn-menu act' do %>
+        <%= image_tag "profil.png", alt: "setting", class: "icone-nav" %>
+      <% end %>
+
+      <%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn-menu act delog' do %>
+        <%= image_tag "power.png", alt: "power", class: "icone-nav" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="container-btn-nav">
+    <% if !user_signed_in? %>
+      <%= button_to "Sign in", new_user_session_path, class: "btn-login-nav act" %>
+      <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn-new-nav act" %>
+    <% end %>
+  </div>
+  
+  <div class="footer-container">
+    <%= render 'shared/footer' %>
+  </div>
+</div>

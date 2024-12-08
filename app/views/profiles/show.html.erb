@@ -1,0 +1,58 @@
+<%= javascript_include_tag 'userimg' %>
+<%= render 'shared/navbar' %>
+<%= render 'shared/flash' %>
+ <%= button_to root_path, method: :get, class: 'btn-home act profil-home' do %>
+      <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
+      Back to Home
+    <% end %>
+<div class="body-flex">
+  <div class="profile-card">
+    <h3>My Profile</h3>
+    <div class="profile-info gradient-box">
+  
+      <div class="header-profil">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil", id: "image-user" %>
+        <% else %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil", id: "image-user" %>
+        <% end %>
+        <p><%= @user.username %></p>
+      </div>
+
+      <div id="popup" class="popup">
+        <div class="popup-content gradient-box">
+          <div class="header-popup">
+            <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
+          </div>
+          <p class="change-text">Change your avatar</p>
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil-popup" %>
+          <% else %>
+            <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil-popup" %>
+          <% end %>
+
+      <%= form_tag profile_avatars_path(@user), multipart: true do %>
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "upload" %>
+      <% end %>
+
+         </div>
+    </div>
+
+      <p class="email-profil">
+         <%= image_tag "mail.png", alt: "mail", class: "icone-mail" %>
+        <%= @user.email %></p>
+
+      <div class="profile-actions">
+        <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class: "btn-edit-profile" %>
+      </div>
+       <%= form_with url: user_registration_path, method: :delete, class: "delete-account-form" do %>
+          <%= submit_tag "Delete Account", data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-delete-profile" %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="image-profil">
+    <%= image_tag "userprofile.png", alt: "img-profil", class: "profil-img" %>
+  </div>
+</div>
