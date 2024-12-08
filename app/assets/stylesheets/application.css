@@ -51,6 +51,14 @@ input:focus {
   transform: scale(0.97);
 }
 
+.body-flex-login {
+  width: 100%;
+  display: flex;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .body-flex {
   width: 100%;
   display: flex;
