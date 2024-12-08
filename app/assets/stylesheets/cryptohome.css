@@ -55,16 +55,22 @@
 
 #search-input {
   background-color: var(--input-color);
-  width: 100%;
   margin-left: 2%;
   color: var(--white-color);
   font-size: 1.6vh;
 }
 
+.input-home {
+   width: 100%
+}
+
 #search-results {
-  width: 100%;
   margin-top: 1%;
   box-shadow: 0px 10px 100px var(--shadow-white);
+}
+
+.result {
+  width: 100%;
 }
 
 .result-crypto {
@@ -207,8 +213,9 @@
     width: 100%;
  }
 
-  .container-search {
+ .container-search {
   width: 100%;
+  margin-top: -130px;
  }
 
  .new-box {
@@ -240,10 +247,10 @@
 
 }
 
-@media (max-width: 1100px) { 
+@media (max-width: 768px) { 
 
 .container-search {
   width: 100%;
-  margin-top: -70px;
+  margin-top: -95px;
  }
 }

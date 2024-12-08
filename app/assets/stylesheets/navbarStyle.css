@@ -43,9 +43,14 @@ nav {
 .nav-result {
   position: absolute;
   top: 100%;
+  width: 100%;
   left: 0;
   z-index: 10;
   display: none;
+}
+
+.input-nav {
+  width: 100px;
 }
 
 .icon-search-nav {
@@ -83,6 +88,7 @@ nav {
   border-top-left-radius: 30px;
   transition: right 1s ease;
   padding-top: 20px;
+  z-index: 10000;
 }
 
 #profil.show {
@@ -257,4 +263,33 @@ nav {
   #profil {
     height: 90vh;
   }
+
+  .nav-result {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    z-index: 10;
+    display: none;
+  }
+
+  .search-home-nav {
+    width: 160px;
+    margin-right: auto;
+  }
+
+  .btn-notif {
+    height: 40px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: var(--input-color);
+    border: 1px solid var(--second-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
 }

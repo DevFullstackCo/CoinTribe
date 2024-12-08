@@ -75,11 +75,11 @@
           
           <div class="search-home">
             <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search" %>
-            <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
+            <%= text_field_tag :search, nil, id: "search-input", class: "input-home", placeholder: "Bitcoin...", 
               data: { action: "input->search#search", target: "search.input" } %>
           </div>
           
-          <div id="search-results" class="gradient-box" data-search-target="results"></div>
+          <div id="search-results" class="gradient-box result" data-search-target="results"></div>
         </div>
       </div>
     </div>

@@ -4,11 +4,12 @@
 
 <nav>
   <div class="logo-container">LOGO VOTING</div>
+
 <div class="navbar-search">
   <div data-controller="search" class="search-section-nav">
     <div class="search-home-nav">
       <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
-      <%= text_field_tag :search, nil, id: "search-input", placeholder: "Bitcoin...", 
+      <%= text_field_tag :search, nil, id: "search-input", class: "input-nav", placeholder: "Bitcoin...", 
         data: { action: "input->search#search", target: "search.input" } %>
     </div>
     <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
@@ -83,8 +84,8 @@
 
   <div class="container-btn-nav">
      <% if !user_signed_in? %>
-      <%= button_to "Se connecter", new_user_session_path, class: "btn-login-nav act" %>
-      <%= button_to "S'inscrire", new_user_registration_path, method: :get, class: "btn-new-nav act" %>
+      <%= button_to "Sign in", new_user_session_path, class: "btn-login-nav act" %>
+      <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn-new-nav act" %>
     <% end %>
   </div>
   <div class="footer-container">
