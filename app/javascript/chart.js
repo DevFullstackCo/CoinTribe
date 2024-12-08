@@ -67,7 +67,6 @@ document.addEventListener('turbo:load', async function () {
 
         await updateChart(currentInterval);
 
-        // Setup des boutons
         function setActiveButton(activeButtonId) {
             const buttons = document.querySelectorAll('.choice');
             buttons.forEach(button => button.classList.remove('active'));
