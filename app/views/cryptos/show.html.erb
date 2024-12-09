@@ -61,18 +61,7 @@
       </div>
       <div id="chart"></div>
       <div class="info-crypto">
-        <div class="container-sentiment">
-          <p class="info-text">Price Sentiment (24h): </p>
-          <div class="votes-percentage">
-            <% if @crypto.votes.count > 0 %>
-              <p class="bull">Bullish <%= @crypto.bullish_percentage %>%</p>
-            <% else %>
-              <p class="bear">Bearish <%= @crypto.bearish_percentage %>%</p>
-            <% end %>
-          </div>
-          <p></p>
-        </div>
-        <div class="container-volume">
+         <div class="container-volume">
           <p class="info-text">Volumes (24h):</p>
           <p class="text-info-card">$<%= @crypto.volume_24h %></p>
         </div>
@@ -89,6 +78,24 @@
           </p>
         </div>
       </div>
+      <div class="info-crypto">
+        <div class="container-sentiment">
+          <p class="info-text">Price Sentiment at <%= Date.today %>, 23h59 : </p>
+            <div class="bull-bear">
+            <% if @crypto.votes.count > 0 %>
+              <p class="bull">
+                <%= image_tag 'up.png', alt: 'up', class: 'icone-up-down' %>
+                <span>Bullish <%= @crypto.bullish_percentage %>%</span>
+               </p>
+              <p class="bear">
+                <%= image_tag 'down.png', alt: 'down', class: 'icone-up-down' %>
+                <span>Bearish <%= @crypto.bearish_percentage %>%</span>
+              </p>
+            <% end %>
+            </div>
+        </div>
+      </div>
+
 
       <div class="vote-section">
         <% if user_signed_in? %>
@@ -108,7 +115,7 @@
             </div>
           <% end %>
         <% else %>
-          <p>Please <%= link_to 'log in', new_user_session_path %> to vote.</p>
+          <p class="please-login">To vote on a crypto, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
         <% end %>
 
         <div class="vote_history">
@@ -117,7 +124,7 @@
             <div class="votes">
               <div class="date">
                 <%= image_tag(@crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo-votes') %>
-               <span class="date-voting"><%= date.strftime('%d/%m/%Y') %></span>
+               <span class="date-voting"><%= date.strftime('%Y/%m/%d') %></span>
               </div>
               <% if is_bullished %>
                 <p class="positif-vote">Bullish</p>
@@ -207,8 +214,6 @@
                     </div>
                   <% end %>
                 </div>
-              <% else %>
-                <p>Please <%= link_to 'log in', new_user_session_path %> to add a comment.</p>
               <% end %>
             </div>
           </turbo-frame>
@@ -226,7 +231,7 @@
         <% end %>
       </div>
     <% else %>
-      <p>Please <%= link_to 'log in', new_user_session_path %> to create a post.</p>
+      <p class="please-login">To create a post, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
     <% end %>
   </div>
 </div>
