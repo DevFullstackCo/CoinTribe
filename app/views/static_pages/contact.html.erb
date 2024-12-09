@@ -1,0 +1,20 @@
+<h1>Contact Us</h1>
+
+
+<%= form_with url: '/contact/send_message', method: :post, local: true do |f| %>
+  <div>
+    <%= label_tag :subject, "Subject" %>
+    <%= text_field_tag :subject, nil, required: true, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= label_tag :message, "Message" %>
+    <%= text_area_tag :message, nil, required: true, rows: 5, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Send", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Return', root_path, class: 'btn btn-secondary' %>
