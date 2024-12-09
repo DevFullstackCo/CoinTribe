@@ -115,9 +115,10 @@ nav {
 }
 
 .pseudouser {
-  color: var(--grey-color);
+  color: var(--white-color);
   pointer-events: none;
   font-size: 14px;
+  margin-right: auto;
 }
 
 .pseudouser-btn {
