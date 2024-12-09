@@ -25,6 +25,11 @@ def show
   @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
   @post = Post.new
   @comment = Comment.new
+  @voteshistory_by_day = VotesHistory.where(crypto_id: @crypto.id)
+  .group("DATE(created_at)", "is_bullished")
+                                     .count
+
+
 end
 
 
