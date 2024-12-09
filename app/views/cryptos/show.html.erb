@@ -5,8 +5,6 @@
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
 <%= render 'shared/navbar' %>
 
-
-
 <div class="body-flex-show">
   <div class="chart-section">
     <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
@@ -63,35 +61,41 @@
       </div>
       <div id="chart"></div>
       <div class="info-crypto">
-      <div class="container-sentiment">
-      <p class="info-text">Price Sentiment (24h): </p>
-       
-     <div class="votes-percentage">
-          <% if @crypto.votes.count > 0 %>
-            <p class="bull">Bullish <%= @crypto.bullish_percentage %>%</p>
-          <% else %>
-             <p class="bear">Bearish <%= @crypto.bearish_percentage %>%</p>
-          <% end %> 
+         <div class="container-volume">
+          <p class="info-text">Volumes (24h):</p>
+          <p class="text-info-card">$<%= @crypto.volume_24h %></p>
         </div>
-      <p></p>
+        <div class="container-price">
+          <p class="info-text">Price:</p>
+          <p>
+            <span class="text-info-card"> $<%= @crypto.price.round(2) %></span>
+            <% variation = @crypto.variation_24h.round(2) %>
+            <% if variation >= 0 %>
+              <span class="positif">+<%= number_to_human(variation) %>%</span>
+            <% else %>
+              <span class="negatif"><%= number_to_human(variation) %>%</span>
+            <% end %>
+          </p>
+        </div>
       </div>
-       <div class="container-volume">
-      <p class="info-text">Volumes (24h):</p>
-      <p class="text-info-card">$<%= @crypto.volume_24h %></p>
+      <div class="info-crypto">
+        <div class="container-sentiment">
+          <p class="info-text">Price Sentiment at <%= Date.today %>, 23h59 : </p>
+            <div class="bull-bear">
+            <% if @crypto.votes.count > 0 %>
+              <p class="bull">
+                <%= image_tag 'up.png', alt: 'up', class: 'icone-up-down' %>
+                <span>Bullish <%= @crypto.bullish_percentage %>%</span>
+               </p>
+              <p class="bear">
+                <%= image_tag 'down.png', alt: 'down', class: 'icone-up-down' %>
+                <span>Bearish <%= @crypto.bearish_percentage %>%</span>
+              </p>
+            <% end %>
+            </div>
+        </div>
       </div>
-       <div class="container-price">
-      <p class="info-text">Price:</p>
-      <p>
-        <span class="text-info-card"> $<%= @crypto.price.round(2) %></span>
-              <% variation = @crypto.variation_24h.round(2) %>
-              <% if variation >= 0 %>
-                <span class="positif">+<%= number_to_human(variation) %>%</span>
-              <% else %>
-                <span class="negatif"><%= number_to_human(variation) %>%</span>
-              <% end %>
-      </p>
-      </div>
-      </div>
+
 
       <div class="vote-section">
         <% if user_signed_in? %>
@@ -102,17 +106,38 @@
               <%= user_vote.is_bullished ? 'Bullish' : 'Bearish' %>
             </p>
           <% else %>
-          <div class="voting-info">
-            <p class="text-voting">Vote for Your Sentiment on the Price</p>
-            <div class="container-btn-voting">
-           <%= render 'shared/btnup' %>
-           <%= render 'shared/btndown' %>
-            </div>
+            <div class="voting-info">
+              <p class="text-voting">Vote for Your Sentiment on the Price</p>
+              <div class="container-btn-voting">
+                <%= render 'shared/btnup' %>
+                <%= render 'shared/btndown' %>
+              </div>
             </div>
           <% end %>
         <% else %>
-          <p>Please <%= link_to 'log in', new_user_session_path %> to vote.</p>
+          <p class="please-login">To vote on a crypto, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
         <% end %>
+
+        <div class="vote_history">
+          <p class="text-voting">Voting History :</p>
+          <% @voteshistory_by_day.each do |(date, is_bullished), count| %>
+            <div class="votes">
+              <div class="date">
+                <%= image_tag(@crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo-votes') %>
+               <span class="date-voting"><%= date.strftime('%Y/%m/%d') %></span>
+              </div>
+              <% if is_bullished %>
+                <p class="positif-vote">Bullish</p>
+              <% else %>
+                <p class="negatif-vote">Bearish</p>
+              <% end %>
+              <p class="count-votes">
+                <span class="text-voting"><%= count %></span>
+                <%= image_tag "people.png", alt: "arrow", class: "people-img" %>
+              </p>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -128,11 +153,11 @@
               <div class="user-post">
                 <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
                 <p class="username-post">@<%= post.user.username %></p>
-                 <% if post.user == current_user %>
-               <%= button_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn-delete-comment' do %>
+                <% if post.user == current_user %>
+                  <%= button_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn-delete-comment' do %>
                     <%= image_tag 'delete.png', alt: 'Delete', class: 'delete-icone' %>
                   <% end %>
-            <% end %>
+                <% end %>
               </div>
               <p class="time-post">
                 <%= image_tag "time.png", alt: "time", class: "time-icone" %>
@@ -149,29 +174,22 @@
                 <span class="count"><%= post.comments.size %></span>
               </p>
             </div>
-
-
-
-           
           </div>
 
-        
           <turbo-frame id="post_<%= post.id %>_comments">
-        
             <div class="comment-line <%= 'hidden' if post.comments.any? %>">
-            <div class="line"></div>
+              <div class="line"></div>
               <% if post.comments.any? %>
                 <% post.comments.order(created_at: :desc).reverse.each do |comment| %>
                   <div class="header-comment">
                     <div class="user-post">
                       <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
                       <p class="username-post">@<%= comment.user.username %></p>
-                        <% if comment.user == current_user %>
-                   <%= button_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn-delete-comment' do %>
-                    <%= image_tag 'delete.png', alt: 'Delete', class: 'delete-icone' %>
-                  <% end %>
-
-                  <% end %>
+                      <% if comment.user == current_user %>
+                        <%= button_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn-delete-comment' do %>
+                          <%= image_tag 'delete.png', alt: 'Delete', class: 'delete-icone' %>
+                        <% end %>
+                      <% end %>
                     </div>
                     <p class="time-post">
                       <%= image_tag "time.png", alt: "time", class: "time-icone" %>
@@ -182,10 +200,8 @@
                   <div class="content-post-container">
                     <p class="content-comment"><%= comment.content %></p>
                   </div>
-
-                
-                <% end %> 
-              <% end %> 
+                <% end %>
+              <% end %>
 
               <% if user_signed_in? %>
                 <div class="new-comment">
@@ -198,29 +214,24 @@
                     </div>
                   <% end %>
                 </div>
-              <% else %>
-                <p>Please <%= link_to 'log in', new_user_session_path %> to add a comment.</p>
               <% end %>
             </div>
           </turbo-frame>
         </div>
-      <% end %> 
-
-      
-    </div>
-    <% if user_signed_in? %>
-        <div class="new-post">
-          <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-            <%= form.text_field :content, placeholder: 'Write a new post...', class: 'input-new' %>
-            <%= button_tag type: 'submit', class: 'btn-send' do %>
-              <%= image_tag 'send.png', alt: 'send', class: 'send-icone' %>
-            <% end %>
-          <% end %>
-        </div>
-      <% else %>
-        <p>Please <%= link_to 'log in', new_user_session_path %> to create a post.</p>
       <% end %>
+    </div>
+
+    <% if user_signed_in? %>
+      <div class="new-post">
+        <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+          <%= form.text_field :content, placeholder: 'Write a new post...', class: 'input-new' %>
+          <%= button_tag type: 'submit', class: 'btn-send' do %>
+            <%= image_tag 'send.png', alt: 'send', class: 'send-icone' %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="please-login">To create a post, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
+    <% end %>
   </div>
 </div>
-
-
