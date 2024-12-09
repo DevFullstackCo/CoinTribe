@@ -185,17 +185,30 @@
 }
 
 .info-crypto {
-  margin-top: 10px;
   height: 50px;
   width: 100%;
   border-top: 1px solid var(--border-info);
-  border-bottom: 1px solid var(--border-info);
   display: flex;
   align-items: center;
 }
 
-.container-sentiment, .container-volume {
-  width: 40%;
+.container-sentiment {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--border-info);
+}
+
+.bull-bear {
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+
+.container-volume {
+  width: 50%;
   border-right: 1px solid var(--border-info);
   height: 45px;
   display: flex;
@@ -204,7 +217,7 @@
 }
 
 .container-price {
-  width: 30%;
+  width: 50%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -411,7 +424,7 @@
 }
 
 .new-post {
-  width: 100%;
+  width: 90%;
   background-color: var(--input-color);
   height: 38px;
   border-radius: 10px;
@@ -425,6 +438,7 @@
   box-shadow: 0px -30px 30px var(--primary-color);
   z-index: 9999; 
   position: relative;
+  margin-left: 30px;
 }
 
 
@@ -449,11 +463,20 @@
 .bull {
   font-size: 14px;
   color: var(--green-color);
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .bear {
   font-size: 14px;
   color: var(--red-color);
+  display: flex;
+  align-items: center;
+}
+
+.icone-up-down {
+  width: 14px;
 }
 
 .voting-info {
@@ -477,7 +500,7 @@
 
 .vote_history {
   width: 90%;
-  height: 180px;
+  height: 150px;
   overflow-y: auto;
   margin-left: auto;
   margin-right: auto;
@@ -485,6 +508,7 @@
   margin-top: 5px;
   background-color: var(--primary-color);
   border: 1px solid var(--border-card);
+  margin-bottom: 10px;
 }
 
 .votes {
@@ -541,6 +565,15 @@
 .negatif-vote{
   color: var(--red-color);
   font-size: 15px;
+}
+
+.please-login {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.login-link { 
+  color: var(--white-color);
 }
 
 
@@ -615,7 +648,6 @@
   display: none;
 }
 
-
 .info-card {
   background-color: var(--input-color);
   border: 1px solid var(--border-card);
@@ -642,6 +674,29 @@
 #time-options {
   left: -30px;
  }
+
+ .container-sentiment {
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.voting-info {
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  height: auto;
+}
+
+.container-btn-voting {
+  margin-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+  width: 100%;
+}
 
 }
 
