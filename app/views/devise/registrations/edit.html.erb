@@ -11,13 +11,6 @@
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="container-label">
-                <p class="label">Username</p>
-                <div class="field input-container">
-                    <%= f.text_field :username, placeholder: "Enter your username", autocomplete: "username" %>
-                </div>
-            </div>
-
-            <div class="container-label">
                 <p class="label">Email</p>
                 <div class="field input-container">
                     <%= image_tag "user.png", alt: "user", class: "icone-input" %>

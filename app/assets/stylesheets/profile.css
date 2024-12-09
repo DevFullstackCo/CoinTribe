@@ -11,15 +11,25 @@
   }
   
   .header-profil {
-    padding: 20px;
-    height: 50px;
-    display: flex;
-  }
-  
-  .user-avatar-profil {
-    width: 50px;
-  }
-  
+    padding: 20px; 
+    height: auto; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.user-avatar-profil {
+    width: 50px; 
+    height: auto; 
+    border-radius: 50%; 
+}
+
+.edit-username-icon {
+    width: 20px; 
+    height: 20px; 
+    cursor: pointer; 
+}
+
   .profile-info {
     height: 600px;
   }
