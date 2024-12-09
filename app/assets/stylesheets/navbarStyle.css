@@ -124,6 +124,7 @@ nav {
   color: var(--white-color);
   pointer-events: none;
   font-size: 14px;
+  margin-right: auto;
 }
 
 .btn-menu {
