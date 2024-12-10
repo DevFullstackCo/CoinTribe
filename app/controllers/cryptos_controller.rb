@@ -25,6 +25,7 @@ def show
   @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
   @post = Post.new
   @comment = Comment.new
+  @favorite = Favorite.find_by(user: current_user, crypto: @crypto) || Favorite.new(crypto: @crypto, user: current_user)
 end
 
 

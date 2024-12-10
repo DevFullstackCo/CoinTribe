@@ -73,13 +73,19 @@
             </div>
             <p class="change-text"><%= @crypto.name%></p>
               <div>
-                <%= form_with url: crypto_favorites_path(@crypto), method: :post, local: true do |f| %>
+                <%= form_with model: @favorite,
+                  url: @favorite.persisted? ? crypto_favorite_path(@crypto, @favorite) : crypto_favorites_path(@crypto),
+                  method: @favorite.persisted? ? :patch : :post, 
+                  local: true, 
+                  html: { id: "favorite-form" } do |f| %>
                 <%= f.label :quantity, "Quantity:" %>
+                
                 <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
               </div>
               <div>
-                <%= f.label :is_favorite, "Add to your favorites:" %>
-                <%= f.check_box :is_favorite, checked: @favorite&.is_favorite || false %>
+                <%= f.label :is_favorite, "Mark as favorite" %>
+                <%= f.hidden_field :is_favorite, value: false %> <!-- Ensures false is sent if unchecked -->
+                <%= f.check_box :is_favorite, { checked: @favorite&.is_favorite || false }, true, false %> <!-- Checked sends true -->
               </div>
               <div>
                 <%= f.submit "Save", class: "btn-save" %>
