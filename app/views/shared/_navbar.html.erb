@@ -3,7 +3,9 @@
 <%= javascript_include_tag 'notif' %>
 
 <nav>
-  <div class="logo-container">LOGO VOTING</div>
+ <div class="logo-container">
+  <%= link_to image_tag(asset_path("logo-voting-navbar.png"), alt: "Logo Voting", class: "navbar-logo"), root_path, class: "navbar-logo-link" %>
+</div>
 
   <div class="navbar-search">
     <div data-controller="search" class="search-section-nav">
