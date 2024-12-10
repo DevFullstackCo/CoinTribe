@@ -9,8 +9,11 @@ class User < ApplicationRecord
   has_many :votes_histories, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
-
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_cryptos, through: :favorites, source: :crypto # this relationship represents the cryptos that the user has marked as favorites
+  
   after_create :welcome_send
+  after_destroy :send_account_deleted_email
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
@@ -20,7 +23,7 @@ class User < ApplicationRecord
   validates :accepted_privacy_policy, inclusion: { in: [true], message: "Please accept the Privacy Policy to continue." }, on: :create
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
-  validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }
+
 
   before_create :set_accepted_at
 
@@ -39,5 +42,9 @@ class User < ApplicationRecord
 
   def password_required?
     new_record? || password.present?
+  end
+
+  def send_account_deleted_email
+    UserMailer.account_deleted_email(self).deliver_now
   end
 end
