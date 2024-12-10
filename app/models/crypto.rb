@@ -2,6 +2,8 @@ class Crypto < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
   has_many :posts
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by_users, through: :favorites, source: :user  # this relationship represents the users who have favorited this crypto.
 
   include PgSearch::Model
 

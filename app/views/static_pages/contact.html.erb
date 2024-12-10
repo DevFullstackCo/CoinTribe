@@ -1,0 +1,29 @@
+<h1>Contact</h1>
+
+
+<%= form_with url: '/contact/send_message', method: :post, local: true, html: { novalidate: true } do |f| %>
+  <div>
+    <% if !user_signed_in? %>
+      <%= label_tag :email, "Email" %>
+      <%= text_field_tag :guest_email, nil, required: true, class: "" %>
+    <% else %>
+      <%= current_user.email %>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= label_tag :subject, "Subject" %>
+    <%= text_field_tag :subject, nil, required: true, class: "" %>
+  </div>
+
+  <div>
+    <%= label_tag :message, "Message" %>
+    <%= text_area_tag :message, nil, required: true, rows: 5, class: "" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Send", class: "" %>
+  </div>
+<% end %>
+
+<%= link_to "Return", root_path, class: "" %>
