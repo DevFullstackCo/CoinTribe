@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def group_notifications
+    if user_signed_in?
+      @notifications_for_menu = current_user.notifications
+    else
+      @notifications_for_menu = []
+    end
+  end
+
   def set_user_favorites
     if user_signed_in?
       @favorites_for_menu = current_user.favorites.where(is_favorite: true).includes(:crypto)
