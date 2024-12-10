@@ -33,32 +33,38 @@
           <h3>News Token Listing</h3>
           <div class="gradient-box new-box">
             
-            <% @new_cryptos.last(2).each do |crypto| %>
-            <%= button_to crypto_path(crypto), method: :get, class: 'crypto-link' do %>
-                <div class="logo-wrapper">
-                  <%= image_tag(crypto.logo_url, alt: "crypto-logo", class: "crypto-logo") %>
-                  <div class="name-symbol">
-                    <span class="name-crypto-new"><%= crypto.name %></span>
-                    <span class="symbol-new"><%= crypto.symbol %></span>
-                  </div>
-                </div>
+            <% if @new_cryptos.present? && @new_cryptos.last(2).any? %>
+              <% @new_cryptos.last(2).each do |crypto| %>
+                <% if crypto.present? && crypto.logo_url.present? && crypto.price.present? %>
+                <%= button_to crypto_path(crypto), method: :get, class: 'crypto-link' do %>
+                    <div class="logo-wrapper">
+                      <%= image_tag(crypto.logo_url, alt: "crypto-logo", class: "crypto-logo") %>
+                      <div class="name-symbol">
+                        <span class="name-crypto-new"><%= crypto.name %></span>
+                        <span class="symbol-new"><%= crypto.symbol %></span>
+                      </div>
+                    </div>
 
-                <p>
-                  <span class="price-new"><%= number_to_currency(crypto.price, unit: "$") %></span>
-                  <% variation = crypto.variation_24h %>
-                  <% if variation >= 0 %>
-                    <span class="positif">
-                      +<%= number_to_human(variation) %>%
-                    </span>
-                  <% else %>
-                    <span class="negatif">
-                      <%= number_to_human(variation) %>%
-                    </span>
+                    <p>
+                      <span class="price-new"><%= number_to_currency(crypto.price, unit: "$") %></span>
+                      <% variation = crypto.variation_24h || 0 %>
+                      <% if variation >= 0 %>
+                        <span class="positif">
+                          +<%= number_to_human(variation) %>%
+                        </span>
+                      <% else %>
+                        <span class="negatif">
+                          <%= number_to_human(variation) %>%
+                        </span>
+                      <% end %>
+                    </p>
+
+                 
                   <% end %>
-                </p>
-
-             
+                <% end %>
               <% end %>
+            <% else %>
+              <p>No new cryptos available.</p>
             <% end %>
           </div>
         </div>
@@ -85,5 +91,3 @@
     </div>
   </div>
 </body>
-
-

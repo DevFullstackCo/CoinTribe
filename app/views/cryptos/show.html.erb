@@ -3,6 +3,7 @@
 <%= javascript_include_tag 'load' %>
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
+<%= javascript_include_tag 'favorites' %>
 <%= render 'shared/navbar' %>
 
 <div class="body-flex-show">
@@ -58,7 +59,39 @@
             </div>
           </div>
         </div>
+
+        <!-- Button to open Favorites pop-up -->
+        <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
+
+        <!-- Pop-up -->
+        <div id="popup-favorite" class="popup">
+          <div class="popup-content gradient-box">
+            <div class="header-popup">
+              <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
+            </div>
+            <p class="change-text"><%= @crypto.name%></p>
+              <div>
+                <%= form_with model: @favorite,
+                  url: @favorite.persisted? ? crypto_favorite_path(@crypto, @favorite) : crypto_favorites_path(@crypto),
+                  method: @favorite.persisted? ? :patch : :post, 
+                  local: true, 
+                  html: { id: "favorite-form" } do |f| %>
+                  <%= f.label :is_favorite, "Mark as favorite" %>
+                  <%= f.hidden_field :is_favorite, value: false %> <!-- Ensures false is sent if unchecked -->
+                  <%= f.check_box :is_favorite, { checked: @favorite&.is_favorite || false }, true, false %> <!-- Checked sends true -->
+              </div>
+              <div>
+                <%= f.label :quantity, "Quantity:" %>
+                <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
+              </div>
+              <div>
+                <%= f.submit "Save", class: "btn-save" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
       </div>
+
       <div id="chart"></div>
       <div class="info-crypto">
          <div class="container-volume">
