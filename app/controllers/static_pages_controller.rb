@@ -5,9 +5,13 @@ class StaticPagesController < ApplicationController
   def privacy_policy
   end
 
+
   def faq
   end
 
+  def about
+  end
+  
   def send_message
     guest_email = params[:guest_email]
     subject = params[:subject]

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:create]
     resources :votes, only: [:create]
     resources :favorites, only: [:create, :edit, :update]
+    resources :alert_prices, only: [:create, :edit, :update, :destroy]
   end
 
   resources :posts, only: [:destroy] do
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:destroy]
+
+  resources :notifications, only: [:create, :update, :destroy]
   
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -28,6 +31,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'static_pages#faq'
   get "privacy_policy", to: "static_pages#privacy_policy"
   get 'contact', to: 'static_pages#contact'
+  get 'about', to: 'static_pages#about'
   post 'contact/send_message', to: 'static_pages#send_message'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
