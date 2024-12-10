@@ -78,14 +78,13 @@
                   method: @favorite.persisted? ? :patch : :post, 
                   local: true, 
                   html: { id: "favorite-form" } do |f| %>
-                <%= f.label :quantity, "Quantity:" %>
-                
-                <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
+                  <%= f.label :is_favorite, "Mark as favorite" %>
+                  <%= f.hidden_field :is_favorite, value: false %> <!-- Ensures false is sent if unchecked -->
+                  <%= f.check_box :is_favorite, { checked: @favorite&.is_favorite || false }, true, false %> <!-- Checked sends true -->
               </div>
               <div>
-                <%= f.label :is_favorite, "Mark as favorite" %>
-                <%= f.hidden_field :is_favorite, value: false %> <!-- Ensures false is sent if unchecked -->
-                <%= f.check_box :is_favorite, { checked: @favorite&.is_favorite || false }, true, false %> <!-- Checked sends true -->
+                <%= f.label :quantity, "Quantity:" %>
+                <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
               </div>
               <div>
                 <%= f.submit "Save", class: "btn-save" %>
