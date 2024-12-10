@@ -19,10 +19,10 @@ class StaticPagesController < ApplicationController
   
     admin_emails = User.where(is_admin: true).pluck(:email)
   
-      admin_emails.each do |admin_email|
-        ContactMailer.send_contact_email(admin_email, subject, message, user_email).deliver_now
-        flash[:notice] = "Your message has been sent successfully."
-      end
+    admin_emails.each do |admin_email|
+      ContactMailer.send_contact_email(admin_email, subject, message, user_email).deliver_now
+      flash[:notice] = "Your message has been sent successfully."
+    end
   
     redirect_to contact_path
   end
