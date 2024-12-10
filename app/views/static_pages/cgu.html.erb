@@ -1,11 +1,11 @@
-<body>
+<%= render 'shared/navbar' %>
     <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
       <%= image_tag 'arrowleft.png', alt: 'arrow-left', class: 'icone' %>
       Back to Home
     <% end %>
 
     <h2>Terms of Use (CGU)</h2>
-    <p><strong>Last Updated:</strong> [date]</p>
+    <p><strong>Last Updated:</strong> 10/12/2024</p>
     <p>
         Welcome to Block n’ Beyond, a platform dedicated to analysis, opinion voting, and community interaction around cryptocurrencies. These Terms of Use (CGU) define the rules for using our site and the rights and obligations of its users.
     </p>
@@ -14,7 +14,7 @@
     <ul>
         <li><strong>Company Name:</strong> Block n’ Beyond (fictitious name, subject to change).</li>
         <li><strong>Physical Address:</strong> 123 Avenue de l’Innovation, 75001 Paris, France (fictitious, non-final address).</li>
-        <li><strong>Contact Email:</strong> <%= link_to 'BlocknBeyond@yopmail.com', '#' %></li>
+        <li><strong>Contact Email:</strong> 'BlocknBeyond@yopmail.com'</li>
         <li><strong>SIRET/SIREN Number:</strong> 123 456 789 00012 (fictitious number).</li>
     </ul>
     <p>This information will be updated as soon as official data is available.</p>
@@ -132,7 +132,7 @@
 
     <h3>10. Dispute Resolution</h3>
     <ul>
-        <li><strong>Amicable Resolution:</strong> Users are encouraged to contact us at <%= link_to 'BlocknBeyond@yopmail.com', '#' %> for disputes. We commit to responding promptly.</li>
+        <li><strong>Amicable Resolution:</strong> Users are encouraged to contact us at 'BlocknBeyond@yopmail.com' for disputes. We commit to responding promptly.</li>
         <li><strong>Jurisdiction:</strong> In the absence of an amicable resolution, disputes will be exclusively subject to French courts under French law.</li>
     </ul>
 
@@ -144,4 +144,3 @@
       <%= image_tag 'arrowleft.png', alt: 'arrow-left', class: 'icone' %>
       Back to Home
     <% end %>
-</body>
