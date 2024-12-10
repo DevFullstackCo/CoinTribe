@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:create]
     resources :votes, only: [:create]
     resources :favorites, only: [:create, :edit, :update]
+    resources :alert_prices, only: [:create, :edit, :update, :destroy]
   end
 
   resources :posts, only: [:destroy] do
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:destroy]
+
+  resources :notifications, only: [:create, :update, :destroy]
   
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
