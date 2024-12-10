@@ -25,8 +25,9 @@ def show
   @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
   @post = Post.new
   @comment = Comment.new
+  @favorite = Favorite.find_by(user: current_user, crypto: @crypto) || Favorite.new(crypto: @crypto, user: current_user)
   @voteshistory_by_day = VotesHistory.where(crypto_id: @crypto.id)
-  .group("DATE(created_at)", "is_bullished")
+                                      .group("DATE(created_at)", "is_bullished")
                                      .count
 
 
