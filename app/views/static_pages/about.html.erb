@@ -1,8 +1,15 @@
+    <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
+      <%= image_tag 'arrowleft.png', alt: 'arrow-left', class: 'icone' %>
+      Back to Home
+    <% end %>
+
 <div class="about-container">
   <h1>About PulseCoinTribe</h1>
+  
   <div class="about-header">
-  <img src="<%= asset_path('crypto-community.png') %>" alt="Crypto Community" class="about-image">
-</div>
+    <%= image_tag "crypto-community.png", alt: "Crypto Community", class: "about-image" %>
+  </div>
+  
   <p>
     PulseCoinTribe allows you to monitor the direction of the cryptocurrency market in real-time. 
     By combining market trends, community insights, and sentiment analysis, our platform brings together a tribe of crypto enthusiasts to take the pulse and sharpen their vision of the market's future.
