@@ -10,4 +10,12 @@ class UserMailer < ApplicationMailer
       ) 
   end
 
+  def account_deleted_email(user)
+    @user = user
+    mail(
+      to: @user.email,
+      subject: "Your account has been deleted"
+    )
+  end
+
 end
