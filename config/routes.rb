@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'cgu', to: 'static_pages#cgu'
   get "privacy_policy", to: "static_pages#privacy_policy"
   get 'contact', to: 'static_pages#contact'
+  get 'about', to: 'static_pages#about'
   post 'contact/send_message', to: 'static_pages#send_message'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
