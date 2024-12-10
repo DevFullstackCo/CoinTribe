@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_10_154205) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -68,7 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
     t.bigint "crypto_id", null: false
     t.bigint "user_id", null: false
     t.boolean "is_favorite", default: false, null: false
-    t.integer "quantity", default: 0
+    t.float "quantity", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crypto_id"], name: "index_favorites_on_crypto_id"
