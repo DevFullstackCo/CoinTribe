@@ -120,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_10_163839) do
     t.boolean "accepted_cgu", default: false, null: false
     t.boolean "accepted_privacy_policy", default: false, null: false
     t.datetime "accepted_at"
+    t.string "ethereum_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

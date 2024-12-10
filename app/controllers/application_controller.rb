@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       @notifications_for_menu = []
     end
   end
+  
 
   def set_user_favorites
     if user_signed_in?
