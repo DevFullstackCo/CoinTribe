@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   before_create :generate_random_username
-
+  
   has_many :posts, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :cryptos, through: :votes
@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :favorites, dependent: :destroy
   has_many :favorite_cryptos, through: :favorites, source: :crypto # this relationship represents the cryptos that the user has marked as favorites
+  has_many :notifications
   
   after_create :welcome_send
   after_destroy :send_account_deleted_email
