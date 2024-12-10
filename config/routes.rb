@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
   get 'cgu', to: 'static_pages#cgu'
+  get 'faq', to: 'static_pages#faq'
   get "privacy_policy", to: "static_pages#privacy_policy"
   get 'contact', to: 'static_pages#contact'
   post 'contact/send_message', to: 'static_pages#send_message'
