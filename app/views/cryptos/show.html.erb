@@ -62,8 +62,8 @@
 
         <!-- Button to open Favorites pop-up -->
         <% if user_signed_in? %>
-        <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
-
+          <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
+        <% end %>
         <!-- Pop-up -->
         <div id="popup-favorite" class="popup">
           <div class="popup-content gradient-box">
@@ -150,7 +150,6 @@
           <% end %>
         <% else %>
           <p class="please-login">To vote on a crypto, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
-        <% end %>
         <% end %>
 
         <div class="vote_history">
