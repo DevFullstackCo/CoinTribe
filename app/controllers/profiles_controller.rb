@@ -8,6 +8,13 @@
     def update
       @user = current_user
     
+      new_username = params[:user][:username]
+
+      if User.exists?(username: new_username) && new_username != @user.username
+        flash[:alert] = "This username is already taken. Please choose another one."
+        render :show and return
+      end
+
       if @user.update_without_password(user_params)
         flash[:notice] = "Username updated successfully!"
         redirect_to profile_path
