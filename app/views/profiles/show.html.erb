@@ -1,11 +1,12 @@
 <%= javascript_include_tag 'userimg' %>
 <%= render 'shared/navbar' %>
 <%= render 'shared/flash' %>
- <%= button_to root_path, method: :get, class: 'btn-home act profil-home' do %>
-      <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
-      Back to Home
-    <% end %>
-<div class="body-flex">
+<%= button_to root_path, method: :get, class: 'btn-home act profil-home' do %>
+    <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
+    Back to Home
+<% end %>
+
+ <div class="body-flex">
   <div class="profile-card">
     <h3>My Profile</h3>
     <div class="profile-info gradient-box">
@@ -17,9 +18,10 @@
           <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil", id: "image-user" %>
         <% end %>
         <p><%= @user.username %></p>
+        <%= image_tag "edit-icon.png", alt: "edit username", class: "edit-username-icon", id: "open-username-popup" %>
       </div>
 
-      <div id="popup" class="popup">
+      <div id="popup" class="popup hidden">
         <div class="popup-content gradient-box">
           <div class="header-popup">
             <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
@@ -30,25 +32,45 @@
           <% else %>
             <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil-popup" %>
           <% end %>
+          <%= form_tag profile_avatars_path(@user), multipart: true do %>
+            <%= file_field_tag :avatar %>
+            <%= submit_tag "Upload" %>
+          <% end %>
+        </div>
+      </div>
 
-      <%= form_tag profile_avatars_path(@user), multipart: true do %>
-        <%= file_field_tag :avatar %>
-        <%= submit_tag "upload" %>
-      <% end %>
-
-         </div>
-    </div>
+      <div id="username-popup" class="popup hidden">
+        <div class="popup-content gradient-box">
+          <div class="header-popup">
+            <%= image_tag "close.png", alt: "close", class: "close-img", id: "close-username-popup" %>
+          </div>
+          <p class="change-text">Change your username</p>
+          <%= form_for @user, url: profile_path, method: :patch, html: { class: "username-form" } do |f| %>
+            <div class="field">
+              <%= f.label :username, "New Username", class: "username-label" %>
+              <div class="input-container">
+                <%= image_tag "edit-icon.png", alt: "edit icon", class: "edit-icon" %>
+                <%= f.text_field :username, placeholder: "Enter new username", class: "username-input" %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Save", class: "btn-save-username" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
       <p class="email-profil">
-         <%= image_tag "mail.png", alt: "mail", class: "icone-mail" %>
-        <%= @user.email %></p>
+        <%= image_tag "mail.png", alt: "mail", class: "icone-mail" %>
+        <%= @user.email %>
+      </p>
 
       <div class="profile-actions">
         <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class: "btn-edit-profile" %>
       </div>
-       <%= form_with url: user_registration_path, method: :delete, class: "delete-account-form" do %>
-          <%= submit_tag "Delete Account", data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-delete-profile" %>
-        <% end %>
+      <%= form_with url: user_registration_path, method: :delete, class: "delete-account-form" do %>
+        <%= submit_tag "Delete Account", data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-delete-profile" %>
+      <% end %>
     </div>
   </div>
 
