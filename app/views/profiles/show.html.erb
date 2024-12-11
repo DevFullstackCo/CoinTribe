@@ -6,7 +6,7 @@
     Back to Home
 <% end %>
 
- <div class="body-flex">
+<div class="body-flex">
   <div class="profile-card">
     <h3>My Profile</h3>
     <div class="profile-info gradient-box">
@@ -45,7 +45,7 @@
             <%= image_tag "close.png", alt: "close", class: "close-img", id: "close-username-popup" %>
           </div>
           <p class="change-text">Change your username</p>
-          <%= form_for @user, url: profile_path, method: :patch, html: { class: "username-form" } do |f| %>
+          <%= form_for @user, url: profile_path(@user), method: :patch, html: { class: "username-form" } do |f| %>
             <div class="field">
               <%= f.label :username, "New Username", class: "username-label" %>
               <div class="input-container">
@@ -76,5 +76,38 @@
 
   <div class="image-profil">
     <%= image_tag "userprofile.png", alt: "img-profil", class: "profil-img" %>
+  </div>
+</div>
+
+
+<div class="body-flex">
+  <div class="admin-card">
+    <% if current_user.is_admin == true %>
+      <h3>Admin Panel</h3>
+      <div class="profile-info gradient-box">
+
+      <%= form_with url: search_profiles_path, method: :get, local: true, data: { turbo_frame: "search_results" } do |form| %>
+        <div class="change-text-admin">
+          <%= form.label :query, "Search user for delete :" %>
+          <%= form.text_field :query, placeholder: "Email or Username" %>
+          <%= form.submit "Search" %>
+        </div>
+      <% end %>
+      <turbo-frame id="search_results">
+      <% if @searched_users.present? %>
+        <ul>
+          <% @searched_users.each do |user| %>
+            <li class="email-profil">
+              <%= user.email %>(<%= user.username %>)
+              <%= button_to "Delete user", delete_user_profile_path(user), method: :delete, data: { confirm: "Are your sure ?" }, class: "btn-delete-user" %>
+            </li>
+          <% end %>
+        </ul>
+      <% elsif defined?(@searched_users) %>
+        <p class="email-profil">No users found.</p>
+      <% end %>
+      </div>
+      </turbo-frame>
+    <% end %>
   </div>
 </div>
