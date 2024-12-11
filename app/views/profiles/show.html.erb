@@ -45,7 +45,7 @@
             <%= image_tag "close.png", alt: "close", class: "close-img", id: "close-username-popup" %>
           </div>
           <p class="change-text">Change your username</p>
-          <%= form_for @user, url: profile_path, method: :patch, html: { class: "username-form" } do |f| %>
+          <%= form_for @user, url: profile_path(@user), method: :patch, html: { class: "username-form" } do |f| %>
             <div class="field">
               <%= f.label :username, "New Username", class: "username-label" %>
               <div class="input-container">
@@ -84,7 +84,7 @@
 <div>
   <% if current_user %>
     <h3>Admin Panel</h3>
-    <%= form_with url: search_profile_path, method: :get, local: true do |form| %>
+    <%= form_with url: search_profiles_path, method: :get, local: true do |form| %>
       <div>
         <%= form.label :query, "Search user (email or username):" %>
         <%= form.text_field :query, placeholder: "Email or Username" %>
@@ -99,9 +99,12 @@
       <% @searched_users.each do |user| %>
         <li>
           <%= user.username %> (<%= user.email %>)
+          <%= button_to "Supprimer", delete_user_profile_path(user), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+
           <%= form_with url: delete_user_profile_path(user), method: :delete do %>
             <%= submit_tag "Delete user", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" } %>
           <% end %>
+
         </li>
       <% end %>
     </ul>

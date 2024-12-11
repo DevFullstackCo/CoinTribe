@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resource :profile, only: [:show, :update] do
+  resources :profiles, only: [:show, :update] do
     resources :avatars, only: [:create]
     collection do
       get :search
