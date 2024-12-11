@@ -4,15 +4,17 @@ $profanity_filter = LanguageFilter::Filter.new(
 )
 
 additional_bad_words = [
-  'abruti', 'bouffon', 'trouduc', 'pétasse', 'pouffiasse',
-  'connard', 'enfoiré', 'salaud', 'Putain', 'Pute', 'Fille de pute',
-  'bâtard', 'balourd', 'salopard', 'Bordel', 'Catin', 'Conne', 'Connasse',
-  'Enculé', 'Pédé', 'PD', 'Pédale', 'Tapette', 'Tantouze', 'Fiotte',
-  'Tafiole', 'Tarlouze', 'Sac à foutre', 'Petite bite', 'Couille molle',
-  'Salope', 'Saloperie', 'Chienne', 'Cagole', 'Travelo', 'Gouine', 'Nègre',
-  'Négro', 'Nigger', 'Nigga', 'Chintoque', 'Bougnoul', 'Mongol', 'Trisomique',
-  'Triso', 'Pochtron', 'Pochtronne', 'Étron', 'Mange-merde', 'Tas de purin',
-  'Trou du cul', 'tabarnak'
+  'バカ', 'アホ', 'クソ', 'バカ野郎', 'クソガキ',
+
+  '死ね', 'この野郎', '最低', 'アホンダラ', 'デブ',
+
+  'ハゲ', '間抜け', 'チビ', 'うざい', 'ぶさいく',
+
+  'tabarnak', 'Baka', 'Aho', 'Kuso', 'Baka yarou',
+
+  'Kuso gaki', 'Shine', 'Kono yarou', 'Saitei', 'Ahondara',
+
+  'Debu', 'Hage', 'Manuke', 'Chibi', 'Uzai', 'Busaiku'
 ]
 
 additional_bad_words.each do |word|

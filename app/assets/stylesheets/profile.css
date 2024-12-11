@@ -252,10 +252,6 @@
       width: 300px;
     }
     
-    .popup-content {
-      max-width: 90%; 
-      padding: 15px; 
-    }
   
     .input-container {
       width: 90%; 
@@ -266,6 +262,11 @@
       width: 100%; 
       font-size: 14px; 
       padding: 10px;
+    }
+
+    .popup-content {
+      height: 300px;
+      width: 80%;
     }
   }
 

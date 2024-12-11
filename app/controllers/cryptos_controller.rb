@@ -15,17 +15,18 @@ class CryptosController < ApplicationController
     end
   end
 
-def show
-  @user = current_user
-  @crypto = Crypto.find(params[:id])
-  @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
-  @post = Post.new
-  @comment = Comment.new
-  @favorite = Favorite.find_by(user: current_user, crypto: @crypto) || Favorite.new(crypto: @crypto, user: current_user)
-  @voteshistory_by_day = VotesHistory.where(crypto_id: @crypto.id)
-                                      .group("DATE(created_at)", "is_bullished")
-                                     .count
-
-
-end
+  def show
+    @user = current_user
+    @crypto = Crypto.find(params[:id])
+    @posts = @crypto.posts.includes(:comments).order(created_at: :desc)
+    @post = Post.new
+    @comment = Comment.new
+    @favorite = Favorite.find_by(user: current_user, crypto: @crypto) || Favorite.new(crypto: @crypto, user: current_user)
+    @voteshistory_by_day = VotesHistory.where(crypto_id: @crypto.id)
+                                        .group("DATE(created_at)", "is_bullished")
+                                      .count
+    @alert_price = AlertPrice.find_by(user: current_user, crypto: @crypto) || AlertPrice.new(crypto: @crypto, user: current_user) if user_signed_in?
+    
+  end
+  
 end
