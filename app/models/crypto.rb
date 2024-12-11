@@ -13,6 +13,7 @@ class Crypto < ApplicationRecord
       tsearch: { prefix: true }
     }
   has_many :posts, dependent: :destroy
+  has_many :alert_prices, dependent: :destroy
 
   validates :name, :symbol, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
