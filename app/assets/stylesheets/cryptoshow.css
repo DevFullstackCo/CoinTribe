@@ -576,6 +576,58 @@
   color: var(--white-color);
 }
 
+.favorites-img {
+  width: 19px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.alert-img {
+  width: 19px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+
+
+.input-quantity {
+  background-color: var(--input-color);
+  height: 30px;
+  width: 300px;
+  border-radius: 7px;
+  border: 1px solid var(--border-card);
+  color: var(--white-color);
+  font-size: 15px;
+  margin-top: -15px;
+  padding-left: 10px;
+}
+
+.btn-save {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  width: 300px;
+  height: 35px;
+  margin-top: 10px;
+  font-size: 15px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.btn-save:hover{
+  box-shadow: 0px 10px 60px var(--shadow-color);
+}
+
+.btn-remove-favorite {
+  background-color: var(--red-color);
+  color: var(--white-color);
+  border: none;
+  width: 300px;
+  height: 35px;
+  margin-top: 10px;
+  font-size: 15px;
+  border-radius: 7px;
+  cursor: pointer;
+}
 
 
 @media (max-width: 1100px) { 

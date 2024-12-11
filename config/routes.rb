@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :cryptos, only: [:index, :show, :create] do
     resources :posts, only: [:create]
     resources :votes, only: [:create]
-    resources :favorites, only: [:create, :edit, :update]
-    resources :alert_prices, only: [:create, :update]
+    resources :favorites, only: [:create, :edit, :update, :destroy]
+    resources :alert_prices, only: [:create, :edit, :update, :destroy]
   end
 
   resources :posts, only: [:destroy] do
