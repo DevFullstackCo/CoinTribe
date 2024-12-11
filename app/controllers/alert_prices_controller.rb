@@ -1,6 +1,7 @@
 class AlertPricesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
+
   def create
     @crypto = Crypto.find(params[:crypto_id])
     @alert_price = AlertPrice.new(alert_prices_params)
@@ -47,7 +48,7 @@ class AlertPricesController < ApplicationController
 private
 
   def alert_prices_params
-    params.require(:alert_price).permit(:target_price)
+    params.require(:alert_price).permit(:price_up, :price_down)
   end
 
 end

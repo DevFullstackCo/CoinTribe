@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_11_082300) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_11_173906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -45,9 +45,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_11_082300) do
   create_table "alert_prices", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "crypto_id", null: false
-    t.float "target_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "price_up"
+    t.float "price_down"
     t.index ["crypto_id"], name: "index_alert_prices_on_crypto_id"
     t.index ["user_id"], name: "index_alert_prices_on_user_id"
   end
@@ -120,7 +121,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_11_082300) do
     t.boolean "accepted_cgu", default: false, null: false
     t.boolean "accepted_privacy_policy", default: false, null: false
     t.datetime "accepted_at"
-    t.string "ethereum_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -22,7 +22,6 @@ namespace :crypto do
 
         if response.status.success?
           data = JSON.parse(response.body.to_s)
-
           if data['status'] && data['status']['error_code'] == 0 && data['data']
             return data['data'].map do |crypto|
               {
@@ -58,6 +57,29 @@ namespace :crypto do
       cryptos.each do |crypto_data|
         symbol_crypto = crypto_data[:symbol].downcase
         logo_url = "/#{symbol_crypto}.png"
+        price_crypto = crypto_data[:price]
+        alerts = AlertPrice.joins(:crypto).where(crypto: { symbol: symbol_crypto.upcase })
+
+        alerts.each do |alert|
+          if alert.price_up && price_crypto >= alert.price_up && alert.price_up > 0
+            Notification.create(
+              user: alert.user,
+              title: "Price Up Alert: #{crypto_data[:name]}",
+              content: "The price of #{crypto_data[:name]} has risen to $#{price_crypto}.",
+              is_read?: false
+            )
+          end
+        
+          if alert.price_down && price_crypto <= alert.price_down && alert.price_down > 0
+            Notification.create(
+              user: alert.user,
+              title: "Price Down Alert: #{crypto_data[:name]}",
+              content: "The price of #{crypto_data[:name]} has fallen to $#{price_crypto}.",
+              is_read?: false
+            )
+          end
+        end
+        
 
         crypto = Crypto.find_or_initialize_by(symbol: symbol_crypto.upcase)
 
