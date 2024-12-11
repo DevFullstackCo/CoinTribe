@@ -4,6 +4,7 @@
 <%= javascript_include_tag 'timechoice' %>
 <%= javascript_include_tag 'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js', defer: true %>
 <%= javascript_include_tag 'favorites' %>
+<%= javascript_include_tag 'priceAlert' %>
 <%= render 'shared/navbar' %>
 
 <div class="body-flex-show">
@@ -61,9 +62,10 @@
         </div>
 
         <!-- Button to open Favorites pop-up -->
-        <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
-
-        <!-- Pop-up -->
+        <% if user_signed_in? %>
+          <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
+        <% end %>
+        <!-- Favorites Pop-up -->
         <div id="popup-favorite" class="popup">
           <div class="popup-content gradient-box">
             <div class="header-popup">
@@ -83,6 +85,36 @@
               <div>
                 <%= f.label :quantity, "Quantity:" %>
                 <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
+              </div>
+              <div>
+                <%= f.submit "Save", class: "btn-save" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
+
+        <!-- Button to open Price Alert pop-up -->
+        <% if user_signed_in? %>
+          <button id="open-price-alert-popup" class="btn-price-alert">Price Alert</button>
+        <% end %>
+
+        <!-- Price Alert Pop-up -->
+        <div id="popup-price-alert" class="popup">
+          <div class="popup-content gradient-box">
+            <div class="header-popup">
+              <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
+            </div>
+            <p class="change-text">Set your price alert for <%= @crypto.name %></p>
+              <div>
+                <%= form_with model: @alert_price,
+                  url: @alert_price.persisted? ? crypto_alert_price_path(@crypto, @alert_price) : crypto_alert_prices_path(@crypto),
+                  method: @alert_price.persisted? ? :patch : :post, 
+                  local: true, 
+                  html: { id: "alert_price-form" } do |f| %>
+                   <!-- uses PATCH for existing alerts (update) and POST for new alerts (create). -->
+
+                  <%= f.label :target_price, "Target Price:" %>
+                  <%= f.number_field :target_price, value: @alert_price.target_price || 0, step: 0.01, min: 0 %>
               </div>
               <div>
                 <%= f.submit "Save", class: "btn-save" %>

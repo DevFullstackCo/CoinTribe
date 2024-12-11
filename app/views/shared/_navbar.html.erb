@@ -3,28 +3,38 @@
 <%= javascript_include_tag 'notif' %>
 
 <nav>
- <div class="logo-container">
-  <%= link_to image_tag(asset_path("logo-voting-navbar.png"), alt: "Logo Voting", class: "navbar-logo"), root_path, class: "navbar-logo-link" %>
-</div>
+  <div class="logo-container">
+    <%= link_to image_tag(asset_path("logo-voting-navbar.png"), alt: "Logo Voting", class: "navbar-logo"), root_path, class: "navbar-logo-link" %>
+  </div>
 
   <div class="navbar-search">
     <div data-controller="search" class="search-section-nav">
       <div class="search-home-nav">
         <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
-        <%= text_field_tag :search, nil, id: "search-input", class: "input-nav", placeholder: "Bitcoin...", 
-          data: { action: "input->search#search", target: "search.input" } %>
+        <%= text_field_tag :search, nil, id: "search-input", class: "input-nav", placeholder: "Bitcoin...", data: { action: "input->search#search", target: "search.input" } %>
       </div>
       <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
     </div>
   </div>
 
-  <div class="btn-notif act" role="button">
-    <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
-  </div>
+  
+  <% if user_signed_in? %>
+    <div class="btn-notif act" role="button">
+      <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+    </div>
 
-  <div class="notif-popup">
-    <p>You don't have notifications!</p>
-  </div>
+    <div class="notif-popup">
+      <% current_user.notifications.each do |notif| %>
+        <div class="notif">
+          <span class="title-notif">
+            <span><%= notif.title %></span>
+            <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
+          </span>
+          <span class="content-notif"><%= notif.content %></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="navbar-actions">
     <button id="profil-btn" class="act">
@@ -49,9 +59,10 @@
     <div id="closeBtnProfil" class="btn-menu act" role="button">
       <%= image_tag "arrowright.png", alt: "arrow-right", class: "icone-arrow" %>
     </div>
+
     <% if user_signed_in? %>
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, alt: "avatar", class: "user-icone" %>
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, alt: "avatar", class: "user-icone" %>
         <% else %>
           <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
           <% if current_user.username.present? %>
@@ -77,7 +88,47 @@
       <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn-new-nav act" %>
     <% end %>
   </div>
-  
+
+  <div class="favorites-container">
+    <% if user_signed_in? %>
+      <div class="total-balance"> 
+        <strong>Total Balance</strong>
+        <span><%= number_to_currency(@total_balance) %></span>
+      </div>
+
+      <div class="favorites-listing">
+        <strong>My Favorites</strong>
+        <% if @favorites_for_menu.any? %>
+          <% @favorites_for_menu.each do |favorite| %>
+            <div class="favorite-line">
+              <div class="fav-right">
+                <%= image_tag(favorite.crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
+                <div class="name-symbol">
+                  <span class="price-card">
+                    $<%= favorite.crypto.price.round(2) %>
+                    <% variation = favorite.crypto.variation_24h %>
+                    <% if variation >= 0 %>
+                      <span class="positif">+<%= number_to_human(variation) %>%</span>
+                    <% else %>
+                      <span class="negatif"><%= number_to_human(variation) %>%</span>
+                    <% end %>
+                  </span>
+                  <span class="symbol" id="crypto-symbol"><%= favorite.crypto.symbol %></span>
+                </div>
+              </div>
+              <div class="fav-left">
+                <%= favorite.quantity %>
+                <%= number_to_currency(favorite.quantity * favorite.crypto.price) %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>You have no favorites yet.</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="footer-container">
     <%= render 'shared/footer' %>
   </div>

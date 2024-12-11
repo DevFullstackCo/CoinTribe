@@ -18,7 +18,6 @@ class FavoritesController < ApplicationController
     redirect_to crypto_path(@crypto)
   end
 
-
   def update
     @crypto = Crypto.find(params[:crypto_id])
     @favorite = Favorite.find_by(user: current_user, crypto: @crypto)
@@ -34,13 +33,6 @@ class FavoritesController < ApplicationController
 
     redirect_to crypto_path(params[:crypto_id])
   end
-
-
-  def edit
-    @crypto = Crypto.find(params[:crypto_id])
-    @favorite = Favorite.find_by(user: current_user, crypto: @crypto) || Favorite.new(crypto: @crypto, user: current_user)
-  end
-
   
   private
 

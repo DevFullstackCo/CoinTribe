@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_11_082300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,6 +42,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "alert_prices", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "crypto_id", null: false
+    t.float "target_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_alert_prices_on_crypto_id"
+    t.index ["user_id"], name: "index_alert_prices_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "user_id"
@@ -68,12 +78,22 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
     t.bigint "crypto_id", null: false
     t.bigint "user_id", null: false
     t.boolean "is_favorite", default: false, null: false
-    t.integer "quantity", default: 0
+    t.float "quantity", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crypto_id"], name: "index_favorites_on_crypto_id"
     t.index ["user_id", "crypto_id"], name: "index_favorites_on_user_id_and_crypto_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.boolean "is_read?", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -127,10 +147,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_110956) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "alert_prices", "cryptos"
+  add_foreign_key "alert_prices", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "cryptos"
   add_foreign_key "favorites", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "cryptos"
   add_foreign_key "posts", "users"
   add_foreign_key "votes", "cryptos"

@@ -171,7 +171,8 @@ nav {
   align-items: center;
   width: 300px;
   margin-top: 10px;
-  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .icone-arrow {
@@ -232,6 +233,44 @@ nav {
 .link-footer {
   color: var(--white-color);
 }
+
+.notif {
+  background-color: var(--second-dark);
+  border-radius: 10px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 45px;
+  padding-top: 5px;
+  cursor: pointer;
+  border: 1px solid var(--text-border);
+  margin-top: 7px;
+}
+
+
+.title-notif {
+  color: var(--white-color);
+  margin-left: 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-notif {
+  margin-left: 15px;
+  font-size: 13px;
+}
+
+.date-notif {
+  margin-right: 5px;
+  font-size: 11px;
+  color: var(--grey-color);
+}
+
+
+
+
 
 @media (max-width: 1000px) {
   .navbar-search {
