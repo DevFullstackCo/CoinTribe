@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_10_163839) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_11_082300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_10_163839) do
   create_table "alert_prices", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "crypto_id", null: false
-    t.float "alert_price", null: false
+    t.float "target_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crypto_id"], name: "index_alert_prices_on_crypto_id"

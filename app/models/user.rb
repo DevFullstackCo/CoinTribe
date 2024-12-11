@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :favorites, dependent: :destroy
   has_many :favorite_cryptos, through: :favorites, source: :crypto # this relationship represents the cryptos that the user has marked as favorites
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
+  has_many :alert_prices, dependent: :destroy
   
   after_create :welcome_send
   after_destroy :send_account_deleted_email
