@@ -99,6 +99,9 @@
       <% @searched_users.each do |user| %>
         <li>
           <%= user.username %> (<%= user.email %>)
+          <%= form_with url: delete_user_profile_path(user), method: :delete do %>
+            <%= submit_tag "Delete user", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" } %>
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -35,9 +35,23 @@
         flash[:alert] = "Veuillez entrer une valeur pour rechercher."
       end
       render :show 
-      
     end
   
+
+    def delete_user
+      
+        user = User.find(params[:id]) # Récupère l'utilisateur à supprimer via l'ID
+  
+        if user.destroy
+          flash[:success] = "Utilisateur supprimé avec succès."
+        else
+          flash[:error] = "Une erreur s'est produite lors de la suppression."
+        end
+
+  
+      redirect_to profile_path # Redirige vers la page de profil après la suppression
+    end
+
     private
   
     def user_params
