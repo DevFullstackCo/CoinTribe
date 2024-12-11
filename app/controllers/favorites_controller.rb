@@ -53,6 +53,18 @@ class FavoritesController < ApplicationController
     redirect_to crypto_path(@crypto)
   end
 
+  def destroy
+    @alert_price = current_user.alert_prices.find_by(crypto_id: params[:crypto_id])
+
+    if @alert_price&.destroy
+      flash[:notice] = "Price alert removed successfully."
+    else
+      flash[:alert] = "Failed to remove price alert."
+    end
+
+    redirect_to crypto_path(params[:crypto_id])
+  end
+
   private
 
   def favorites_params
