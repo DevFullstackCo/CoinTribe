@@ -24,6 +24,19 @@
       end
     end
     
+    def search
+      @user = current_user
+
+      if params[:query].present?
+        query = "%#{params[:query]}%"
+        @searched_users = User.where("email LIKE ? OR username LIKE ?", query, query)
+      else
+        @searched_users = []
+        flash[:alert] = "Veuillez entrer une valeur pour rechercher."
+      end
+      render :show 
+      
+    end
   
     private
   
