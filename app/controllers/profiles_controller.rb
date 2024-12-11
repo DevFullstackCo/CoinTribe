@@ -36,8 +36,8 @@
       end
 
       respond_to do |format|
-        format.turbo_stream { render :search } # Rend uniquement la partie Turbo Frame
-        format.html { render :show } # Rend la vue complète pour une requête standard
+        format.turbo_stream { render :search }
+        format.html { render :show }
       end
     end
   
