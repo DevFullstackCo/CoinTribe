@@ -24,7 +24,41 @@
       end
     end
     
+    def search
+      @user = current_user
+
+      if params[:query].present?
+        query = "%#{params[:query]}%"
+        @searched_users = User.where("email ILIKE ? OR username ILIKE ?", query, query)
+      else
+        @searched_users = []
+        flash[:alert] = "Please enter a value to search."
+      end
+
+      respond_to do |format|
+        format.turbo_stream { render :search }
+        format.html { render :show }
+      end
+    end
   
+
+    def delete_user
+      
+      user = User.find(params[:id])
+
+      if current_user.is_admin == true
+        if user.destroy
+          flash[:success] = "User successfully deleted."
+        else
+          flash[:error] = "An error occurred during deletion."
+        end
+      else
+        flash[:alert] = "Access denied."
+      end
+
+      redirect_to profile_path
+    end
+
     private
   
     def user_params

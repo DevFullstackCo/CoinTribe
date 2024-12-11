@@ -19,8 +19,14 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resource :profile, only: [:show, :update] do
+  resources :profiles, only: [:show, :update] do
     resources :avatars, only: [:create]
+    collection do
+      get :search
+    end
+    member do
+      delete :delete_user
+    end
   end
   
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
