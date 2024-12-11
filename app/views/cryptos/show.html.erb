@@ -137,8 +137,10 @@
                   method: @alert_price.persisted? ? :patch : :post, 
                   local: true, 
                   html: { id: "alert_price-form" } do |f| %>
-                   <p>Target Price :</p>
-                  <%= f.number_field :target_price, class: "input-quantity", value: @alert_price.target_price || 0, step: 0.0000000000001, min: 0 %>
+                   <p>Price Up:</p>
+                  <%= f.number_field :price_up, class: "input-quantity", value: @alert_price.price_up || 0, step: 0.0000000000001 %>
+                   <p>Price Down:</p>
+                  <%= f.number_field :price_down, class: "input-quantity", value: @alert_price.price_down || 0, step: 0.0000000000001 %>
               </div>
               <div>
                 <%= f.submit "Save", class: "btn-save" %>
