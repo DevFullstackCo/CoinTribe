@@ -629,6 +629,11 @@
   cursor: pointer;
 }
 
+.btn-fav-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (max-width: 1100px) { 
   .card-chart {
