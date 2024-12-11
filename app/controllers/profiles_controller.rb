@@ -34,18 +34,28 @@
         @searched_users = []
         flash[:alert] = "Please enter a value to search."
       end
-      render :show 
+
+      respond_to do |format|
+        format.turbo_stream { render :search } # Rend uniquement la partie Turbo Frame
+        format.html { render :show } # Rend la vue complète pour une requête standard
+      end
     end
   
 
     def delete_user
-  
-        user = User.find(params[:id])
+      
+      user = User.find(params[:id])
+
+      if current_user.is_admin == true
         if user.destroy
           flash[:success] = "User successfully deleted."
         else
           flash[:error] = "An error occurred during deletion."
         end
+      else
+        flash[:alert] = "Access denied."
+      end
+
       redirect_to profile_path
     end
 

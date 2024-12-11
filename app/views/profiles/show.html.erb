@@ -6,7 +6,7 @@
     Back to Home
 <% end %>
 
- <div class="body-flex">
+<div class="body-flex">
   <div class="profile-card">
     <h3>My Profile</h3>
     <div class="profile-info gradient-box">
@@ -82,19 +82,18 @@
 
 <div class="body-flex">
   <div class="admin-card">
-    <% if current_user %>
+    <% if current_user.is_admin == true %>
       <h3>Admin Panel</h3>
       <div class="profile-info gradient-box">
 
-      <%= form_with url: search_profiles_path, method: :get, local: true do |form| %>
+      <%= form_with url: search_profiles_path, method: :get, local: true, data: { turbo_frame: "search_results" } do |form| %>
         <div class="change-text-admin">
           <%= form.label :query, "Search user for delete :" %>
           <%= form.text_field :query, placeholder: "Email or Username" %>
           <%= form.submit "Search" %>
         </div>
       <% end %>
-    <% end %>
-  
+      <turbo-frame id="search_results">
       <% if @searched_users.present? %>
         <ul>
           <% @searched_users.each do |user| %>
@@ -106,7 +105,9 @@
         </ul>
       <% elsif defined?(@searched_users) %>
         <p class="email-profil">Aucun utilisateur trouvé.</p>
+      <% end %>
       </div>
+      </turbo-frame>
     <% end %>
   </div>
 </div>
