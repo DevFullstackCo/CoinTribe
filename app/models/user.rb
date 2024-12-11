@@ -1,7 +1,11 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  before_create :generate_random_username
+    devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :validatable,
+    :lockable, :confirmable
+  
+    before_create :generate_random_username
+  end
+  
 
   has_many :posts, dependent: :destroy
   has_many :votes, dependent: :destroy
