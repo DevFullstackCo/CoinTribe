@@ -1,16 +1,28 @@
-<h2>Forgot your password?</h2>
+<%= render 'shared/navbar' %>
+<div class="body-flex">
+  <div class="container-forgot">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <h2>Forgot Password</h2>
+    <p class="text-title">Enter your email to reset your password.</p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="container-label">
+        <p class="label">Email</p>
+        <div class="field input-container">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email" %>
+        </div>
+      </div>
+
+      <%= button_tag type: "submit", class: "btn-login" do %>
+        <p class="label-btn">Send Reset Instructions</p>
+        <%= image_tag "arrowright.png", alt: "send", class: "arrow-btn-icon" %>
+      <% end %>
+    <% end %>
+
+    <p class="link-to-sign">Remembered your password?
+      <%= link_to "Sign In", new_session_path(resource_name), class: "link-new" %>
+    </p>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

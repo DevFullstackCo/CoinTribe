@@ -1,11 +1,37 @@
-.chart-section, .post-section {
+.post-section {
     width: 50%;
-  }
-
-#chart{
-    width: 100%;
-    height: 400px;
+    padding-top: 20px;
 }
+
+#posts_container {
+  min-height: 750px;
+  max-height: 750px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chart-section {
+   width: 700px;
+   padding-top: 20px;
+}
+
+.card-chart {
+  border-radius: 20px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--primary-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+}
+
+#chart {
+  width: 95%;
+  height: 300px; 
+  z-index: 1;
+  margin-top: 30px;
+}
+
 
 .comments-container {
   max-height: 200px;
@@ -17,3 +43,660 @@
 .comment-line {
   margin-bottom: 10px;
 }
+
+.btn-home-go {
+  background-color: var(--input-color);
+  border: 1px solid var(--second-dark);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 45px;
+  width: 160px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-right: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 350;
+  font-style: normal;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.header-card {
+  width: 95%;
+  display: flex;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.info-card {
+  background-color: var(--input-color);
+  border: 1px solid var(--border-card);
+  height: 50px;
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-card {
+  width: 40%;
+  display: flex;
+}
+
+.logo-card {
+  width: 30px;
+  margin-left: 10px;
+}
+
+
+
+
+
+.choice {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: double 1px transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+}
+
+.choice:active {
+  transform: scale(0.95);
+}
+
+.choice.active {
+  background-image: linear-gradient(#0C0C0C, #0C0C0C),
+                    linear-gradient(to bottom, var(--secondary-color), #0C0C0C 85%) !important;
+  box-shadow: 0px -3px 10px var(--secondary-color) !important;
+  color: #fff;
+}
+
+.choice:not(.active) {
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  box-shadow: 0px 10px 10px var(--primary-color);
+  color: var(--white-color);
+}
+
+.arrow-bottom {
+  width: 15px;
+}
+
+#btn-1d-main {
+  width: 50px;
+  position: relative;
+}
+
+#time-options {
+  position: absolute;
+  top: -140px;
+  left: 0;
+  display: none;
+  width: 100px;
+  margin-bottom: 10px;
+  padding: 5px;
+  height: 130px;
+  z-index: 1000;
+  border-radius: 15px;
+  box-shadow: 0px -10px 10px var(--primary-color);
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+}
+
+
+#time-options button {
+  display: block;
+  width: 100%;
+}
+
+#btn-6h, #btn-12h, #btn-1d {
+  background-color:  var(--second-dark);
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+  border-radius: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#btn-6h:hover, #btn-12h:hover, #btn-1d:hover {
+  box-shadow: 0px -3px 10px var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+.info-crypto {
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid var(--border-info);
+  display: flex;
+  align-items: center;
+}
+
+.container-sentiment {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--border-info);
+}
+
+.bull-bear {
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+
+.container-volume {
+  width: 50%;
+  border-right: 1px solid var(--border-info);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-price {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-text {
+  color: var(--grey-color);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.text-info-card {
+  color: var(--white-color);
+  font-size: 14px;
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.text-voting {
+  color: var(--white-color);
+  font-size: 14px;
+  font-weight: 300;
+  margin-left: 30px;
+}
+
+.post{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--gradient-dark) 80%), 
+                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+}
+
+
+.header-post, .header-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.user-post {
+  display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.username-post {
+  font-size: 15px;
+  margin-left: 3px;
+}
+
+.time-post {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+  color: var(--grey-color);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.time-icone {
+  width: 14px;
+  margin-right: 3px;
+}
+
+.content-post-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid var(--text-border);
+}
+
+.content-post, .content-comment {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+.content-comment {
+  margin-top: 0;
+}
+
+.comment-like-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: -20px;
+}
+
+.comment-count {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.comment-icone {
+  width: 15px;
+}
+
+.count {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-color);
+  margin-left: 3px;
+}
+
+.line {
+  height: 1px;
+  width: 90%;
+  background-color: var(--border-card);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.input-new-comment {
+  background-color: var(--input-color);
+  border: 1px solid var(--border-card);
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.input-comment {
+  width: 90%;
+  background-color: var(--input-color);
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+}
+
+.btn-delete-comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-icone {
+  width: 15px;
+}
+
+.btn-delete-comment:hover {
+  transform: scale(1.1);
+}
+
+.btn-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+
+.btn-send:hover {
+  background-color: var(--text-border);
+  border-radius: 7px;
+}
+
+.send-icone {
+  width: 20px;
+}
+
+
+
+.comment-line {
+  display: none;
+}
+
+.comment-line.visible {
+  display: block;
+}
+
+.post.shadow {
+  border-radius: 20px;
+  border: double 1px transparent;
+  background-image: linear-gradient(180deg, var(--input-color), var(--primary-color) 80%), 
+                    linear-gradient(to bottom, var(--secondary-color), var(--input-color) 85%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px var(--shadow-card);
+}
+
+.new-post {
+  width: 90%;
+  background-color: var(--input-color);
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  border: 1px solid var(--second-dark);
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px -30px 30px var(--primary-color);
+  z-index: 9999; 
+  position: relative;
+  margin-left: 30px;
+}
+
+
+.new-post form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-new {
+  width: 99%;
+  background-color: var(--input-color);
+  height: 36px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  margin-left: 5px;
+}
+
+
+
+.bull {
+  font-size: 14px;
+  color: var(--green-color);
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bear {
+  font-size: 14px;
+  color: var(--red-color);
+  display: flex;
+  align-items: center;
+}
+
+.icone-up-down {
+  width: 14px;
+}
+
+.voting-info {
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.container-btn-voting {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.btn-bearish, .btn-bullish {
+  height: 35px;
+  width: 100px;
+}
+
+
+.vote_history {
+  width: 90%;
+  height: 150px;
+  overflow-y: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-top: 5px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-card);
+  margin-bottom: 10px;
+}
+
+.votes {
+  height: 40px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  background-color: var(--input-color);
+  border: 1px solid var(--border-card);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 14px;
+  letter-spacing: -0.6px;
+  width: 100px;
+  justify-content: start;
+}
+
+.date-voting {
+  color: var(--white-color);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.crypto-logo-votes {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.count-votes {
+  display: flex;
+  align-items: center;
+}
+
+.people-img {
+  width: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.positif-vote{
+  color: var(--green-color);
+  font-size: 15px;
+}
+
+.negatif-vote{
+  color: var(--red-color);
+  font-size: 15px;
+}
+
+.please-login {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.login-link { 
+  color: var(--white-color);
+}
+
+
+
+@media (max-width: 1100px) { 
+  .card-chart {
+    width: 100%;
+ }
+ .post-section {
+  width: 80%;
+  padding-top: 20px;
+}
+.new-post {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--input-color);
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  border: 1px solid var(--second-dark);
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px -30px 30px var(--primary-color);
+  z-index: 9999; 
+}
+
+
+#posts_container {
+  min-height: 200px;
+  max-height: 750px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+}
+
+
+@media (max-width: 900px) { 
+  .chart-section {
+    width: 90%;
+    padding-top: 20px;
+ }
+  .card-chart {
+    width: 100%;
+ }
+
+ .post-section {
+  width: 95%;
+  padding-top: 20px;
+}
+
+.info-crypto {
+  flex-direction: column;
+  height: auto;
+}
+
+.container-sentiment, .container-volume, .container-price {
+  width: 100%;
+  border-right: none;
+}
+
+.container-sentiment, .container-volume {
+  border-bottom: 1px solid var(--border-info);
+}
+
+}
+@media (max-width: 768px) { 
+.price-card {
+  display: none;
+}
+
+.info-card {
+  background-color: var(--input-color);
+  border: 1px solid var(--border-card);
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px var(--primary-color);
+  margin-right: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-card {
+  width: 70%;
+  display: flex;
+  margin-left: auto;
+}
+
+.choice {
+  height: 40px;
+  width: 40px;
+}
+
+#time-options {
+  left: -30px;
+ }
+
+ .container-sentiment {
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.voting-info {
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  height: auto;
+}
+
+.container-btn-voting {
+  margin-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+  width: 100%;
+}
+
+}
+

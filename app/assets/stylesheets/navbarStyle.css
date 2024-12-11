@@ -30,8 +30,7 @@ nav {
 .search-home-nav {
   border-radius: 10px;
   border: double 1px transparent;
-  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%),
-                    linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+  background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   cursor: pointer;
@@ -44,9 +43,14 @@ nav {
 .nav-result {
   position: absolute;
   top: 100%;
+  width: 100%;
   left: 0;
   z-index: 10;
   display: none;
+}
+
+.input-nav {
+  width: 100px;
 }
 
 .icon-search-nav {
@@ -57,27 +61,34 @@ nav {
 #profil-btn {
   display: flex;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0px 10px 60px var(--secondary-color);
   border: none;
   margin-right: 10px;
   margin-left: 10px;
   cursor: pointer;
+  height: 45px;
+  padding-left: 12px;
+  padding-right: 12px;
+  justify-content: center;
+  border-radius: 10px;
 }
 
 #profil {
   position: fixed;
   margin-right: 0px;
   top: 48.5%;
-  right: -373px;
+  right: -380px;
   transform: translateY(-48.5%);
   width: 373px;
   height: 97.5vh;
-  background-color: #000000;
-  border: 1px solid #191919;
+  background-color: var(--primary-color);
+  border: 1px solid var(--second-dark);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   transition: right 1s ease;
   padding-top: 20px;
+  z-index: 10000;
 }
 
 #profil.show {
@@ -98,15 +109,23 @@ nav {
 }
 
 .user-icone {
-  width: 40px;
+  width: 30px;
   pointer-events: none;
   border-radius: 100px;
 }
 
 .pseudouser {
-  color: var(--grey-color);
+  color: var(--white-color);
   pointer-events: none;
   font-size: 14px;
+  margin-right: auto;
+}
+
+.pseudouser-btn {
+  color: var(--white-color);
+  pointer-events: none;
+  font-size: 14px;
+  margin-right: auto;
 }
 
 .btn-menu {
@@ -120,6 +139,7 @@ nav {
   justify-content: center;
   cursor: pointer;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 .delog {
@@ -151,7 +171,8 @@ nav {
   align-items: center;
   width: 300px;
   margin-top: 10px;
-  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .icone-arrow {
@@ -166,31 +187,151 @@ nav {
   width: 19px;
 }
 
-.btn-menu:hover, .btn-notif:hover {
+.btn-menu:hover,
+.btn-notif:hover {
   border: 1px solid var(--secondary-color);
   box-shadow: 0px 10px 60px var(--secondary-color);
 }
 
+.container-btn-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-@media (max-width: 1000px) { 
+.btn-login-nav,
+.btn-new-nav {
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.btn-login-nav {
+  background-color: var(--secondary-color);
+}
+
+.btn-new-nav {
+  background-color: var(--input-color);
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.link-footer {
+  color: var(--white-color);
+}
+
+.notif {
+  background-color: var(--second-dark);
+  border-radius: 10px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 45px;
+  padding-top: 5px;
+  cursor: pointer;
+  border: 1px solid var(--text-border);
+  margin-top: 7px;
+}
+
+
+.title-notif {
+  color: var(--white-color);
+  margin-left: 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-notif {
+  margin-left: 15px;
+  font-size: 13px;
+}
+
+.date-notif {
+  margin-right: 5px;
+  font-size: 11px;
+  color: var(--grey-color);
+}
+
+
+
+
+
+@media (max-width: 1000px) {
   .navbar-search {
-    width: 300px;
+    width: 200px;
     position: relative;
-    margin-left: 10px;
+    margin-left: auto;
   }
 
   .search-home-nav {
     border-radius: 10px;
     border: double 1px transparent;
-    background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%),
-                      linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
+    background-image: linear-gradient(180deg, var(--input-color), var(--input-color) 80%), linear-gradient(to bottom, var(--second-dark), var(--input-color) 85%);
     background-origin: border-box;
     background-clip: content-box, border-box;
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 200px;
     height: 35px;
+  }
+
+  .pseudouser-btn {
+    display: none;
+  }
+
+  #profil-btn {
+    width: 50px;
   }
 }
 
+@media (max-width: 768px) { 
+  #profil {
+    height: 90vh;
+  }
+
+  .nav-result {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    z-index: 10;
+    display: none;
+  }
+
+  .search-home-nav {
+    width: 160px;
+    margin-right: auto;
+  }
+
+  .btn-notif {
+    height: 40px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: var(--input-color);
+    border: 1px solid var(--second-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+}

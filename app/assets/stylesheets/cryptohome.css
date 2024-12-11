@@ -6,6 +6,11 @@
   width: 900px;
 }
 
+.news-container{
+  width: 100%;
+  height: 400px;
+}
+
 .crypto-background {
   width: 100%;
 }
@@ -18,7 +23,7 @@
   margin-right: auto;
   flex-direction: column;
   align-items: center;
-  margin-top: -16%;
+  margin-top: -130px;
 }
 
 .search-section {
@@ -50,15 +55,22 @@
 
 #search-input {
   background-color: var(--input-color);
-  width: 100%;
   margin-left: 2%;
   color: var(--white-color);
   font-size: 1.6vh;
 }
 
+.input-home {
+   width: 100%
+}
+
 #search-results {
-  width: 100%;
   margin-top: 1%;
+  box-shadow: 0px 10px 100px var(--shadow-white);
+}
+
+.result {
+  width: 100%;
 }
 
 .result-crypto {
@@ -91,18 +103,72 @@
   box-shadow: 0px 10px 60px var(--secondary-color);
 }
 
+
 .result-crypto:last-of-type {
   margin-bottom: 10px;
 }
+
+.crypto-link {
+    width: 100%;
+    border-radius: 10px;
+    border: double 1px var(--border-color);
+    background-color: var(--input-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96%;
+    height: 50px;
+    margin-top: 6px;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.crypto-link:active {
+  transform: scale(0.98);
+}
+
+.crypto-link:hover {
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0px 10px 60px var(--secondary-color);
+}
+
+
+
+.crypto-link:nth-child(1) {
+  margin-top: 10px;
+}
+
+.crypto-link:last-of-type {
+  margin-bottom: 10px;
+}
+
 
 .name-symbol {
   display: flex;
   flex-direction: column-reverse;
   color: var(--grey-color);
+  text-decoration: none;
+  align-items: start;
 }
 
 .symbol {
   color: var(--white-color);
+}
+
+.symbol-new {
+  color: var(--white-color);
+  font-size: 14px;
+}
+
+.name-crypto-new, .price-new {
+  font-size: 16px;
+}
+
+.price-new {
+  margin-right: 3px;
 }
 
 
@@ -147,9 +213,9 @@
     width: 100%;
  }
 
-  .container-search {
+ .container-search {
   width: 100%;
-  margin-top: -20%;
+  margin-top: -130px;
  }
 
  .new-box {
@@ -164,9 +230,27 @@
   margin-right: auto;
  }
 
+ .news-container{
+  width: 90%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.icon-search {
+  width: 18px;
+}
 
+.search-section {
+  width: 90%;
+}
 
 }
 
+@media (max-width: 768px) { 
 
+.container-search {
+  width: 100%;
+  margin-top: -95px;
+ }
+}
