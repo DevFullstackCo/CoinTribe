@@ -122,7 +122,7 @@
         <div id="popup-price-alert" class="popup">
           <div class="popup-content gradient-box">
             <div class="header-popup">
-              <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
+              <%= image_tag "close.png", alt: "close", class: "close-img", id: "close-alert" %>
             </div>
             <p class="change-text">Set your price alert for <%= @crypto.name %></p>
               <div>
@@ -131,7 +131,6 @@
                   method: @alert_price.persisted? ? :patch : :post, 
                   local: true, 
                   html: { id: "alert_price-form" } do |f| %>
-                   <!-- uses PATCH for existing alerts (update) and POST for new alerts (create). -->
 
                   <%= f.label :target_price, "Target Price:" %>
                   <%= f.number_field :target_price, value: @alert_price.target_price || 0, step: 0.01, min: 0 %>
