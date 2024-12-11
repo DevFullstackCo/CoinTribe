@@ -18,7 +18,7 @@ function closePopUpOnSubmit(popupElement, formElement) {
 function initializePopUp() {
   const btnPriceAlert = document.getElementById("open-price-alert-popup");
   const popup = document.getElementById("popup-price-alert");
-  const closeBtn = document.getElementById("close");
+  const closeBtn = document.getElementById("close-alert");
   const form = document.getElementById("alert_price-form");
 
   if (btnPriceAlert) {
