@@ -80,35 +80,33 @@
 </div>
 
 
+<div class="body-flex">
+  <div class="admin-card">
+    <% if current_user %>
+      <h3>Admin Panel</h3>
+      <div class="profile-info gradient-box">
 
-<div>
-  <% if current_user %>
-    <h3>Admin Panel</h3>
-    <%= form_with url: search_profiles_path, method: :get, local: true do |form| %>
-      <div>
-        <%= form.label :query, "Search user (email or username):" %>
-        <%= form.text_field :query, placeholder: "Email or Username" %>
-        <%= form.submit "Search" %>
+      <%= form_with url: search_profiles_path, method: :get, local: true do |form| %>
+        <div class="change-text-admin">
+          <%= form.label :query, "Search user for delete :" %>
+          <%= form.text_field :query, placeholder: "Email or Username" %>
+          <%= form.submit "Search" %>
+        </div>
+      <% end %>
+    <% end %>
+  
+      <% if @searched_users.present? %>
+        <ul>
+          <% @searched_users.each do |user| %>
+            <li class="email-profil">
+              <%= user.email %>(<%= user.username %>)
+              <%= button_to "Delete user", delete_user_profile_path(user), method: :delete, data: { confirm: "Are your sure ?" }, class: "btn-delete-user" %>
+            </li>
+          <% end %>
+        </ul>
+      <% elsif defined?(@searched_users) %>
+        <p class="email-profil">Aucun utilisateur trouvé.</p>
       </div>
     <% end %>
-  <% end %>
-
-  <% if @searched_users.present? %>
-    <h4>Résultats de recherche :</h4>
-    <ul>
-      <% @searched_users.each do |user| %>
-        <li>
-          <%= user.username %> (<%= user.email %>)
-          <%= button_to "Supprimer", delete_user_profile_path(user), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
-
-          <%= form_with url: delete_user_profile_path(user), method: :delete do %>
-            <%= submit_tag "Delete user", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" } %>
-          <% end %>
-
-        </li>
-      <% end %>
-    </ul>
-  <% elsif defined?(@searched_users) %>
-    <p>Aucun utilisateur trouvé.</p>
-  <% end %>
+  </div>
 </div>

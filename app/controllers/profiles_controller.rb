@@ -32,24 +32,21 @@
         @searched_users = User.where("email LIKE ? OR username LIKE ?", query, query)
       else
         @searched_users = []
-        flash[:alert] = "Veuillez entrer une valeur pour rechercher."
+        flash[:alert] = "Please enter a value to search."
       end
       render :show 
     end
   
 
     def delete_user
-      
-        user = User.find(params[:id]) # Récupère l'utilisateur à supprimer via l'ID
   
+        user = User.find(params[:id])
         if user.destroy
-          flash[:success] = "Utilisateur supprimé avec succès."
+          flash[:success] = "User successfully deleted."
         else
-          flash[:error] = "Une erreur s'est produite lors de la suppression."
+          flash[:error] = "An error occurred during deletion."
         end
-
-  
-      redirect_to profile_path # Redirige vers la page de profil après la suppression
+      redirect_to profile_path
     end
 
     private
