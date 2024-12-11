@@ -29,7 +29,7 @@
 
       if params[:query].present?
         query = "%#{params[:query]}%"
-        @searched_users = User.where("email LIKE ? OR username LIKE ?", query, query)
+        @searched_users = User.where("email ILIKE ? OR username ILIKE ?", query, query)
       else
         @searched_users = []
         flash[:alert] = "Please enter a value to search."
