@@ -62,14 +62,25 @@
           </div>
         </div>
 
-        <!-- Button to open Favorites pop-up -->
-        <% if user_signed_in? %>
-       <% if @favorite.is_favorite %>
-       <%= image_tag "favorites-true.png", alt: "In Favorites", class: "favorites-img", id: "open-favorite-popup" %>
-       <% else %>
-       <%= image_tag "favorites-false.png", alt: "Add to Favorites", class: "favorites-img", id: "open-favorite-popup" %>
-       <% end %>
 
+       
+        <!-- Button to open Favorites pop-up -->
+       <% if user_signed_in? %>
+         <% if @favorite.is_favorite %>
+           <%= image_tag "favorites-true.png", alt: "In Favorites", class: "favorites-img", id: "open-favorite-popup" %>
+         <% else %>
+           <%= image_tag "favorites-false.png", alt: "Add to Favorites", class: "favorites-img", id: "open-favorite-popup" %>
+         <% end %>
+      <% end %>
+
+
+            <!-- Button to open Price Alert pop-up -->
+        <% if user_signed_in? %>
+          <% if @alert_price.id %>
+            <%= image_tag "alert-red.png", alt: "In Favorites", class: "alert-img", id: "open-price-alert-popup" %>
+          <% else %>
+            <%= image_tag "alert.png", alt: "In Favorites", class: "alert-img", id: "open-price-alert-popup" %>
+          <% end %>
         <% end %>
         <!-- Favorites Pop-up -->
         <div id="popup-favorite" class="popup">
@@ -112,15 +123,6 @@
           </div>
         </div>
 
-        <!-- Button to open Price Alert pop-up -->
-        <% if user_signed_in? %>
-          <% if current_user.alert_prices.exists?(crypto: @crypto) %>
-            <%= image_tag "alert-red.png", alt: "In Favorites", class: "alert-img", id: "open-price-alert-popup" %>
-          <% else %>
-            <%= image_tag "alert.png", alt: "In Favorites", class: "alert-img", id: "open-price-alert-popup" %>
-          <% end %>
-        <% end %>
-
         <!-- Price Alert Pop-up -->
          <% if user_signed_in? %>
         <div id="popup-price-alert" class="popup">
@@ -142,10 +144,9 @@
                 <%= f.submit "Save", class: "btn-save" %>
               </div>
               <% end %>
-             
-
-
- 
+              <% if @alert_price.id.present? %>
+                <%= button_to 'Remove Price Alert', crypto_alert_price_path(@crypto, @alert_price), method: :delete, class: 'btn-remove-alert', data: { confirm: 'Are you sure you want to remove this price alert?' } %>
+              <% end %>
             </div>
         </div>
            <% end %>
