@@ -62,7 +62,12 @@
 
         <!-- Button to open Favorites pop-up -->
         <% if user_signed_in? %>
-          <button id="open-favorite-popup" class="btn-favorite">Favorites</button>
+       <% if @favorite&.is_favorite %>
+       <%= image_tag "favorites-true.png", alt: "In Favorites", class: "favorites-img", id: "open-favorite-popup" %>
+       <% else %>
+       <%= image_tag "favorites-false.png", alt: "Add to Favorites", class: "favorites-img", id: "open-favorite-popup" %>
+       <% end %>
+
         <% end %>
         <!-- Pop-up -->
         <div id="popup-favorite" class="popup">
@@ -77,18 +82,33 @@
                   method: @favorite.persisted? ? :patch : :post, 
                   local: true, 
                   html: { id: "favorite-form" } do |f| %>
-                  <%= f.label :is_favorite, "Mark as favorite" %>
-                  <%= f.hidden_field :is_favorite, value: false %> <!-- Ensures false is sent if unchecked -->
-                  <%= f.check_box :is_favorite, { checked: @favorite&.is_favorite || false }, true, false %> <!-- Checked sends true -->
               </div>
               <div>
-                <%= f.label :quantity, "Quantity:" %>
-                <%= f.number_field :quantity, value: @favorite&.quantity || 0, min: 0 %>
+                <p>Quantity :</p>
+                <%= f.number_field :quantity, class: "input-quantity", value: @favorite&.quantity || 0, min: 0 %>
               </div>
               <div>
-                <%= f.submit "Save", class: "btn-save" %>
+                <% if @favorite&.is_favorite %>
+                <%= f.submit "Update Quantity", class: "btn-save" %>
+                 <% else %>
+                   <%= f.submit "Add favorite and quantity", class: "btn-save" %>
+                   <% end %>
               </div>
               <% end %>
+
+<% if user_signed_in? %>
+  <% if @favorite&.is_favorite %>
+    <%= button_to 'Remove from Favorites', crypto_favorite_path(@crypto, @favorite), 
+                  method: :delete, 
+                  class: 'btn-remove-favorite', 
+                  data: { confirm: 'Are you sure you want to remove this crypto from your favorites?' } %>
+  <% else %>
+    <%= image_tag "favorites-true.png", alt: "favorites", class: "favorites-img", id: "open-favorite-popup" %>
+  <% end %>
+<% end %>
+
+
+
           </div>
         </div>
       </div>

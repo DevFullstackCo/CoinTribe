@@ -576,6 +576,17 @@
   color: var(--white-color);
 }
 
+.favorites-img {
+  width: 19px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.input-quantity {
+  background-color: var(--input-color);
+  height: 30px;
+  width: 90%;
+}
 
 
 @media (max-width: 1100px) { 
