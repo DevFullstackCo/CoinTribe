@@ -1,0 +1,13 @@
+<%= turbo_stream.replace "notifications_list" do %>
+  <div id="notifications_list">
+    <% current_user.notifications.reverse.each do |notif| %>
+      <div class="notif <%= 'read' if notif.is_read? %>">
+        <span class="title-notif">
+          <span><%= notif.title %></span>
+          <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
+        </span>
+        <span class="content-notif"><%= notif.content %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
