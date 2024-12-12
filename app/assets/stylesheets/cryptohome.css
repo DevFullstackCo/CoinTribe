@@ -222,31 +222,31 @@
 
   .crypto-background {
     width: 100%;
- }
+  }
 
  .container-search {
   width: 100%;
   margin-top: -130px;
- }
+  }
 
  .new-box {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
- }
+  }
 
  .new-container {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
- }
+  }
 
  .news-container{
   width: 90%;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
-}
+ }
 
 .icon-search {
   width: 18px;
@@ -254,7 +254,7 @@
 
 .search-section {
   width: 90%;
-}
+ }
 
 }
 

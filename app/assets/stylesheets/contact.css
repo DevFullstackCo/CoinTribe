@@ -7,7 +7,7 @@
 
 .input-contact {
     background-color: var(--input-color);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     height: 30px;
     width: 40%;
     border-radius: 10px;
@@ -15,11 +15,12 @@
     padding-left: 10px;
     font-size: 16px;
     margin-bottom: 15px;
+    box-shadow: 0px 10px 60px var(--shadow-color);
 }
 
 .input-textarea {
     background-color: var(--input-color);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     height: 60px;
     width: 40%;
     border-radius: 10px;
@@ -27,6 +28,7 @@
     padding-left: 10px;
     font-size: 16px;
     margin-bottom: 15px;
+    box-shadow: 0px 10px 60px var(--shadow-color);
 }
 
 .btn-save-contact {
