@@ -13,31 +13,15 @@
   
       <div class="header-profil">
         <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil", id: "image-user" %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil" %>
         <% else %>
-          <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil", id: "image-user" %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil" %>
         <% end %>
         <p><%= @user.username %></p>
         <%= image_tag "edit-icon.png", alt: "edit username", class: "edit-username-icon", id: "open-username-popup" %>
       </div>
 
-      <div id="popup" class="popup hidden">
-        <div class="popup-content gradient-box">
-          <div class="header-popup">
-            <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
-          </div>
-          <p class="change-text">Change your avatar</p>
-          <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil-popup" %>
-          <% else %>
-            <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil-popup" %>
-          <% end %>
-          <%= form_tag profile_avatars_path(@user), multipart: true do %>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "Upload" %>
-          <% end %>
-        </div>
-      </div>
+      
 
       <div id="username-popup" class="popup hidden">
         <div class="popup-content gradient-box">
@@ -54,7 +38,7 @@
               </div>
             </div>
             <div class="actions">
-              <%= f.submit "Save", class: "btn-save-username" %>
+              <%= f.submit "Save", class: "btn-save" %>
             </div>
           <% end %>
         </div>
@@ -89,8 +73,11 @@
       <%= form_with url: search_profiles_path, method: :get, local: true, data: { turbo_frame: "search_results" } do |form| %>
         <div class="change-text-admin">
           <%= form.label :query, "Search user for delete :" %>
-          <%= form.text_field :query, placeholder: "Email or Username" %>
-          <%= form.submit "Search" %>
+          </br>
+          </br>
+          <%= form.text_field :query, placeholder: "Email or Username", class: "input-contact" %>
+            </br>
+          <%= form.submit "Search", class: "btn-save" %>
         </div>
       <% end %>
       <turbo-frame id="search_results">
@@ -99,7 +86,9 @@
           <% @searched_users.each do |user| %>
             <li class="email-profil">
               <%= user.email %>(<%= user.username %>)
+             <% if user.email != current_user.email%>
               <%= button_to "Delete user", delete_user_profile_path(user), method: :delete, data: { confirm: "Are your sure ?" }, class: "btn-delete-user" %>
+              <% end %>
             </li>
           <% end %>
         </ul>
