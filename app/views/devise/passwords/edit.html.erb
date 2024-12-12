@@ -1,25 +1,37 @@
-<h2>Change your password</h2>
+<%= render 'shared/navbar' %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="reset-password-container">
+  <h2>Change your password</h2>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="field">
+      <%= f.label :password, "New password" %><br />
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input-contact" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-contact" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Change my password", class: "btn-save" %>
+    </div>
+  <% end %>
+
+  <p class="link-to-sign">New here?
+    <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Create an account", new_registration_path(resource_name), class: "link-new" %><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+  </p>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <p class="link-to-sign">Already have an account?
+    <%= link_to "Sign In", new_session_path(resource_name), class: "link-new" %>
+  </p>
+</div>

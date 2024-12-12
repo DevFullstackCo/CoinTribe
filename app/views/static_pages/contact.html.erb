@@ -12,7 +12,7 @@
 </br>
 <%= form_with url: '/contact/send_message', method: :post, local: true, html: { novalidate: true } do |f| %>
   <div>
-    <% if !user_signed_in? %>s
+    <% if !user_signed_in? %>
       <%= label_tag :email, "Email" %>
       </br>
       <%= text_field_tag :guest_email, nil, required: true, class: "input-contact" %>
