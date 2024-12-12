@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
 
   private
 
-  def filter_profanity
-    self.content = $profanity_filter.sanitize(content)
-  end
+    def filter_profanity
+      self.content = $profanity_filter.sanitize(content)
+    end
 end

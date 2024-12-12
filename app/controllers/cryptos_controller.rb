@@ -1,5 +1,4 @@
 class CryptosController < ApplicationController
-  
   def index
     @user = current_user
     @new_cryptos = Crypto.order(created_at: :desc).limit(5)
@@ -26,7 +25,5 @@ class CryptosController < ApplicationController
                                         .group("DATE(created_at)", "is_bullished")
                                       .count
     @alert_price = AlertPrice.find_by(user: current_user, crypto: @crypto) || AlertPrice.new(crypto: @crypto, user: current_user) if user_signed_in?
-    
   end
-  
 end

@@ -1,68 +1,68 @@
 <div class="body-flex">
-  <div class="left-login">
-    <%= image_tag "backgroundLogin.png", alt: "background", class: "login-img" %>
-  </div>
-  <div class="right-login">
-    <%= button_to root_path, method: :get, class: 'btn-home act' do %>
-      <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
-      Back to Home
-    <% end %>
-    <div class="container-input">
-      <h2>Sign Up</h2>
-      <p class="text-title">Join us and unlock the power of crypto insights.</p>
-
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { novalidate: true }) do |f| %>
-        <div class="container-label">
-          <p class="label">Email</p>
-          <div class="field input-container">
-            <%= image_tag "user.png", alt: "user", class: "icone-input" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-        </div>
-
-        <div class="container-label">
-          <p class="label">Password</p>
-          <div class="field input-container">
-            <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
-            <%= f.password_field :password, autocomplete: "new-password" %>
-          </div>
-        </div>
-
-        <div class="container-label">
-          <p class="label">Confirm Password</p>
-          <div class="field input-container">
-            <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
-        </div>
-
-        <div class="container-label">
-          <div class="field checkbox-container">
-            <%= f.check_box :accepted_cgu, class: "checkbox" %>
-            <%= f.label :accepted_cgu do %>
-              I accept the <%= link_to 'Terms of Service', cgu_path, class: "link" %>
-            <% end %>
-          </div>
-          <div class="field checkbox-container">
-            <%= f.check_box :accepted_privacy_policy, class: "checkbox" %>
-            <%= f.label :accepted_privacy_policy do %>
-              I accept the <%= link_to 'Privacy Policy', privacy_policy_path, class: "link" %>
-            <% end %>
-          </div>
-        </div>
-
-        <%= button_tag type: "submit", class: "btn-login" do %>
-          <p class="label-btn">Sign Up</p>
-          <%= image_tag "arrowright.png", alt: "right", class: "arrow-btn-icon" %>
-        <% end %>
-      <% end %>
-
-      <p class="link-to-sign">Already have an account?
-        <%= link_to "Sign In", new_session_path(resource_name), class: "link-new" %>
-      </p>
+    <div class="left-login">
+        <%= image_tag "backgroundLogin.png", alt: "background", class: "login-img" %>
     </div>
-  </div>
+    <div class="right-login">
+        <%= button_to root_path, method: :get, class: 'btn-home act' do %>
+        <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
+        Back to Home
+        <% end %>
+        <div class="container-input">
+            <h2>Sign Up</h2>
+            <p class="text-title">Join us and unlock the power of crypto insights.</p>
+
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { novalidate: true }) do |f| %>
+            <div class="container-label">
+                <p class="label">Email</p>
+                <div class="field input-container">
+                    <%= image_tag "user.png", alt: "user", class: "icone-input" %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </div>
+            </div>
+
+            <div class="container-label">
+                <p class="label">Password</p>
+                <div class="field input-container">
+                    <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                </div>
+            </div>
+
+            <div class="container-label">
+                <p class="label">Confirm Password</p>
+                <div class="field input-container">
+                    <%= image_tag "lock.png", alt: "lock", class: "icone-input" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                </div>
+            </div>
+
+            <div class="container-label">
+                <div class="field checkbox-container">
+                    <%= f.check_box :accepted_cgu, class: "checkbox" %>
+                    <%= f.label :accepted_cgu do %>
+                    I accept the <%= link_to 'Terms of Service', cgu_path, class: "link" %>
+                    <% end %>
+                </div>
+                <div class="field checkbox-container">
+                    <%= f.check_box :accepted_privacy_policy, class: "checkbox" %>
+                    <%= f.label :accepted_privacy_policy do %>
+                    I accept the <%= link_to 'Privacy Policy', privacy_policy_path, class: "link" %>
+                    <% end %>
+                </div>
+            </div>
+
+            <%= button_tag type: "submit", class: "btn-login" do %>
+            <p class="label-btn">Sign Up</p>
+            <%= image_tag "arrowright.png", alt: "right", class: "arrow-btn-icon" %>
+            <% end %>
+            <% end %>
+
+            <p class="link-to-sign">Already have an account?
+                <%= link_to "Sign In", new_session_path(resource_name), class: "link-new" %>
+            </p>
+        </div>
+    </div>
 </div>

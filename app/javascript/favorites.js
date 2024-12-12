@@ -1,9 +1,9 @@
 function showPopUp(popupElement) {
-  popupElement.style.display="flex";
+  popupElement.style.display = "flex";
 }
 
 function hidePopUp(popupElement) {
-  popupElement.style.display="none";
+  popupElement.style.display = "none";
 }
 
 function closePopUpOnSubmit(popupElement, formElement) {
@@ -22,13 +22,13 @@ function initializePopUp() {
   const form = document.getElementById("favorite-form");
 
   if (btnFavorites) {
-    btnFavorites.addEventListener("click", function() {
+    btnFavorites.addEventListener("click", function () {
       showPopUp(popup);
     });
   }
 
   if (closeBtn) {
-    closeBtn.addEventListener("click", function() {
+    closeBtn.addEventListener("click", function () {
       hidePopUp(popup);
     });
   }
@@ -37,5 +37,4 @@ function initializePopUp() {
 }
 
 document.addEventListener("DOMContentLoaded", initializePopUp);
-
 

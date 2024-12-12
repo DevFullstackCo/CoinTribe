@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [ :create, :destroy ]
 
   def create
     @post = Post.find(params[:post_id])
@@ -23,14 +23,11 @@ class CommentsController < ApplicationController
     @crypto = @comment.post.crypto
     @comment.destroy
     redirect_to crypto_path(@crypto), notice: "Your comment has been successfully deleted"
-
   end
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:content)
-  end
-
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
 end
-

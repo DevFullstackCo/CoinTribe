@@ -301,7 +301,7 @@ nav {
   }
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   #profil {
     height: 90vh;
   }
@@ -333,5 +333,4 @@ nav {
     cursor: pointer;
     margin-left: 10px;
   }
-  
 }

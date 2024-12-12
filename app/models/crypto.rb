@@ -8,7 +8,7 @@ class Crypto < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_name_or_symbol,
-    against: [:name, :symbol],
+    against: [ :name, :symbol ],
     using: {
       tsearch: { prefix: true }
     }
@@ -29,6 +29,4 @@ class Crypto < ApplicationRecord
     return 0 if total_votes.zero?
     100 -  bullish_percentage
   end
-
-
 end

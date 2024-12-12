@@ -2,12 +2,12 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
-gem 'language_filter'
+gem "language_filter"
 gem "devise"
-gem 'mailjet'
-gem 'http'
-gem 'dotenv-rails'
-gem 'whenever'
+gem "mailjet"
+gem "http"
+gem "dotenv-rails"
+gem "whenever"
 gem "pg_search"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"

@@ -1,13 +1,13 @@
   class ProfilesController < ApplicationController
     before_action :authenticate_user!
-  
+
     def show
       @user = current_user
     end
-  
+
     def update
       @user = current_user
-    
+
       new_username = params[:user][:username]
 
       if User.exists?(username: new_username) && new_username != @user.username
@@ -23,7 +23,7 @@
         render :show
       end
     end
-    
+
     def search
       @user = current_user
 
@@ -40,10 +40,9 @@
         format.html { render :show }
       end
     end
-  
+
 
     def delete_user
-      
       user = User.find(params[:id])
 
       if current_user.is_admin == true
@@ -60,8 +59,8 @@
     end
 
     private
-  
-    def user_params
-      params.require(:user).permit(:username)
-    end
+
+      def user_params
+        params.require(:user).permit(:username)
+      end
   end

@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
-  
+
 
   def create
     @crypto = Crypto.find(params[:crypto_id])
@@ -56,7 +56,7 @@ class FavoritesController < ApplicationController
 
   private
 
-  def favorites_params
-    params.require(:favorite).permit(:quantity)
-  end
+    def favorites_params
+      params.require(:favorite).permit(:quantity)
+    end
 end

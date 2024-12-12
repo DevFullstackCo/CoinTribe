@@ -1,20 +1,20 @@
 namespace :crypto do
   desc "Fetch crypto prices Binance to BDD Crypto"
   task fetch: :environment do
-    require 'http'
+    require "http"
 
     def fetch_crypto_data
-      base_url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
-      api_key = ENV['COINMARKETCAP_API_KEY']
+      base_url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
+      api_key = ENV["COINMARKETCAP_API_KEY"]
 
       parameters = {
-        'convert' => 'USD',
-        'limit' => 10,
+        "convert" => "USD",
+        "limit" => 10
       }
 
       headers = {
-        'X-CMC_PRO_API_KEY' => api_key,
-        'Accept' => 'application/json',
+        "X-CMC_PRO_API_KEY" => api_key,
+        "Accept" => "application/json"
       }
 
       begin
@@ -22,30 +22,30 @@ namespace :crypto do
 
         if response.status.success?
           data = JSON.parse(response.body.to_s)
-          if data['status'] && data['status']['error_code'] == 0 && data['data']
-            return data['data'].map do |crypto|
+          if data["status"] && data["status"]["error_code"] == 0 && data["data"]
+            data["data"].map do |crypto|
               {
-                name: crypto['name'],
-                symbol: crypto['symbol'],
-                price: crypto['quote']['USD']['price'],
-                volume_24h: crypto['quote']['USD']['volume_24h'],
-                variation_24h: crypto['quote']['USD']['percent_change_24h'],
+                name: crypto["name"],
+                symbol: crypto["symbol"],
+                price: crypto["quote"]["USD"]["price"],
+                volume_24h: crypto["quote"]["USD"]["volume_24h"],
+                variation_24h: crypto["quote"]["USD"]["percent_change_24h"]
               }
             end
           else
             puts "API returned no valid data or there was an error with the request."
-            return []
+            []
           end
         else
           puts "API request failed with status #{response.status}"
-          return []
+          []
         end
       rescue SocketError => e
         puts "Network error: #{e.message}"
-        return []
+        []
       rescue StandardError => e
         puts "An error occurred: #{e.message}"
-        return []
+        []
       end
     end
 
@@ -69,7 +69,7 @@ namespace :crypto do
               is_read?: false
             )
           end
-        
+
           if alert.price_down && price_crypto <= alert.price_down && alert.price_down > 0
             Notification.create(
               user: alert.user,
@@ -79,7 +79,6 @@ namespace :crypto do
             )
           end
         end
-        
 
         crypto = Crypto.find_or_initialize_by(symbol: symbol_crypto.upcase)
 

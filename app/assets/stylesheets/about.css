@@ -35,8 +35,8 @@
     margin: 0 auto;
     padding: 20px;
     color: var(--grey-color);
-    font-family: "Space Grotesk", serif; 
-    line-height: 1.8; 
+    font-family: "Space Grotesk", serif;
+    line-height: 1.8;
 }
 
 .about-container h1 {
@@ -44,14 +44,14 @@
     color: var(--secondary-color);
     text-align: center;
     margin-bottom: 20px;
-    letter-spacing: -3px; 
+    letter-spacing: -3px;
     text-shadow: 0px 2px 10px rgba(98, 59, 211, 0.5);
     font-family: "Space Grotesk", serif;
     font-weight: 700;
 }
 
 .about-container h2 {
-    font-family: "Space Grotesk", serif; 
+    font-family: "Space Grotesk", serif;
     font-optical-sizing: auto;
     font-weight: 450;
     font-style: normal;
@@ -61,13 +61,12 @@
     color: var(--white-color);
 }
 
-
 .about-container p {
     font-size: 1.2rem;
-    line-height: 1.8; 
+    line-height: 1.8;
     margin-bottom: 20px;
     color: var(--grey-color);
-    letter-spacing: 0px; 
+    letter-spacing: 0px;
 }
 
 .about-container ul {
@@ -80,7 +79,7 @@
     font-size: 1.2rem;
     margin-bottom: 10px;
     text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0px; 
+    letter-spacing: 0px;
 }
 
 .about-container h2:last-child {

@@ -1,5 +1,5 @@
 class AlertPricesController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [ :create ]
 
 
   def create
@@ -50,5 +50,4 @@ private
   def alert_prices_params
     params.require(:alert_price).permit(:price_up, :price_down)
   end
-
 end

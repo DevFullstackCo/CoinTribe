@@ -9,5 +9,4 @@ class Favorite < ApplicationRecord
   def total_price
     quantity * crypto.price
   end
-
 end

@@ -21,13 +21,12 @@ class VotesController < ApplicationController
 
   private
 
-  def save_vote_history(vote)
-    VotesHistory.create(
-      crypto_id: vote.crypto_id,
-      user_id: vote.user_id,
-      is_bullished: vote.is_bullished,
-      voted_at: vote.created_at
-    )
-  end
-
+    def save_vote_history(vote)
+      VotesHistory.create(
+        crypto_id: vote.crypto_id,
+        user_id: vote.user_id,
+        is_bullished: vote.is_bullished,
+        voted_at: vote.created_at
+      )
+    end
 end
