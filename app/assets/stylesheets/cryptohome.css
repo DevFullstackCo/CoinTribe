@@ -48,6 +48,10 @@
   height: 35px;
 }
 
+.no-results-message {
+  padding-left: 20px;
+}
+
 .icon-search {
   width: 3%;
   margin-left: 3%;
