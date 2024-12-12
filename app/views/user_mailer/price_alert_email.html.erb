@@ -1,0 +1,9 @@
+<h1>Hello <%= @user.username %>,</h1>
+
+<p>Your alert for the cryptocurrency <strong><%= @crypto.name %></strong> has been triggered:</p>
+
+<p><strong>Price reached:</strong> <%= @price_crypto %> USD</p>
+
+<p>See you soon on <%= link_to "Cointribe.com", root_url %>!</p>
+
+<p>The CoinTribe Team</p>

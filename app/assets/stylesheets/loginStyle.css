@@ -15,7 +15,8 @@
 .right-login {
   padding-top: 40px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-img {
@@ -52,14 +53,19 @@
   width: 30px;
 }
 
+.container-right-login {
+  height: 900px;
+  width: 70%;
+}
+
 .container-input {
   display: flex;
-  width: 65%;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
   margin-bottom: auto;
+  height: 200px;
 }
 
 .text-title {
@@ -149,7 +155,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .label-btn {
@@ -183,7 +188,7 @@
 .link-to-sign {
   color: var(--grey-color);
   text-align: center;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .link-to-cancel {

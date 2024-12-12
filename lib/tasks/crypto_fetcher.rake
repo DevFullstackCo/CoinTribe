@@ -3,13 +3,15 @@ namespace :crypto do
   task fetch: :environment do
     require 'http'
 
-    def fetch_crypto_data
-      base_url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+    def fetch_crypto_data(symbols)
+      base_url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
       api_key = ENV['COINMARKETCAP_API_KEY']
+
+      symbols_param = symbols.join(',')
 
       parameters = {
         'convert' => 'USD',
-        'limit' => 10,
+        'symbol' => symbols_param, 
       }
 
       headers = {
@@ -23,7 +25,7 @@ namespace :crypto do
         if response.status.success?
           data = JSON.parse(response.body.to_s)
           if data['status'] && data['status']['error_code'] == 0 && data['data']
-            return data['data'].map do |crypto|
+            return data['data'].values.map do |crypto|
               {
                 name: crypto['name'],
                 symbol: crypto['symbol'],
@@ -33,7 +35,7 @@ namespace :crypto do
               }
             end
           else
-            puts "API returned no valid data or there was an error with the request."
+            puts "No valid data returned for the requested symbols."
             return []
           end
         else
@@ -49,7 +51,8 @@ namespace :crypto do
       end
     end
 
-    cryptos = fetch_crypto_data
+    crypto_list = ['BTC', 'ETH', 'XRP', 'ADA', 'BNB', 'DOGE', 'SOL', 'TRX', 'USDC']
+    cryptos = fetch_crypto_data(crypto_list)
 
     if cryptos.empty?
       puts "No crypto data available to update."
@@ -68,8 +71,9 @@ namespace :crypto do
               content: "The price of #{crypto_data[:name]} has risen to $#{price_crypto}.",
               is_read?: false
             )
+            UserMailer.price_alert_email(alert, price_crypto).deliver_now
           end
-        
+
           if alert.price_down && price_crypto <= alert.price_down && alert.price_down > 0
             Notification.create(
               user: alert.user,
@@ -77,9 +81,9 @@ namespace :crypto do
               content: "The price of #{crypto_data[:name]} has fallen to $#{price_crypto}.",
               is_read?: false
             )
+            UserMailer.price_alert_email(alert, price_crypto).deliver_now
           end
         end
-        
 
         crypto = Crypto.find_or_initialize_by(symbol: symbol_crypto.upcase)
 

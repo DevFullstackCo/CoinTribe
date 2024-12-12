@@ -52,7 +52,7 @@
   }
   
   .popup-content {
-    height: 300px;
+    height: auto;
     width: 30%;
     display: flex;
     align-items: center;
@@ -212,8 +212,7 @@
     width: 20px;
     height: 20px;
   }
-  
-  /* Styles for the Save button inside the pop-up */
+
   .btn-save-username {
     margin-top: 15px; 
     width: 100%;
@@ -237,6 +236,40 @@
   .btn-save-username:active {
     transform: scale(0.98);
   }
+
+  .btn-delete-user {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    height: 25px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    margin-left: 10px;
+  }
+  
+  .btn-delete-user:hover {
+    box-shadow: 0px 10px 50px var(--red-color);
+  }
+
+  .admin-card {
+    width: 100%;
+    padding-top: 20px;
+    max-height: 700px;
+  }
+
+  .change-text-admin {
+    color: var(--white-color);
+    font-size: 23px;
+    letter-spacing: -1px;
+    padding-top: 20px;
+    margin-left: 30px;
+  }
+
+
   
   /* Adjustments for small screens */
   @media (max-width: 1100px) {
@@ -268,36 +301,24 @@
       height: 300px;
       width: 80%;
     }
+
+    .profile-actions {
+      width: 140px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .btn-edit-profile {
+      background-color: var(--secondary-color);
+      border: none;
+      color: var(--white-color);
+      height: 30px;
+      width: 140px;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
   }
 
-  .btn-delete-user {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-    background-color: var(--red-color);
-    color: var(--white-color);
-    height: 25px;
-    border-radius: 10px;
-    font-size: 13px;
-    cursor: pointer;
-  }
   
-  .btn-delete-user:hover {
-    box-shadow: 0px 10px 50px var(--red-color);
-  }
-
-  .admin-card {
-    width: 100%;
-    padding-top: 20px;
-    max-height: 700px;
-  }
-
-  .change-text-admin {
-    color: var(--white-color);
-    font-size: 23px;
-    letter-spacing: -1px;
-    padding-top: 20px;
-    margin-left: 30px;
-  }
-
   

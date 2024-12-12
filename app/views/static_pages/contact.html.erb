@@ -1,11 +1,21 @@
-<h1>Contact</h1>
+<%= render 'shared/navbar' %>
+<div class="home-static">
+    <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
+      <%= image_tag 'arrowleft.png', alt: 'arrow-left', class: 'icone' %>
+      Back to Home
+    <% end %>
+</div>
 
+<div class="container-contact">
 
+<h2>Contact</h2>
+</br>
 <%= form_with url: '/contact/send_message', method: :post, local: true, html: { novalidate: true } do |f| %>
   <div>
-    <% if !user_signed_in? %>
+    <% if !user_signed_in? %>s
       <%= label_tag :email, "Email" %>
-      <%= text_field_tag :guest_email, nil, required: true, class: "" %>
+      </br>
+      <%= text_field_tag :guest_email, nil, required: true, class: "input-contact" %>
     <% else %>
       <%= current_user.email %>
     <% end %>
@@ -13,17 +23,18 @@
   
   <div>
     <%= label_tag :subject, "Subject" %>
-    <%= text_field_tag :subject, nil, required: true, class: "" %>
+    </br>
+    <%= text_field_tag :subject, nil, required: true, class: "input-contact" %>
   </div>
 
   <div>
     <%= label_tag :message, "Message" %>
-    <%= text_area_tag :message, nil, required: true, rows: 5, class: "" %>
+    </br>
+    <%= text_area_tag :message, nil, required: true, rows: 5, class: "input-textarea" %>
   </div>
 
   <div>
-    <%= submit_tag "Send", class: "" %>
+    <%= submit_tag "Send", class: "btn-save-contact" %>
   </div>
 <% end %>
-
-<%= link_to "Return", root_path, class: "" %>
+</div>
