@@ -8,4 +8,5 @@ class NotificationsController < ApplicationController
       format.html { redirect_to request.referer || root_path, notice: 'Notifications marquées comme lues.' }
     end
   end
+  
 end

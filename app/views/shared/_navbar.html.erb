@@ -20,7 +20,11 @@
   
   <% if user_signed_in? %>
     <%= button_to mark_as_read_notifications_path, method: :post, class: "btn-notif", data: { turbo: true } do %>
-      <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+      <% if current_user.notifications.where(is_read?: false).exists? %>
+        <%= image_tag "new-notif.png", alt: "notif", class: "icone-notif" %>
+      <% else %>
+        <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+      <% end %>
     <% end %>
       
     <div class="notif-popup">
