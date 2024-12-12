@@ -105,9 +105,9 @@
                   <%= image_tag(favorite.crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
                   </div>
                   <div class="fav-info">
-                <span class="symbol" id="crypto-symbol"><%= favorite.crypto.symbol %></span>
+                <span class="fav-symbol"><%= favorite.crypto.symbol %></span>
                  </br>
-                   $<%= favorite.crypto.price.round(2) %>
+                  <span class="info-text-favorite">$<%= favorite.crypto.price.round(2) %></span>
                     <% variation = favorite.crypto.variation_24h %>
                     <% if variation >= 0 %>
                       <span class="positif">+<%= number_to_human(variation) %>%</span>
@@ -119,7 +119,7 @@
               <div class="fav-right">
                 <span><%= favorite.quantity %></span>
                
-                <span><%= number_to_currency(favorite.quantity * favorite.crypto.price) %></span>
+                <span class="info-text-favorite"><%= number_to_currency(favorite.quantity * favorite.crypto.price) %></span>
               </div>
             </div>
           <% end %>
