@@ -13,31 +13,15 @@
   
       <div class="header-profil">
         <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil", id: "image-user" %>
+          <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil" %>
         <% else %>
-          <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil", id: "image-user" %>
+          <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil" %>
         <% end %>
         <p><%= @user.username %></p>
         <%= image_tag "edit-icon.png", alt: "edit username", class: "edit-username-icon", id: "open-username-popup" %>
       </div>
 
-      <div id="popup" class="popup hidden">
-        <div class="popup-content gradient-box">
-          <div class="header-popup">
-            <%= image_tag "close.png", alt: "close", class: "close-img", id: "close" %>
-          </div>
-          <p class="change-text">Change your avatar</p>
-          <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil-popup" %>
-          <% else %>
-            <%= image_tag "memoji.png", alt: "user", class: "user-avatar-profil-popup" %>
-          <% end %>
-          <%= form_tag profile_avatars_path(@user), multipart: true do %>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "Upload" %>
-          <% end %>
-        </div>
-      </div>
+      
 
       <div id="username-popup" class="popup hidden">
         <div class="popup-content gradient-box">
@@ -54,7 +38,7 @@
               </div>
             </div>
             <div class="actions">
-              <%= f.submit "Save", class: "btn-save-username" %>
+              <%= f.submit "Save", class: "btn-save" %>
             </div>
           <% end %>
         </div>

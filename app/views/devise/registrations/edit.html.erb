@@ -1,7 +1,7 @@
 <%= render 'shared/navbar' %>
-<%= button_to root_path, method: :get, class: 'btn-home act' do %>
+<%= button_to profile_path(current_user), method: :get, class: 'btn-home act' do %>
     <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
-    Back to Home
+    Back to Profil
 <% end %>
 
 <div class="body-flex-login">

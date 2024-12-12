@@ -52,7 +52,7 @@
   }
   
   .popup-content {
-    height: 300px;
+    height: auto;
     width: 30%;
     display: flex;
     align-items: center;
@@ -212,8 +212,7 @@
     width: 20px;
     height: 20px;
   }
-  
-  /* Styles for the Save button inside the pop-up */
+
   .btn-save-username {
     margin-top: 15px; 
     width: 100%;
@@ -236,38 +235,6 @@
   
   .btn-save-username:active {
     transform: scale(0.98);
-  }
-  
-  /* Adjustments for small screens */
-  @media (max-width: 1100px) {
-    .profile-card, .image-profil {
-      width: 90%;
-      padding-top: 20px;
-      max-height: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  
-    .profil-img {
-      width: 300px;
-    }
-    
-  
-    .input-container {
-      width: 90%; 
-      margin: 0 auto; 
-    }
-  
-    .username-input {
-      width: 100%; 
-      font-size: 14px; 
-      padding: 10px;
-    }
-
-    .popup-content {
-      height: 300px;
-      width: 80%;
-    }
   }
 
   .btn-delete-user {
@@ -300,4 +267,56 @@
     margin-left: 30px;
   }
 
+
+  
+  /* Adjustments for small screens */
+  @media (max-width: 1100px) {
+    .profile-card, .image-profil {
+      width: 90%;
+      padding-top: 20px;
+      max-height: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .profil-img {
+      width: 300px;
+    }
+    
+  
+    .input-container {
+      width: 90%; 
+      margin: 0 auto; 
+    }
+  
+    .username-input {
+      width: 100%; 
+      font-size: 14px; 
+      padding: 10px;
+    }
+
+    .popup-content {
+      height: 300px;
+      width: 80%;
+    }
+
+    .profile-actions {
+      width: 140px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .btn-edit-profile {
+      background-color: var(--secondary-color);
+      border: none;
+      color: var(--white-color);
+      height: 30px;
+      width: 140px;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
+
+  
   
