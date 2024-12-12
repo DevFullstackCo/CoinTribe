@@ -3,7 +3,8 @@
     <%= image_tag "backgroundLogin.png", alt: "background", class: "login-img" %>
   </div>
   <div class="right-login">
-    <%= button_to root_path, method: :get, class: 'btn-home act' do %>
+    <div class="container-right-login">
+     <%= button_to root_path, method: :get, class: 'btn-home act' do %>
       <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
       Back to Home
     <% end %>
@@ -64,5 +65,6 @@
         <%= link_to "Sign In", new_session_path(resource_name), class: "link-new" %>
       </p>
     </div>
+  </div>
   </div>
 </div>

@@ -11,7 +11,7 @@
     <div data-controller="search" class="search-section-nav">
       <div class="search-home-nav">
         <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search-nav" %>
-        <%= text_field_tag :search, nil, id: "search-input", class: "input-nav", placeholder: "Bitcoin...", data: { action: "input->search#search", target: "search.input" } %>
+        <%= text_field_tag :search, nil, id: "search-input-navbar", class: "input-nav", placeholder: "Bitcoin...", data: { action: "input->search#search", target: "search.input" } %>
       </div>
       <div id="search-results" class="gradient-box nav-result" data-search-target="results"></div>
     </div>
@@ -19,20 +19,26 @@
 
   
   <% if user_signed_in? %>
-    <div class="btn-notif act" role="button">
-      <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
-    </div>
-
-    <div class="notif-popup">
-      <% current_user.notifications.each do |notif| %>
-        <div class="notif">
-          <span class="title-notif">
-            <span><%= notif.title %></span>
-            <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
-          </span>
-          <span class="content-notif"><%= notif.content %></span>
-        </div>
+    <%= button_to mark_as_read_notifications_path, method: :post, class: "btn-notif", data: { turbo: true } do %>
+      <% if current_user.notifications.where(is_read?: false).exists? %>
+        <%= image_tag "new-notif.png", alt: "notif", class: "icone-notif" %>
+      <% else %>
+        <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
       <% end %>
+    <% end %>
+      
+    <div class="notif-popup">
+      <div id="notifications_list">
+        <% current_user.notifications.reverse.each do |notif| %>
+          <div class="notif <%= 'read' if notif.is_read? %>">
+            <span class="title-notif">
+              <span><%= notif.title %></span>
+              <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
+            </span>
+            <span class="content-notif"><%= notif.content %></span>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
@@ -92,38 +98,37 @@
   <div class="favorites-container">
     <% if user_signed_in? %>
       <div class="total-balance"> 
-        <strong>Total Balance</strong>
-        <span><%= number_to_currency(@total_balance) %></span>
+       <span class="info-text-favorite">Total Balance</span>
+        <span class="total-favorite"><%= number_to_currency(@total_balance) %></span>
       </div>
 
       <div class="favorites-listing">
-        <strong>My Favorites</strong>
         <% if @favorites_for_menu.any? %>
           <% @favorites_for_menu.each do |favorite| %>
             <div class="favorite-line">
-              <div class="fav-right">
-                <%= image_tag(favorite.crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
-                <div class="name-symbol">
-                  <span class="price-card">
-                    $<%= favorite.crypto.price.round(2) %>
+              <div class="fav-left">
+                <div class="fav-logo">
+                  <%= image_tag(favorite.crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
+                  </div>
+                  <div class="fav-info">
+                <span class="fav-symbol"><%= favorite.crypto.symbol %></span>
+                 </br>
+                  <span class="info-text-favorite">$<%= favorite.crypto.price.round(2) %></span>
                     <% variation = favorite.crypto.variation_24h %>
                     <% if variation >= 0 %>
                       <span class="positif">+<%= number_to_human(variation) %>%</span>
                     <% else %>
                       <span class="negatif"><%= number_to_human(variation) %>%</span>
                     <% end %>
-                  </span>
-                  <span class="symbol" id="crypto-symbol"><%= favorite.crypto.symbol %></span>
-                </div>
-              </div>
-              <div class="fav-left">
-                <%= favorite.quantity %>
-                <%= number_to_currency(favorite.quantity * favorite.crypto.price) %>
+               </div>
+               </div>
+              <div class="fav-right">
+                <span><%= favorite.quantity %></span>
+               
+                <span class="info-text-favorite"><%= number_to_currency(favorite.quantity * favorite.crypto.price) %></span>
               </div>
             </div>
           <% end %>
-        <% else %>
-          <p>You have no favorites yet.</p>
         <% end %>
       </div>
     <% end %>

@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'homeSearch' %>
+
 <body>
   <%= render 'shared/navbar' %>
   
@@ -59,7 +61,6 @@
                       <% end %>
                     </p>
 
-                 
                   <% end %>
                 <% end %>
               <% end %>
@@ -81,7 +82,7 @@
           
           <div class="search-home">
             <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search" %>
-            <%= text_field_tag :search, nil, id: "search-input", class: "input-home", placeholder: "Bitcoin...", 
+            <%= text_field_tag :search, nil, id: "search-input-home", class: "input-home", placeholder: "Bitcoin...", 
               data: { action: "input->search#search", target: "search.input" } %>
           </div>
           

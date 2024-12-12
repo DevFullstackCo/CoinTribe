@@ -602,6 +602,7 @@
   padding-left: 10px;
 }
 
+
 .btn-save {
   background-color: var(--secondary-color);
   color: var(--white-color);
@@ -611,6 +612,7 @@
   font-size: 15px;
   border-radius: 7px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .btn-save:hover{
@@ -629,6 +631,11 @@
   cursor: pointer;
 }
 
+.btn-fav-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (max-width: 1100px) { 
   .card-chart {

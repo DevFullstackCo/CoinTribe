@@ -48,12 +48,23 @@
   height: 35px;
 }
 
+.no-results-message {
+  padding-left: 20px;
+}
+
 .icon-search {
   width: 3%;
   margin-left: 3%;
 }
 
-#search-input {
+#search-input-navbar {
+  background-color: var(--input-color);
+  margin-left: 2%;
+  color: var(--white-color);
+  font-size: 1.6vh;
+}
+
+#search-input-home {
   background-color: var(--input-color);
   margin-left: 2%;
   color: var(--white-color);

@@ -1,6 +1,7 @@
 class AlertPricesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
+
   def create
     @crypto = Crypto.find(params[:crypto_id])
     @alert_price = AlertPrice.new(alert_prices_params)
@@ -30,10 +31,24 @@ class AlertPricesController < ApplicationController
     redirect_to crypto_path(@crypto)
   end
 
+  def destroy
+    @alert_price = current_user.alert_prices.find_by(crypto_id: params[:crypto_id])
+
+    if @alert_price&.destroy
+      flash[:notice] = "Price alert removed successfully."
+    else
+      flash[:alert] = "Failed to remove price alert."
+    end
+
+    redirect_to crypto_path(params[:crypto_id])
+  end
+
+
+
 private
 
   def alert_prices_params
-    params.require(:alert_price).permit(:target_price)
+    params.require(:alert_price).permit(:price_up, :price_down)
   end
 
 end

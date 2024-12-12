@@ -18,4 +18,16 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def price_alert_email(alert, price_crypto)
+    @alert = alert
+    @user = alert.user
+    @crypto = alert.crypto
+    @price_crypto = price_crypto
+    
+    mail(
+      to: @user.email,
+      subject: "Alert Price on #{@crypto.name}"
+    )
+  end
+
 end
