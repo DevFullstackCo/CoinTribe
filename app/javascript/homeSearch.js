@@ -1,5 +1,5 @@
 document.addEventListener("click", (event) => {
-    const searchInput = document.getElementById("search-input-navbar");
+    const searchInput = document.getElementById("search-input-home");
     const searchResults = document.getElementById("search-results");
   
     if (searchInput.contains(event.target)) {
