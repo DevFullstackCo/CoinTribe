@@ -247,6 +247,8 @@
     border-radius: 10px;
     font-size: 13px;
     cursor: pointer;
+    border: none;
+    margin-left: 10px;
   }
   
   .btn-delete-user:hover {
