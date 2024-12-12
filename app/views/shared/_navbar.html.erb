@@ -19,9 +19,9 @@
 
   
   <% if user_signed_in? %>
-    <div class="btn-notif act" role="button">
-      <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
-    </div>
+    <%= button_to mark_as_read_notifications_path, method: :post, class: "btn-notif" do %>
+        <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
+      <% end %>
 
     <div class="notif-popup">
       <% current_user.notifications.each do |notif| %>
