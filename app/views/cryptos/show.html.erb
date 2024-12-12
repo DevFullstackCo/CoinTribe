@@ -181,11 +181,11 @@
             <% if @crypto.votes.count > 0 %>
               <p class="bull">
                 <%= image_tag 'up.png', alt: 'up', class: 'icone-up-down' %>
-                <span>Bullish <%= @crypto.bullish_percentage %>%</span>
+                <span>Bullish <%= @crypto.bullish_percentage.round(2) %>%</span>
                </p>
               <p class="bear">
                 <%= image_tag 'down.png', alt: 'down', class: 'icone-up-down' %>
-                <span>Bearish <%= @crypto.bearish_percentage %>%</span>
+                <span>Bearish <%= @crypto.bearish_percentage.round(2) %>%</span>
               </p>
             <% end %>
             </div>
