@@ -82,6 +82,13 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         this.resultsTarget.innerHTML = "";
+        if (data.length === 0) {
+          const noResultsMessage = document.createElement("p");
+          noResultsMessage.textContent = "No cryptocurrency found.";
+          noResultsMessage.classList.add("no-results-message");
+          this.resultsTarget.appendChild(noResultsMessage);
+          return;
+        }
         data.forEach(([id, name, symbol, price, variation_24h, logo_url]) => {
           const link = document.createElement("a");
           link.classList.add("result-crypto");
