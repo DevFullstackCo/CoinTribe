@@ -216,6 +216,10 @@
   justify-content: center;
 }
 
+.reset-password-container {
+  text-align: center;
+}
+
 @media (max-width: 1100px) {
   .left-login {
     display: none;
