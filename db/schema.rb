@@ -121,7 +121,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_11_173906) do
     t.boolean "accepted_cgu", default: false, null: false
     t.boolean "accepted_privacy_policy", default: false, null: false
     t.datetime "accepted_at"
-    t.string "ethereum_address"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at", precision: nil
+    t.string "confirmation_token"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
