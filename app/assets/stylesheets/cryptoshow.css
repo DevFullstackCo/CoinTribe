@@ -4,8 +4,8 @@
 }
 
 #posts_container {
-  min-height: 750px;
-  max-height: 750px; 
+  min-height: 85vh;
+  max-height: 85vh; 
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -356,7 +356,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+
 }
 
 .input-comment {

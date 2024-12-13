@@ -59,3 +59,16 @@ document.addEventListener('turbo:frame-load', () => {
     });
   }
 });
+
+document.addEventListener('turbo:load', function() {
+  const contentField = document.getElementById('content-field');
+  const sendButton = document.getElementById('send-button');
+  
+  contentField.addEventListener('input', function() {
+    if (contentField.value.trim() !== '') {
+      sendButton.style.display = 'block';
+    } else {
+      sendButton.style.display = 'none';
+    }
+  });
+});
