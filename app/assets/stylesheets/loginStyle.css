@@ -233,4 +233,9 @@
   .container-input {
     width: 80%;
   }
+  
+  .container-right-login {
+    height: 900px;
+    width: 100%;
+  }
 }

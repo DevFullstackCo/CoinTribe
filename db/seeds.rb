@@ -8,14 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-
 Vote.destroy_all
 VotesHistory.destroy_all
 Comment.destroy_all
 Post.destroy_all
 Crypto.destroy_all
-ActiveStorage::Attachment.destroy_all
-ActiveStorage::Blob.destroy_all
-ActiveStorage::VariantRecord.destroy_all
-User.destroy_all
+User.where(is_admin: false).destroy_all

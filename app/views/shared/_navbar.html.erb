@@ -4,7 +4,7 @@
 
 <nav>
   <div class="logo-container">
-    <%= link_to image_tag(asset_path("logo-voting-navbar.png"), alt: "Logo Voting", class: "navbar-logo"), root_path, class: "navbar-logo-link" %>
+    <%= link_to image_tag(asset_path("logo-navbar.png"), alt: "Logo Voting", class: "navbar-logo"), root_path, class: "navbar-logo-link" %>
   </div>
 
   <div class="navbar-search">
@@ -35,7 +35,7 @@
               <span><%= notif.title %></span>
               <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
             </span>
-            <span class="content-notif"><%= notif.content %></span>
+            <spans class="text-notif"><%= notif.content %></spans>
           </div>
         <% end %>
       </div>

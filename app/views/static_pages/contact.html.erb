@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'contact' %>
+
 <%= render 'shared/navbar' %>
 <div class="home-static">
     <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
@@ -10,7 +12,7 @@
 
 <h2>Contact</h2>
 </br>
-<%= form_with url: '/contact/send_message', method: :post, local: true, html: { novalidate: true } do |f| %>
+<%= form_with url: '/contact/send_message', method: :get, local: true, html: { novalidate: true } do |f| %>
   <div>
     <% if !user_signed_in? %>
       <%= label_tag :email, "Email" %>
