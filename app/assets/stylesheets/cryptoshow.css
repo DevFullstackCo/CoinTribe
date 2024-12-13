@@ -640,6 +640,12 @@
   justify-content: center;
 }
 
+.container-favorites-alert {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
 @media (max-width: 1100px) { 
   .card-chart {
     width: 100%;
@@ -759,6 +765,14 @@
   justify-content: center;
   margin-right: 0px;
   width: 100%;
+}
+
+.container-favorites-alert {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-top: -120px;
+  margin-right: 30px;
 }
 
 }
