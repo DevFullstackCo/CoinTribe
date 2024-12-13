@@ -1,3 +1,4 @@
+
 # README
 
 
@@ -16,6 +17,7 @@ https://cryptovotingproject-cc7f6a61a180.herokuapp.com/
 6. [Usage](#usage)
 7. [Contributors](#contributors)
 8. [License](#license)
+9. [Additional Links](#additional-links)
 
 ## Introduction
 
@@ -121,3 +123,13 @@ Crypto Voting Project is a community-driven platform for cryptocurrency enthusia
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Additional Links
+
+- [Trello Board for the Project](https://trello.com/b/QAaB0KZ0/crypto)
+- [Executive Summary Document](https://docs.google.com/document/d/1q29IyqbOnZ7NYARIGE5facmB-I31Vpd8y4DoW87DG8g/edit?tab=t.0)
+- [Database Schema](https://lucid.app/lucidchart/811203c0-667e-4bfe-9a13-a60813fcb3dd/edit?invitationId=inv_6e255649-ab61-40cb-a69a-2b2afd9acfe8)
+- [Figma Maquettes](https://www.figma.com/design/C45RQ27ofXu7LBsclNEzXi/Untitled?node-id=580-640&node-type=frame&t=Q0WQYodgIUnEjQaJ-0)
+- [Wireframes on Miro](https://miro.com/app/board/uXjVL9eGfJ0=/)
