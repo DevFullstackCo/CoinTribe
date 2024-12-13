@@ -1,14 +1,12 @@
 class ContactMailer < ApplicationMailer
 
-def welcome_email(user)
-    @user = user
-    
-
-    mail(
-      to: @user.email, 
+ def welcome_email(user)
+  @user = user
+  mail(
+    to: @user.email, 
       subject: 'Welcome to our home !'
-      ) 
-  end
+    ) 
+ end
 
   def send_contact_email(admin_email, subject, message, user_email)
     @message = message

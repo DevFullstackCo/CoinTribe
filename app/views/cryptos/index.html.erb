@@ -77,12 +77,12 @@
       <%= image_tag "cryptoback.png", alt: "background-crypto", class: "crypto-background" %>
 
       <div class="container-search">
-        <h2 class="title-search">Search Your Crypto</h2>
+        <h3 class="title-search">Vote, discuss, and track</br> your cryptos in real time.</h3>
         <div data-controller="search" class="search-section">
           
           <div class="search-home">
             <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search" %>
-            <%= text_field_tag :search, nil, id: "search-input-home", class: "input-home", placeholder: "Bitcoin...", 
+            <%= text_field_tag :search, nil, id: "search-input-home", class: "input-home", placeholder: "Search Your Crypto...", 
               data: { action: "input->search#search", target: "search.input" } %>
           </div>
           

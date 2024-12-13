@@ -52,6 +52,11 @@
   padding-left: 20px;
 }
 
+.title-search {
+  line-height: 0.8;
+  margin-bottom: 20px;
+}
+
 .icon-search {
   width: 3%;
   margin-left: 3%;

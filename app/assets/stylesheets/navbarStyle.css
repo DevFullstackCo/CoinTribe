@@ -299,9 +299,12 @@ nav {
   background-color: var(--second-dark);
   border-radius: 10px;
   width: 95%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
-  height: 45px;
+  height: auto;
+  padding-left: 15px;
+  padding-bottom: 5px;
   padding-top: 5px;
   cursor: pointer;
   border: 1px solid var(--text-border);
@@ -311,15 +314,15 @@ nav {
 
 .title-notif {
   color: var(--white-color);
-  margin-left: 10px;
   font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-.content-notif {
-  margin-left: 15px;
+
+.text-notif {
   font-size: 13px;
 }
 
@@ -329,6 +332,22 @@ nav {
   color: var(--grey-color);
 }
 
+.btn-delete-notif {
+  cursor: pointer;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin-top: 10px;
+}
+
+
+.delete-icone-notif {
+  width: 20px;
+}
+
+.no-notif {
+  text-align: center;
+}
 
 
 
