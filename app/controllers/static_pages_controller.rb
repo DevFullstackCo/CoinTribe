@@ -5,7 +5,6 @@ class StaticPagesController < ApplicationController
   def privacy_policy
   end
 
-
   def faq
   end
 
@@ -32,6 +31,10 @@ class StaticPagesController < ApplicationController
     end
   
     redirect_to contact_path
+  end
+
+  def credit
+    
   end
   
 end

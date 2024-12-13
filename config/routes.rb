@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
   post 'contact/send_message', to: 'static_pages#send_message'
+  get 'credit', to: 'static_pages#credit'
+
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
