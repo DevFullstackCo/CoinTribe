@@ -13,6 +13,12 @@ nav {
   justify-content: center;
 }
 
+
+.navbar-logo {
+  width: 130px; 
+  margin-top: 5px;
+}
+
 .navbar-search {
   width: 25%;
   position: relative;
