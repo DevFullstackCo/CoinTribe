@@ -31,7 +31,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @crypto = @post.crypto
     @post.destroy
-    redirect_to crypto_path(@crypto), notice: "Your post has been successfully deleted"
+
+    respond_to do |format|
+      format.html { redirect_to crypto_path(@crypto), notice: "Your post has been successfully deleted" }
+      format.turbo_stream
+    end
   end
 
 
