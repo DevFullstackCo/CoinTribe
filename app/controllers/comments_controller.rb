@@ -22,7 +22,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @crypto = @comment.post.crypto
     @comment.destroy
-    redirect_to crypto_path(@crypto), notice: "Your comment has been successfully deleted"
+    
+    respond_to do |format|
+      format.html { redirect_to crypto_path(@crypto), notice: "Your comment has been successfully deleted" }
+      format.turbo_stream
+    end
 
   end
 
