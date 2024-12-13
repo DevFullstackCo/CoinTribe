@@ -21,7 +21,6 @@
 .input-textarea {
     background-color: var(--input-color);
     border: 1px solid var(--secondary-color);
-    height: 60px;
     width: 40%;
     border-radius: 10px;
     color: var(--white-color);
