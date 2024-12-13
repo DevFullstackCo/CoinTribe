@@ -216,7 +216,7 @@
 
         <div class="vote_history">
           <p class="text-voting">Voting History :</p>
-          <% @voteshistory_by_day.each do |(date, is_bullished), count| %>
+          <% @voteshistory_by_day.reverse_each do |(date, is_bullished), count| %>
             <div class="votes">
               <div class="date">
                 <%= image_tag(@crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo-votes') %>
