@@ -4,7 +4,6 @@
 }
 
 #posts_container {
-  min-height: 85vh;
   max-height: 85vh; 
   overflow-y: auto;
   overflow-x: hidden;
