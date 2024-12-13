@@ -113,7 +113,7 @@ h3 {
 
 
 
-#error_explanation{
+#error_explanation, .flash-message{
   position: fixed;
   top: 0;
   left: 50%;
