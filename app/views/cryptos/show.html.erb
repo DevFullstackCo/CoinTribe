@@ -7,7 +7,7 @@
 <%= javascript_include_tag 'priceAlert' %>
 <%= javascript_include_tag 'comment' %>
 <%= render 'shared/navbar' %>
-
+<%= render 'shared/flash' %>
 <div class="body-flex-show">
   <div class="chart-section">
     <%= button_to root_path, method: :get, class: 'btn-home-go act' do %>
@@ -243,7 +243,7 @@
 
     <div id="posts_container">
       <% @posts.reverse.each do |post| %>
-        <div class="post">
+        <div id="post_<%= post.id %>" class="post">
           <div class="post-line">
             <div class="header-post">
               <div class="user-post">
@@ -319,12 +319,13 @@
 
     <% if user_signed_in? %>
       <div class="new-post">
-        <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
-          <%= form.text_field :content, placeholder: 'Write a new post...', class: 'input-new' %>
-          <%= button_tag type: 'submit', class: 'btn-send' do %>
-            <%= image_tag 'send.png', alt: 'send', class: 'send-icone' %>
-          <% end %>
-        <% end %>
+      <%= form_with model: @post, url: crypto_posts_path(@crypto), local: true do |form| %>
+  <%= form.text_field :content, placeholder: 'Write a new post...', class: 'input-new', id: 'content-field' %>
+  
+  <%= button_tag type: 'submit', class: 'btn-send', id: 'send-button', style: 'display: none;' do %>
+    <%= image_tag 'send.png', alt: 'send', class: 'send-icone' %>
+  <% end %>
+<% end %>
       </div>
     <% else %>
       <p class="please-login">To create a post, please <%= link_to 'log in', new_user_session_path, class: "login-link" %></p>
