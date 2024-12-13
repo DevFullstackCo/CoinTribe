@@ -72,6 +72,9 @@ namespace :crypto do
               is_read?: false
             )
             UserMailer.price_alert_email(alert, price_crypto).deliver_now
+            
+            alert.destroy
+            next
           end
 
           if alert.price_down && price_crypto <= alert.price_down && alert.price_down > 0
@@ -82,6 +85,9 @@ namespace :crypto do
               is_read?: false
             )
             UserMailer.price_alert_email(alert, price_crypto).deliver_now
+            
+            alert.destroy
+            next
           end
         end
 
