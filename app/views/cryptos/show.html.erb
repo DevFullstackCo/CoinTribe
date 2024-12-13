@@ -63,7 +63,7 @@
         </div>
 
 
-       
+       <div class="container-favorites-alert">
         <!-- Button to open Favorites pop-up -->
        <% if user_signed_in? %>
          <% if @favorite.is_favorite %>
@@ -82,6 +82,7 @@
             <%= image_tag "alert.png", alt: "In Favorites", class: "alert-img", id: "open-price-alert-popup" %>
           <% end %>
         <% end %>
+        </div>
         <!-- Favorites Pop-up -->
         <div id="popup-favorite" class="popup">
           <div class="popup-content gradient-box">
