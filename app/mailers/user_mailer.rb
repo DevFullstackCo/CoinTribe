@@ -6,8 +6,8 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email, 
-      subject: 'Welcome to our home !'
-      ) 
+      subject: 'Welcome onboard !'
+      )
   end
 
   def account_deleted_email(user)
