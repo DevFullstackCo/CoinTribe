@@ -2,15 +2,13 @@
 
 <body>
   <%= render 'shared/navbar' %>
-  
+
   <div class="body-flex">
-    
+
     <div class="left-section-home">
-      
       <div>
         <h3>News</h3>
         <div class="news-container gradient-box">
-    
           <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             <div class="tradingview-widget-copyright"></div>
@@ -26,7 +24,6 @@
               }
             </script>
           </div>
-
         </div>
       </div>
 
@@ -34,11 +31,10 @@
         <div class="new-container">
           <h3>News Token Listing</h3>
           <div class="gradient-box new-box">
-            
             <% if @new_cryptos.present? && @new_cryptos.last(2).any? %>
               <% @new_cryptos.last(2).each do |crypto| %>
                 <% if crypto.present? && crypto.logo_url.present? && crypto.price.present? %>
-                <%= button_to crypto_path(crypto), method: :get, class: 'crypto-link' do %>
+                  <%= button_to crypto_path(crypto), method: :get, class: 'crypto-link' do %>
                     <div class="logo-wrapper">
                       <%= image_tag(crypto.logo_url, alt: "crypto-logo", class: "crypto-logo") %>
                       <div class="name-symbol">
@@ -46,7 +42,6 @@
                         <span class="symbol-new"><%= crypto.symbol %></span>
                       </div>
                     </div>
-
                     <p>
                       <span class="price-new"><%= number_to_currency(crypto.price, unit: "$") %></span>
                       <% variation = crypto.variation_24h || 0 %>
@@ -60,7 +55,6 @@
                         </span>
                       <% end %>
                     </p>
-
                   <% end %>
                 <% end %>
               <% end %>
@@ -70,7 +64,6 @@
           </div>
         </div>
       </div>
-      
     </div>
 
     <div class="right-section-home">
@@ -79,16 +72,15 @@
       <div class="container-search">
         <h3 class="title-search">Vote, discuss, and track</br> your cryptos in real time.</h3>
         <div data-controller="search" class="search-section">
-          
           <div class="search-home">
             <%= image_tag "search-icon.png", alt: "search-icone", class: "icon-search" %>
             <%= text_field_tag :search, nil, id: "search-input-home", class: "input-home", placeholder: "Search Your Crypto...", 
               data: { action: "input->search#search", target: "search.input" } %>
           </div>
-          
           <div id="search-results" class="gradient-box result" data-search-target="results"></div>
         </div>
       </div>
     </div>
+
   </div>
 </body>

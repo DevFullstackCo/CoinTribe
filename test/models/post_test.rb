@@ -5,3 +5,4 @@ class PostTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

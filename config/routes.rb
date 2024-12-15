@@ -56,3 +56,5 @@ Rails.application.routes.draw do
   root "cryptos#index"
   
 end
+
+

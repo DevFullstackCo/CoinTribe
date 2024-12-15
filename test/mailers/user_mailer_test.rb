@@ -5,3 +5,4 @@ class UserMailerTest < ActionMailer::TestCase
   #   assert true
   # end
 end
+

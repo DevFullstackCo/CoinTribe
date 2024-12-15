@@ -4,3 +4,4 @@ class ChangeIntegerToBigIntInCryptos < ActiveRecord::Migration[8.0]
     change_column :cryptos, :market_cap, :bigint
   end
 end
+

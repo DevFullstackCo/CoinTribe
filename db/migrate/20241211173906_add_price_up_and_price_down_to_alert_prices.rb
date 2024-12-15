@@ -5,3 +5,4 @@ class AddPriceUpAndPriceDownToAlertPrices < ActiveRecord::Migration[8.0]
     remove_column :alert_prices, :target_price, :float 
   end
 end
+

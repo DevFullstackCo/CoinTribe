@@ -30,5 +30,5 @@ class Crypto < ApplicationRecord
     100 -  bullish_percentage
   end
 
-
 end
+

@@ -1,20 +1,21 @@
 <%= turbo_stream.replace "notifications_list" do %>
   <div id="notifications_list">
-    <% if current_user.notifications.any?%>
-    <% current_user.notifications.reverse.each do |notif| %>
-      <div class="notif <%= 'read' if notif.is_read? %>">
-        <span class="title-notif">
-          <span><%= notif.title %></span>
-          <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
-        </span>
-        <span class="content-notif"><%= notif.content %></span>
-      </div>
-     <% end %>
-    <%= button_to notification_path(current_user.notifications), method: :delete, data: { confirm: "Delete Notifications ?" }, class: "btn-delete-notif" do %>
-     <%= image_tag "delete.png", alt: "delete", class: "delete-icone-notif" %>
+    <% if current_user.notifications.any? %>
+      <% current_user.notifications.reverse.each do |notif| %>
+        <div class="notif <%= 'read' if notif.is_read? %>">
+          <span class="title-notif">
+            <span><%= notif.title %></span>
+            <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
+          </span>
+          <span class="content-notif"><%= notif.content %></span>
+        </div>
+      <% end %>
+
+      <%= button_to notification_path(current_user.notifications), method: :delete, data: { confirm: "Delete Notifications ?" }, class: "btn-delete-notif" do %>
+        <%= image_tag "delete.png", alt: "delete", class: "delete-icone-notif" %>
+      <% end %>
+    <% else %>
+      <p class="no-notif">You have no notifications</p>
     <% end %>
   </div>
-   <% else %>
-   <p class="no-notif">You have no notifications</p>
-   <% end %>
 <% end %>

@@ -14,3 +14,4 @@ Comment.destroy_all
 Post.destroy_all
 Crypto.destroy_all
 User.where(is_admin: false).destroy_all
+

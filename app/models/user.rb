@@ -49,4 +49,6 @@ class User < ApplicationRecord
   def send_account_deleted_email
     UserMailer.account_deleted_email(self).deliver_now
   end
+
 end
+

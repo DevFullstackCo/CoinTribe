@@ -12,4 +12,6 @@ class Post < ApplicationRecord
   def filter_profanity
     self.content = $profanity_filter.sanitize(content)
   end
+
 end
+

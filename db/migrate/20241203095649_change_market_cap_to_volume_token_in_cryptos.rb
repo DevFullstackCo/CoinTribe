@@ -4,3 +4,4 @@ class ChangeMarketCapToVolumeTokenInCryptos < ActiveRecord::Migration[8.0]
     add_column :cryptos, :volume_token_24h, :bigint
   end
 end
+

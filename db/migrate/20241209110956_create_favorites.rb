@@ -12,3 +12,6 @@ class CreateFavorites < ActiveRecord::Migration[8.0]
     add_index :favorites, [:user_id, :crypto_id], unique: true
   end
 end
+
+
+

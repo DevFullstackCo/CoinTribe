@@ -3,3 +3,6 @@ class AddLogoUrlToCryptos < ActiveRecord::Migration[8.0]
     add_column :cryptos, :logo_url, :string
   end
 end
+
+
+

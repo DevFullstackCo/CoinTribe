@@ -170,3 +170,4 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_11_173906) do
   add_foreign_key "votes_histories", "cryptos"
   add_foreign_key "votes_histories", "users"
 end
+

@@ -5,3 +5,4 @@ class CryptosControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

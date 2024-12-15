@@ -11,3 +11,4 @@ class Favorite < ApplicationRecord
   end
 
 end
+

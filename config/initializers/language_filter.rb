@@ -20,3 +20,4 @@ additional_bad_words = [
 additional_bad_words.each do |word|
   $profanity_filter.matchlist << word
 end
+

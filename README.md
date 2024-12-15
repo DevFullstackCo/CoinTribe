@@ -133,3 +133,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Database Schema](https://lucid.app/lucidchart/811203c0-667e-4bfe-9a13-a60813fcb3dd/edit?invitationId=inv_6e255649-ab61-40cb-a69a-2b2afd9acfe8)
 - [Figma Maquettes](https://www.figma.com/design/C45RQ27ofXu7LBsclNEzXi/Untitled?node-id=580-640&node-type=frame&t=Q0WQYodgIUnEjQaJ-0)
 - [Wireframes on Miro](https://miro.com/app/board/uXjVL9eGfJ0=/)
+

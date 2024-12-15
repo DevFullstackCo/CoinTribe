@@ -5,3 +5,4 @@ class VoteTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

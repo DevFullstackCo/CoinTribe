@@ -5,3 +5,4 @@ class AlertPricesControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

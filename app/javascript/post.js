@@ -4,7 +4,7 @@ document.addEventListener('turbo:load', () => {
   if (postsContainer) {
     postsContainer.addEventListener('click', (e) => {
       const post = e.target.closest('.post');
-      
+
       if (post) {
         const commentLine = post.querySelector('.comment-line');
         const newCommentInput = post.querySelector('.new-comment');
@@ -14,7 +14,7 @@ document.addEventListener('turbo:load', () => {
             return;
           }
 
-        
+
           commentLine.classList.toggle('visible');
           commentLine.classList.toggle('hidden');
 
@@ -32,11 +32,11 @@ document.addEventListener('turbo:load', () => {
 
 document.addEventListener('turbo:frame-load', () => {
   const postsContainer = document.querySelector('#posts_container');
-  
+
   if (postsContainer) {
     postsContainer.addEventListener('click', (e) => {
       const post = e.target.closest('.post');
-      
+
       if (post) {
         const commentLine = post.querySelector('.comment-line');
         const newCommentInput = post.querySelector('.new-comment');
@@ -60,11 +60,11 @@ document.addEventListener('turbo:frame-load', () => {
   }
 });
 
-document.addEventListener('turbo:load', function() {
+document.addEventListener('turbo:load', function () {
   const contentField = document.getElementById('content-field');
   const sendButton = document.getElementById('send-button');
-  
-  contentField.addEventListener('input', function() {
+
+  contentField.addEventListener('input', function () {
     if (contentField.value.trim() !== '') {
       sendButton.style.display = 'block';
     } else {

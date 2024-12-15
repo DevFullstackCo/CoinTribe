@@ -4,3 +4,4 @@ Mailjet.configure do |config|
   config.secret_key = ENV['MAILJET_SECRET_KEY']
   config.default_from = 'cointribe@yopmail.com'
 end
+

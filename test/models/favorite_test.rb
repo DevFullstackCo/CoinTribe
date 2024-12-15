@@ -5,3 +5,4 @@ class FavoriteTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

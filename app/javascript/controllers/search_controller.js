@@ -30,7 +30,7 @@ export default class extends Controller {
           nameSymbolDiv.classList.add("name-symbol");
 
           nameSymbolDiv.appendChild(document.createTextNode(name + " "));
-          
+
           const symbolSpan = document.createElement("span");
           symbolSpan.classList.add("symbol");
           symbolSpan.textContent = symbol;
@@ -109,7 +109,7 @@ export default class extends Controller {
           nameSymbolDiv.classList.add("name-symbol");
 
           nameSymbolDiv.appendChild(document.createTextNode(name + " "));
-          
+
           const symbolSpan = document.createElement("span");
           symbolSpan.classList.add("symbol");
           symbolSpan.textContent = symbol;

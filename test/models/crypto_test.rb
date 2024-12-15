@@ -5,3 +5,4 @@ class CryptoTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

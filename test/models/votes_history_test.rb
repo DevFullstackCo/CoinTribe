@@ -5,3 +5,4 @@ class VotesHistoryTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

@@ -1,8 +1,8 @@
-document.addEventListener('turbo:load', function() {
+document.addEventListener('turbo:load', function () {
   initNotifPopup();
 });
 
-document.addEventListener('turbo:render', function() {
+document.addEventListener('turbo:render', function () {
   initNotifPopup();
 });
 
@@ -11,11 +11,11 @@ function initNotifPopup() {
   const notifPopup = document.querySelector('.notif-popup');
 
   if (notifBtn && notifPopup) {
-      notifBtn.removeEventListener('click', handleNotifBtnClick);
-      document.removeEventListener('click', handleDocumentClick);
+    notifBtn.removeEventListener('click', handleNotifBtnClick);
+    document.removeEventListener('click', handleDocumentClick);
 
-      notifBtn.addEventListener('click', handleNotifBtnClick);
-      document.addEventListener('click', handleDocumentClick);
+    notifBtn.addEventListener('click', handleNotifBtnClick);
+    document.addEventListener('click', handleDocumentClick);
   }
 }
 
@@ -36,8 +36,9 @@ function handleNotifBtnClick(event) {
 function handleDocumentClick(event) {
   const notifBtn = document.querySelector('.btn-notif');
   const notifPopup = document.querySelector('.notif-popup');
-  
+
   if (!notifBtn.contains(event.target) && !notifPopup.contains(event.target)) {
-      notifPopup.style.display = 'none';
+    notifPopup.style.display = 'none';
   }
 }
+

@@ -18,7 +18,7 @@
   margin-bottom: 10px;
 }
 
-.cgu_card{
+.cgu_card {
   padding: 20px;
   background-color: var(--gradient-dark);
   border: 1px solid var(--border-card);
@@ -29,17 +29,18 @@
   margin-top: 15px;
 }
 
-.cgu_card:hover{
+.cgu_card:hover {
   box-shadow: 0px 0px 100px var(--shadow-color);
 }
 
-.cgu_text{
+.cgu_text {
   max-width: 75%;
   background-color: var(--border-color);
   border-radius: 12px;
   padding: 15px;
-  
+
 }
-ul{
+
+ul {
   list-style: none;
 }

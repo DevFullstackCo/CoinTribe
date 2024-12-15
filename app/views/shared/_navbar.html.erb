@@ -17,7 +17,6 @@
     </div>
   </div>
 
-  
   <% if user_signed_in? %>
     <%= button_to mark_as_read_notifications_path, method: :post, class: "btn-notif", data: { turbo: true } do %>
       <% if current_user.notifications.where(is_read?: false).exists? %>
@@ -26,7 +25,7 @@
         <%= image_tag "notif.png", alt: "notif", class: "icone-notif" %>
       <% end %>
     <% end %>
-      
+
     <div class="notif-popup">
       <div id="notifications_list">
         <% current_user.notifications.reverse.each do |notif| %>
@@ -35,7 +34,7 @@
               <span><%= notif.title %></span>
               <span class="date-notif"><%= notif.created_at.strftime("%d/%m %H:%M") %></span>
             </span>
-            <spans class="text-notif"><%= notif.content %></spans>
+            <span class="text-notif"><%= notif.content %></span>
           </div>
         <% end %>
       </div>
@@ -67,15 +66,15 @@
     </div>
 
     <% if user_signed_in? %>
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, alt: "avatar", class: "user-icone" %>
-        <% else %>
-          <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
-          <% if current_user.username.present? %>
-            <p class="pseudouser"><%= current_user.username %></p>
-          <% end %>
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, alt: "avatar", class: "user-icone" %>
+      <% else %>
+        <%= image_tag "memoji.png", alt: "user", class: "user-icone" %>
+        <% if current_user.username.present? %>
+          <p class="pseudouser"><%= current_user.username %></p>
         <% end %>
       <% end %>
+    <% end %>
 
     <% if user_signed_in? %>
       <%= button_to profile_path(current_user), method: :get, data: { turbo: false }, class: 'btn-menu act' do %>
@@ -97,8 +96,8 @@
 
   <div class="favorites-container">
     <% if user_signed_in? %>
-      <div class="total-balance"> 
-       <span class="info-text-favorite">Total Balance</span>
+      <div class="total-balance">
+        <span class="info-text-favorite">Total Balance</span>
         <span class="total-favorite"><%= number_to_currency(@total_balance) %></span>
       </div>
 
@@ -109,22 +108,21 @@
               <div class="fav-left">
                 <div class="fav-logo">
                   <%= image_tag(favorite.crypto.logo_url, alt: 'crypto-logo', class: 'crypto-logo') %>
-                  </div>
-                  <div class="fav-info">
-                <span class="fav-symbol"><%= favorite.crypto.symbol %></span>
-                 </br>
+                </div>
+                <div class="fav-info">
+                  <span class="fav-symbol"><%= favorite.crypto.symbol %></span>
+                  </br>
                   <span class="info-text-favorite">$<%= favorite.crypto.price.round(2) %></span>
-                    <% variation = favorite.crypto.variation_24h %>
-                    <% if variation >= 0 %>
-                      <span class="positif">+<%= number_to_human(variation) %>%</span>
-                    <% else %>
-                      <span class="negatif"><%= number_to_human(variation) %>%</span>
-                    <% end %>
-               </div>
-               </div>
+                  <% variation = favorite.crypto.variation_24h %>
+                  <% if variation >= 0 %>
+                    <span class="positif">+<%= number_to_human(variation) %>%</span>
+                  <% else %>
+                    <span class="negatif"><%= number_to_human(variation) %>%</span>
+                  <% end %>
+                </div>
+              </div>
               <div class="fav-right">
                 <span><%= favorite.quantity %></span>
-               
                 <span class="info-text-favorite"><%= number_to_currency(favorite.quantity * favorite.crypto.price) %></span>
               </div>
             </div>

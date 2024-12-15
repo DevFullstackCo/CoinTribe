@@ -15,7 +15,7 @@ nav {
 
 
 .navbar-logo {
-  width: 130px; 
+  width: 130px;
   margin-top: 5px;
 }
 
@@ -249,7 +249,7 @@ nav {
 
 .favorites-listing {
   min-height: 600px;
-  max-height: 600px; 
+  max-height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -283,7 +283,7 @@ nav {
   flex-direction: column;
   align-items: end;
   padding-right: 10px;
-  width:40%;
+  width: 40%;
 }
 
 
@@ -387,7 +387,7 @@ nav {
   }
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   #profil {
     height: 90vh;
   }
@@ -419,5 +419,5 @@ nav {
     cursor: pointer;
     margin-left: 10px;
   }
-  
 }
+

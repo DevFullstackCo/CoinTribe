@@ -5,3 +5,4 @@ class AvatarsControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

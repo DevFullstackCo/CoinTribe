@@ -5,3 +5,4 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

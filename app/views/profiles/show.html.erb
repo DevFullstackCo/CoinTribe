@@ -1,16 +1,17 @@
 <%= javascript_include_tag 'userimg' %>
 <%= render 'shared/navbar' %>
 <%= render 'shared/flash' %>
+
 <%= button_to root_path, method: :get, class: 'btn-home act profil-home' do %>
-    <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
-    Back to Home
+  <%= image_tag "arrowleft.png", alt: "arrow-left", class: "icone" %>
+  Back to Home
 <% end %>
 
 <div class="body-flex">
   <div class="profile-card">
     <h3>My Profile</h3>
     <div class="profile-info gradient-box">
-  
+
       <div class="header-profil">
         <% if @user.avatar.attached? %>
           <%= image_tag @user.avatar, alt: "avatar", class: "user-avatar-profil" %>
@@ -20,8 +21,6 @@
         <p><%= @user.username %></p>
         <%= image_tag "edit-icon.png", alt: "edit username", class: "edit-username-icon", id: "open-username-popup" %>
       </div>
-
-      
 
       <div id="username-popup" class="popup hidden">
         <div class="popup-content gradient-box">
@@ -52,6 +51,7 @@
       <div class="profile-actions">
         <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class: "btn-edit-profile" %>
       </div>
+
       <%= form_with url: user_registration_path, method: :delete, class: "delete-account-form" do %>
         <%= submit_tag "Delete Account", data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-delete-profile" %>
       <% end %>
@@ -63,40 +63,40 @@
   </div>
 </div>
 
-
 <div class="body-flex">
   <div class="admin-card">
     <% if current_user.is_admin == true %>
       <h3>Admin Panel</h3>
       <div class="profile-info gradient-box">
 
-      <%= form_with url: search_profiles_path, method: :get, local: true, data: { turbo_frame: "search_results" } do |form| %>
-        <div class="change-text-admin">
-          <%= form.label :query, "Search user for delete :" %>
-          </br>
-          </br>
-          <%= form.text_field :query, placeholder: "Email or Username", class: "input-contact" %>
+        <%= form_with url: search_profiles_path, method: :get, local: true, data: { turbo_frame: "search_results" } do |form| %>
+          <div class="change-text-admin">
+            <%= form.label :query, "Search user for delete :" %>
             </br>
-          <%= form.submit "Search", class: "btn-save" %>
-        </div>
-      <% end %>
-      <turbo-frame id="search_results">
-      <% if @searched_users.present? %>
-        <ul>
-          <% @searched_users.each do |user| %>
-            <li class="email-profil">
-              <%= user.email %>(<%= user.username %>)
-             <% if user.email != current_user.email%>
-              <%= button_to "Delete user", delete_user_profile_path(user), method: :delete, data: { confirm: "Are your sure ?" }, class: "btn-delete-user" %>
+            </br>
+            <%= form.text_field :query, placeholder: "Email or Username", class: "input-contact" %>
+            </br>
+            <%= form.submit "Search", class: "btn-save" %>
+          </div>
+        <% end %>
+
+        <turbo-frame id="search_results">
+          <% if @searched_users.present? %>
+            <ul>
+              <% @searched_users.each do |user| %>
+                <li class="email-profil">
+                  <%= user.email %>(<%= user.username %>)
+                  <% if user.email != current_user.email %>
+                    <%= button_to "Delete user", delete_user_profile_path(user), method: :delete, data: { confirm: "Are your sure ?" }, class: "btn-delete-user" %>
+                  <% end %>
+                </li>
               <% end %>
-            </li>
+            </ul>
+          <% elsif defined?(@searched_users) %>
+            <p class="email-profil">No users found.</p>
           <% end %>
-        </ul>
-      <% elsif defined?(@searched_users) %>
-        <p class="email-profil">No users found.</p>
-      <% end %>
+        </turbo-frame>
       </div>
-      </turbo-frame>
     <% end %>
   </div>
 </div>
